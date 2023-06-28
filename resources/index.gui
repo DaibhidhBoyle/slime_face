@@ -1,3 +1,4 @@
-<svg>
-  <rect id="background" />
+<svg class="slime">
+  <image href="background.jpeg" />
+  <text id="timeLabel"/>
 </svg>
