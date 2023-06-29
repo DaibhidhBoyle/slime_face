@@ -4,11 +4,11 @@ import { preferences } from "user-settings";
 import { HeartRateSensor } from "heart-rate";
 import { battery } from "power";
 import userActivity from "user-activity";
-import * utils from "../common/utils";
-import * as script from 'script.js';
+import * as utils from "../companion/utils.js";
+import * as script from './script.js';
 
 //Take in time from device and set update rate
-const timeHandle = document.getElementById("timeLabel");
+let timeHandle = document.getElementById("timeLabel");
 clock.granularity = "seconds";
 
 //Event to update clock display each second

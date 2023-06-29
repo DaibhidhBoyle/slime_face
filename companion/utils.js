@@ -1,4 +1,4 @@
-export function timePrefrence (prefrence, hours){
+export function timePrefrence (preference, hours){
   if (preference === "12h") {
     return hours % 12 || 12;
   } else {
@@ -11,3 +11,4 @@ export function zeroPad(i) {
     i = "0" + i;
   }
   return i;
+}
