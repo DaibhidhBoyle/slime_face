@@ -27,3 +27,13 @@
   y: 99%;
   fill: lawngreen;
 }
+
+#heartrateLabel {
+  font-size: 25;
+  font-family: System-Bold;
+  text-length: 10;
+  text-anchor: middle;
+  x: 10%;
+  y: 99%;
+  fill: pink;
+}

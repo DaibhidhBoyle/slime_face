@@ -7,6 +7,22 @@ import userActivity from "user-activity";
 import * as utils from "../companion/utils.js";
 import * as script from './script.js';
 
+
+// brings heart rate in from System
+
+let heartrateHandle = document.getElementById("heartrateLabel");
+
+// event to update heart rate readout on update
+
+const hrm = new HeartRateSensor();
+
+
+hrm.onreading = function() {
+  heartrateHandle.text = `${hrm.heartRate}`;
+}
+hrm.start();
+
+
 //time
 
 //Take in time from device and set update rate
@@ -38,6 +54,8 @@ clock.ontick = (evt) => {
 
   dateHandle.text = `${date}${suffix} ${writtenMonth}`;
 }
+
+// bring step rate in from system
 
 let stepsHandle = document.getElementById("stepsLabel");
 
