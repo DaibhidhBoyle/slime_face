@@ -31,6 +31,9 @@ clock.ontick = (evt) => {
   let dateHandle = document.getElementById("dateLabel");
 
   let date = now.getDate();
+  let month = now.getMonth();
 
-  dateHandle.text = `${date}`;
+  
+
+  dateHandle.text = `${date} / ${month}`;
 }
