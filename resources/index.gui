@@ -1,4 +1,5 @@
 <svg>
   <rect id="background" />
   <text id="timeLabel"/>
+  <text id="dateLabel" />
 </svg>

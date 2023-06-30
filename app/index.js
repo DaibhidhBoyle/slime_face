@@ -7,6 +7,8 @@ import userActivity from "user-activity";
 import * as utils from "../companion/utils.js";
 import * as script from './script.js';
 
+//time
+
 //Take in time from device and set update rate
 let timeHandle = document.getElementById("timeLabel");
 clock.granularity = "seconds";
@@ -23,4 +25,12 @@ clock.ontick = (evt) => {
   let secsFormatted = utils.zeroPad(secs);
 
   timeHandle.text = `${hoursFormated}:${minsFormatted}:${secsFormatted}`
+
+  //date
+
+  let dateHandle = document.getElementById("dateLabel");
+
+  let date = now.getDate();
+
+  dateHandle.text = `${date}`;
 }

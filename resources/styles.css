@@ -7,3 +7,13 @@
   y: 170;
   fill: pink;
 }
+
+#dateLabel {
+    font-size: 45;
+  font-family: Tungsten-Medium;
+  text-length: 4;
+  text-anchor: start;
+  x: 70;
+  y: 120;
+  fill: pink;
+}
