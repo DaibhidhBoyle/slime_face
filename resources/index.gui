@@ -4,4 +4,5 @@
   <text id="dateLabel" />
   <text id="stepsLabel" />
   <text id="heartrateLabel" />
+  <text id="batteryLabel" />
 </svg>

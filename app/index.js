@@ -8,25 +8,18 @@ import * as utils from "../companion/utils.js";
 import * as script from './script.js';
 
 
-// brings heart rate in from System
-
-let heartrateHandle = document.getElementById("heartrateLabel");
-
-// event to update heart rate readout on update
-
-const hrm = new HeartRateSensor();
-
-
-hrm.onreading = function() {
-  heartrateHandle.text = `${hrm.heartRate}`;
-}
-hrm.start();
-
 
 //time
 
 //Take in time from device and set update rate
 let timeHandle = document.getElementById("timeLabel");
+let dateHandle = document.getElementById("dateLabel");
+let stepsHandle = document.getElementById("stepsLabel");
+let batteryHandle = document.getElementById("batteryLabel");
+
+
+
+
 clock.granularity = "seconds";
 
 //Event to update clock display each second
@@ -44,7 +37,7 @@ clock.ontick = (evt) => {
 
   //date
 
-  let dateHandle = document.getElementById("dateLabel");
+
 
   let date = now.getDate();
   let month = now.getMonth();
@@ -53,11 +46,33 @@ clock.ontick = (evt) => {
   let writtenMonth = utils.writtenMonth(month);
 
   dateHandle.text = `${date}${suffix} ${writtenMonth}`;
+
+  //brings battery in from system
+ let batteryValue = battery.chargeLevel;
+ batteryHandle.text = `${batteryValue} %`;
+
+
+ // bring step rate in from system
+
+
+
+ let steps = (userActivity.today.adjusted["steps"] || 0);
+ stepsHandle.text = steps;
+
+
 }
 
-// bring step rate in from system
 
-let stepsHandle = document.getElementById("stepsLabel");
+// brings heart rate in from System
 
-let steps = (userActivity.today.adjusted["steps"] || 0);
-stepsHandle.text = steps;
+let heartrateHandle = document.getElementById("heartrateLabel");
+
+// event to update heart rate readout on update
+
+const hrm = new HeartRateSensor();
+
+
+hrm.onreading = function() {
+  heartrateHandle.text = `${hrm.heartRate}`;
+}
+hrm.start();

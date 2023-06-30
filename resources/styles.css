@@ -37,3 +37,13 @@
   y: 99%;
   fill: pink;
 }
+
+#batteryLabel {
+  font-size: 15;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: start;
+  x: 2%;
+  y: 5%;
+  fill: aqua;
+}
