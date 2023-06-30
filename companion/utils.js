@@ -15,21 +15,28 @@ export function zeroPad(i) {
 
 
 export function dateSuffixCreator(date) {
-  if (date > 3 && date < 21) return "th";
+  let result = ""
+
+  if (date > 3 && date < 21) {
+    result = "th"
+  };
+
   switch (date % 10) {
     case 1:
-      return "st";
+      result = "st";
     case 2:
-      return "nd";
+      result = "nd";
     case 3:
-      return "rd";
+      result = "rd";
     default:
-      return "th";
+      result = "th";
+
+  return result
   }
 }
 
 export function writtenMonth(targetMonth){
-  var month = new Array();
+  let month = new Array();
   month[0] = "January";
   month[1] = "February";
   month[2] = "March";
