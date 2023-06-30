@@ -1,5 +1,6 @@
 <svg>
   <rect id="background" />
+  <image href="images/slime1.png" />
   <text id="timeLabel"/>
   <text id="dateLabel" />
   <text id="stepsLabel" />
