@@ -17,3 +17,13 @@
   y: 120;
   fill: pink;
 }
+
+#stepsLabel {
+  font-size: 20;
+  font-family: System-Bold;
+  text-length: 100;
+  text-anchor: start;
+  x: 68%;
+  y: 99%;
+  fill: lawngreen;
+}

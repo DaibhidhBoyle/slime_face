@@ -38,3 +38,8 @@ clock.ontick = (evt) => {
 
   dateHandle.text = `${date}${suffix} ${writtenMonth}`;
 }
+
+let stepsHandle = document.getElementById("stepsLabel");
+
+let steps = (userActivity.today.adjusted["steps"] || 0);
+stepsHandle.text = steps;
