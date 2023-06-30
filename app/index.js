@@ -33,7 +33,8 @@ clock.ontick = (evt) => {
   let date = now.getDate();
   let month = now.getMonth();
 
-  
+  let suffix = utils.dateSuffixCreator(date);
+  let writtenMonth = utils.writtenMonth(month);
 
   dateHandle.text = `${date} / ${month}`;
 }
