@@ -13,8 +13,6 @@ export function zeroPad(i) {
   return i;
 }
 
-let suffix = utils.dateSuffixCreator(date);
-let writtenMonth = utils.writtenMonth(month);
 
 export function dateSuffixCreator(date) {
   if (date > 3 && date < 21) return "th";
@@ -30,7 +28,19 @@ export function dateSuffixCreator(date) {
   }
 }
 
-export function utils.writtenMonth {
-  
-
+export function writtenMonth(targetMonth){
+  var month = new Array();
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+  return month[targetMonth]
 }
