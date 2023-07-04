@@ -20,20 +20,18 @@ let batteryHandle = document.getElementById("batteryLabel");
 
 
 
-clock.granularity = "seconds";
+clock.granularity = "minutes";
 
 //Event to update clock display each second
 clock.ontick = (evt) => {
   const now = evt.date;
   let hours = now.getHours();
   let mins = now.getMinutes();
-  let secs = now.getSeconds();
 
   let hoursFormated = utils.timePrefrence(preferences.clockDisplay, hours)
   let minsFormatted = utils.zeroPad(mins);
-  let secsFormatted = utils.zeroPad(secs);
 
-  timeHandle.text = `${hoursFormated}:${minsFormatted}:${secsFormatted}`
+  timeHandle.text = `${hoursFormated}:${minsFormatted}`
 
   //date
 
