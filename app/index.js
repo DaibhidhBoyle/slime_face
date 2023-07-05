@@ -76,8 +76,18 @@ hrm.onreading = function() {
 hrm.start();
 
 
-let myRect = document.getElementById("slime");
+let slimeButton = document.getElementById("slime");
 
-myRect.addEventListener("click", (evt) => {
-  console.log("click");
+
+slimeButton.addEventListener("click", (evt) => {
+  let timeVisible = timeHandle.style.visibility === "visible";
+  let dateVisible = dateHandle.style.visibility === "visible";
+  let stepVisible = dateHandle.style.visibility === "visible";
+  let heartrateVisible = dateHandle.style.visibility === "visible";
+
+  timeHandle.style.visibility = timeVisible ? "hidden" : "visible";
+ dateHandle.style.visibility = dateVisible ? "hidden" : "visible";
+ stepsHandle.style.visibility = stepVisible ? "visible" : "hidden";
+ heartrateHandle.style.visibility = heartrateVisible ? "visible" : "hidden";
+
 });
