@@ -1,9 +1,8 @@
-<svg>
-  <rect id="background"/>
-    <image href="images/slime1.png" id="slimeImage" />
-    <text id="timeLabel"/>
-    <text id="dateLabel" />
-    <text id="stepsLabel" />
-    <text id="heartrateLabel" />
-    <text id="batteryLabel" />
+<svg class="layout1" fill="white">
+  <image href="images/slime1.png" id="slime" pointer-events="visible" />
+  <text id="timeLabel"/>
+  <text id="dateLabel" />
+  <text id="stepsLabel" />
+  <text id="heartrateLabel" />
+  <text id="batteryLabel" />
 </svg>

@@ -74,3 +74,10 @@ hrm.onreading = function() {
   heartrateHandle.text = `${hrm.heartRate}`;
 }
 hrm.start();
+
+
+let myRect = document.getElementById("slime");
+
+myRect.addEventListener("click", (evt) => {
+  console.log("click");
+});

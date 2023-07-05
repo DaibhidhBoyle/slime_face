@@ -48,7 +48,9 @@
   fill: aqua;
 }
 
-#slimeImage {
-  x: 5;
-  y: 75;
+#slime {
+  position: absolute;
+  object-fit: cover;
+  x: 5%;
+  y: 25%;
 }
