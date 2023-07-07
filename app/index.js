@@ -78,16 +78,10 @@ hrm.start();
 
 let slimeButton = document.getElementById("slime");
 
-
 slimeButton.addEventListener("click", (evt) => {
-  let timeVisible = timeHandle.style.visibility === "visible";
-  let dateVisible = dateHandle.style.visibility === "visible";
-  let stepVisible = dateHandle.style.visibility === "visible";
-  let heartrateVisible = dateHandle.style.visibility === "visible";
-
-  timeHandle.style.visibility = timeVisible ? "hidden" : "visible";
- dateHandle.style.visibility = dateVisible ? "hidden" : "visible";
- stepsHandle.style.visibility = stepVisible ? "visible" : "hidden";
- heartrateHandle.style.visibility = heartrateVisible ? "visible" : "hidden";
+   timeHandle.style.visibility = script.toggleVisibilty(timeHandle)
+  dateHandle.style.visibility = script.toggleVisibilty(dateHandle)
+  stepsHandle.style.visibility = script.toggleVisibilty(stepsHandle)
+  heartrateHandle.style.visibility = script.toggleVisibilty(heartrateHandle)
 
 });
