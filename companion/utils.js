@@ -6,11 +6,11 @@ export function timePrefrence (preference, hours){
   }
 }
 
-export function zeroPad(i) {
-  if (i < 10) {
-    i = "0" + i;
+export function zeroPad(num, targetLength) {
+  while (num.length < targetLength) {
+    num = "0" + num
   }
-  return i;
+  return num;
 }
 
 

@@ -29,7 +29,7 @@ clock.ontick = (evt) => {
   let mins = now.getMinutes();
 
   let hoursFormated = utils.timePrefrence(preferences.clockDisplay, hours)
-  let minsFormatted = utils.zeroPad(mins);
+  let minsFormatted = utils.zeroPad(mins, 2);
 
   timeHandle.text = `${hoursFormated}:${minsFormatted}`
 
@@ -55,7 +55,7 @@ clock.ontick = (evt) => {
 
 
  let steps = (userActivity.today.adjusted["steps"] || 0);
- stepsHandle.text = steps;
+ stepsHandle.text = utils.zeroPad(`${steps}`, 5);
 
 
 }
