@@ -3,6 +3,7 @@
   <text id="timeLabel" visibility = "visible"/>
   <text id="dateLabel" visibility = "visible"/>
   <text id="stepsLabel" visibility = "hidden"/>
+  <image href="images/heart.png" id="heart" />
   <text id="heartrateLabel" visibility = "hidden"/>
   <text id="batteryLabel"/>
 </svg>
