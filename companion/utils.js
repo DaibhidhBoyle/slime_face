@@ -2,7 +2,7 @@ export function timePrefrence (preference, hours){
   if (preference === "12h") {
     return hours % 12 || 12;
   } else {
-    return zeroPad(hours);
+    return zeroPad(hours, 2);
   }
 }
 

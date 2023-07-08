@@ -1,8 +1,8 @@
 <svg class="layout1" fill="white">
-  <image href="images/slimes/1stMainSlime.png" id="slime" pointer-events="visible" />
   <text id="timeLabel" visibility = "visible"/>
   <text id="dateLabel" visibility = "visible"/>
   <text id="stepsLabel" visibility = "hidden"/>
   <text id="heartrateLabel" visibility = "hidden"/>
+  <image href="images/slimes/1stMainSlime.png" id="slime" pointer-events="visible" />
   <text id="batteryLabel"/>
 </svg>

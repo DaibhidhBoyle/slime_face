@@ -25,13 +25,13 @@ clock.granularity = "minutes";
 //Event to update clock display each second
 clock.ontick = (evt) => {
   const now = evt.date;
-  let hours = now.getHours();
-  let mins = now.getMinutes();
+  let hours = now.getHours().toString();
+  let mins = now.getMinutes().toString();
 
-  let hoursFormated = utils.timePrefrence(preferences.clockDisplay, hours)
+  let hoursFormatted = utils.timePrefrence(preferences.clockDisplay, hours)
   let minsFormatted = utils.zeroPad(mins, 2);
 
-  timeHandle.text = `${hoursFormated}:${minsFormatted}`
+  timeHandle.text = `${hoursFormatted}:${minsFormatted}`
 
   //date
 
