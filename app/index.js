@@ -79,10 +79,19 @@ hrm.start();
 
 let slimeButton = document.getElementById("slime");
 
+let toggableHTMLElements = document.getElementsByClassName("HiddenOrVisible");
 
 slimeButton.addEventListener("click", (evt) => {
-   timeHandle.style.visibility = script.toggleVisibilty(timeHandle)
-  dateHandle.style.visibility = script.toggleVisibilty(dateHandle)
-  stepsHandle.style.visibility = script.toggleVisibilty(stepsHandle)
-  heartrateHandle.style.visibility = script.toggleVisibilty(heartrateHandle)
+  toggableHTMLElements.forEach(htmlElement => {
+    htmlElement.style.visibility = script.toggleVisibilty(htmlElement);
+  });
+
+  //  timeHandle.style.visibility = script.toggleVisibilty(timeHandle)
+  // dateHandle.style.visibility = script.toggleVisibilty(dateHandle)
+  // stepsHandle.style.visibility = script.toggleVisibilty(stepsHandle)
+  // heartrateHandle.style.visibility = script.toggleVisibilty(heartrateHandle)
+  // scene1.style.visibility = script.toggleVisibilty(scene1);
+  // scene2.style.visibility = script.toggleVisibilty(scene2);
+
+
 });

@@ -1,11 +1,11 @@
 <svg class="layout1" fill="white">
   <image href="images/back.png" />
-  <text id="timeLabel" visibility = "visible"/>
-  <text id="dateLabel" visibility = "visible"/>
-  <image href="images/sundry/footPrintCropped.png" id="footPrint" visibility = "visible" />
-  <text id="stepsLabel" visibility = "hidden"/>
-  <image href="images/sundry/heartCropped.png" id="heart" visibility = "visible" />
-  <text id="heartrateLabel" visibility = "hidden"/>
+  <text class="HiddenOrVisible" id="timeLabel" visibility = "visible"/>
+  <text class="HiddenOrVisible" id="dateLabel" visibility = "visible"/>
+  <image class="HiddenOrVisible" href="images/sundry/footPrintCropped.png" id="footPrint" visibility = "hidden" />
+  <text class="HiddenOrVisible" id="stepsLabel" visibility = "hidden"/>
+  <image class="HiddenOrVisible" href="images/sundry/heartCropped.png" id="heart" visibility = "hidden" />
+  <text class="HiddenOrVisible" id="heartrateLabel" visibility = "hidden"/>
   <image href="images/slimes/1stMainSlimeCropped.png" id="slime" pointer-events="visible"/>
   <text id="batteryLabel"/>
 </svg>
