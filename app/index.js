@@ -67,21 +67,22 @@ let heartrateHandle = document.getElementById("heartrateLabel");
 
 // event to update heart rate readout on update
 
-const hrm = new HeartRateSensor();
+let hrm = new HeartRateSensor();
 
 
 hrm.onreading = function() {
   heartrateHandle.text = `${hrm.heartRate}`;
 }
+
 hrm.start();
 
 
 let slimeButton = document.getElementById("slime");
+
 
 slimeButton.addEventListener("click", (evt) => {
    timeHandle.style.visibility = script.toggleVisibilty(timeHandle)
   dateHandle.style.visibility = script.toggleVisibilty(dateHandle)
   stepsHandle.style.visibility = script.toggleVisibilty(stepsHandle)
   heartrateHandle.style.visibility = script.toggleVisibilty(heartrateHandle)
-
 });
