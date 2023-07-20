@@ -6,6 +6,6 @@
   <text class="HiddenOrVisible" id="stepsLabel" visibility = "hidden"/>
   <image class="HiddenOrVisible" href="images/sundry/heartCropped.png" id="heart" visibility = "hidden" />
   <text class="HiddenOrVisible" id="heartrateLabel" visibility = "hidden"/>
-  <image href="images/slimes/1stMainSlimeCropped.png" id="slime" pointer-events="visible"/>
+  <image href="images/slimes/1stMainSlime.png" id="slime" pointer-events="visible"/>
   <text id="batteryLabel"/>
 </svg>

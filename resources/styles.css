@@ -71,8 +71,14 @@
   position: absolute;
   object-fit: cover;
   background-color: transparent;
-  width: 30%;
-  height: 30%;
   x: 92;
   y: 170;
 }
+
+/* #slimeAnimation {
+    visibility: hidden;
+}
+
+#slimeAnimation img:first-child {
+    visibility: visible;
+} */

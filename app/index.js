@@ -76,22 +76,56 @@ hrm.onreading = function() {
 
 hrm.start();
 
-
+// slime button that switches between different displays
 let slimeButton = document.getElementById("slime");
 
 let toggableHTMLElements = document.getElementsByClassName("HiddenOrVisible");
 
+let slimeAnimationFrameNames = ["1stMainSlime",
+                            "2ndSlime",
+                            "3rdSlime",
+                            "4thSlime",
+                            "5thSlime",
+                            "6thSlime",
+                            "7thSlime",
+                            "8thSlime",
+                            "1stMainSlime"]
+
+let slimeAnimationFrames = []
+
+for (let name of slimeAnimationFrameNames) {
+  slimeAnimationFrames.push(script.imageLinkConstructor(name, "slimes"));
+}
+
+
+
 slimeButton.addEventListener("click", (evt) => {
   toggableHTMLElements.forEach(htmlElement => {
     htmlElement.style.visibility = script.toggleVisibilty(htmlElement);
-  });
-
-  //  timeHandle.style.visibility = script.toggleVisibilty(timeHandle)
-  // dateHandle.style.visibility = script.toggleVisibilty(dateHandle)
-  // stepsHandle.style.visibility = script.toggleVisibilty(stepsHandle)
-  // heartrateHandle.style.visibility = script.toggleVisibilty(heartrateHandle)
-  // scene1.style.visibility = script.toggleVisibilty(scene1);
-  // scene2.style.visibility = script.toggleVisibilty(scene2);
 
 
+
+    let currentIndex = 0;
+
+    function changeImage() {
+      slimeButton.href = slimeAnimationFrames[currentIndex];
+      currentIndex = currentIndex + 1
+}
+
+const intervalId = setInterval(changeImage, 2000);
+
+    // setTimeout(() => {
+    //   clearInterval(intervalId);
+    // }, 10000);
+    });
+
+// let frames = document.getElementById("slimeAnimation").children;
+// let frameCount = frames.length;
+//
+// let i = 0;
+// setInterval(function () {
+//     frames[i % frameCount].style.visibility = "hidden";
+//     frames[++i % frameCount].style.display = "visible";
+// }, 100);
+//
 });
