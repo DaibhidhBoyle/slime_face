@@ -1,11 +1,26 @@
 <svg class="layout1" fill="white">
   <image href="images/back.png" />
-  <text class="HiddenOrVisible" id="timeLabel" visibility = "visible"/>
-  <text class="HiddenOrVisible" id="dateLabel" visibility = "visible"/>
-  <image class="HiddenOrVisible" href="images/sundry/footPrintCropped.png" id="footPrint" visibility = "hidden" />
-  <text class="HiddenOrVisible" id="stepsLabel" visibility = "hidden"/>
-  <image class="HiddenOrVisible" href="images/sundry/heartCropped.png" id="heart" visibility = "hidden" />
-  <text class="HiddenOrVisible" id="heartrateLabel" visibility = "hidden"/>
-  <image href="images/slimes/1stMainSlime.png" id="slime" pointer-events="visible"/>
+  <g id="informationDisplay">
+    <text class="HiddenOrVisible" id="timeLabel" visibility = "visible"/>
+    <text class="HiddenOrVisible" id="dateLabel" visibility = "visible"/>
+    <image class="HiddenOrVisible" href="images/sundry/footPrintCropped.png" id="footPrint" visibility = "hidden" />
+    <text class="HiddenOrVisible" id="stepsLabel" visibility = "hidden"/>
+    <image class="HiddenOrVisible" href="images/sundry/heartCropped.png" id="heart" visibility = "hidden" />
+    <text class="HiddenOrVisible" id="heartrateLabel" visibility = "hidden"/>
+  </g>
+
+  <g id="jumpGroup">
+    <image href="images/slimes/2ndSlime.png" id="jump2" class="jumpAnimation" visibility = "hidden"/>
+    <image href="images/slimes/3rdSlime.png" id="jump3" class="jumpAnimation" visibility = "hidden"/>
+    <image href="images/slimes/4thSlime.png" id="jump4" class="jumpAnimation" visibility = "hidden"/>
+    <image href="images/slimes/5thSlime.png" id="jump5" class="jumpAnimation" visibility = "hidden"/>
+    <image href="images/slimes/4thSlime.png" id="jump6" class="jumpAnimation" visibility = "hidden"/>
+    <image href="images/slimes/7thSlime.png" id="jump8" class="jumpAnimation" visibility = "hidden"/>
+    <image href="images/slimes/6thSlime.png" id="jump7" class="jumpAnimation" visibility = "hidden"/>
+    <image href="images/slimes/8thSlime.png" id="jump9" class="jumpAnimation" visibility = "hidden"/>
+  </g>
+
+  <image href="images/slimes/1stMainSlime.png" id="slime" pointer-events="visible" visibility =  "visible"/>
+
   <text id="batteryLabel"/>
 </svg>

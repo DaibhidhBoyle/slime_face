@@ -81,43 +81,59 @@ let slimeButton = document.getElementById("slime");
 
 let toggableHTMLElements = document.getElementsByClassName("HiddenOrVisible");
 
-let slimeAnimationFrameNames = ["1stMainSlime",
-                            "2ndSlime",
-                            "3rdSlime",
-                            "4thSlime",
-                            "5thSlime",
-                            "6thSlime",
-                            "7thSlime",
-                            "8thSlime",
-                            "1stMainSlime"]
+let jumpFrames = document.getElementsByClassName("jumpAnimation");
 
-let slimeAnimationFrames = []
+jumpFrames = [slimeButton, jumpFrames[0], jumpFrames[1], jumpFrames[2], jumpFrames[3], jumpFrames[2], jumpFrames[1], jumpFrames[0], jumpFrames[4], jumpFrames[5], jumpFrames[6], slimeButton]
 
-for (let name of slimeAnimationFrameNames) {
-  slimeAnimationFrames.push(script.imageLinkConstructor(name, "slimes"));
-}
+
+// let slimeAnimationFrameNames = ["1stMainSlime",
+//                             "2ndSlime",
+//                             "3rdSlime",
+//                             "4thSlime",
+//                             "5thSlime",
+//                             "6thSlime",
+//                             "7thSlime",
+//                             "8thSlime",
+//                             "1stMainSlime"]
+//
+// let slimeAnimationFrames = []
+//
+// for (let name of slimeAnimationFrameNames) {
+//   slimeAnimationFrames.push(script.imageLinkConstructor(name, "slimes"));
+// }
 
 
 
 slimeButton.addEventListener("click", (evt) => {
   toggableHTMLElements.forEach(htmlElement => {
     htmlElement.style.visibility = script.toggleVisibilty(htmlElement);
-
-
-
-    let currentIndex = 0;
-
-    function changeImage() {
-      slimeButton.href = slimeAnimationFrames[currentIndex];
-      currentIndex = currentIndex + 1
+  });
+  for (let i = 1; i < jumpFrames.length; i++) {
+  (function(index) {
+    setTimeout(() => {
+      jumpFrames[index].style.visibility = script.toggleVisibilty(jumpFrames[index]);
+      jumpFrames[index - 1].style.visibility = script.toggleVisibilty(jumpFrames[index - 1]);
+    }, index * 75);
+  })(i);
 }
+});
 
-const intervalId = setInterval(changeImage, 2000);
+
+
+
+//     let currentIndex = 0;
+//
+//     function changeImage() {
+//       slimeButton.href = slimeAnimationFrames[currentIndex];
+//       currentIndex = currentIndex + 1
+// }
+//
+// const intervalId = setInterval(changeImage, 2000);
 
     // setTimeout(() => {
     //   clearInterval(intervalId);
     // }, 10000);
-    });
+
 
 // let frames = document.getElementById("slimeAnimation").children;
 // let frameCount = frames.length;
@@ -128,4 +144,3 @@ const intervalId = setInterval(changeImage, 2000);
 //     frames[++i % frameCount].style.display = "visible";
 // }, 100);
 //
-});
