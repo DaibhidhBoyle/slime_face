@@ -15,8 +15,8 @@
     <image href="images/slimes/4thSlime.png" id="jump4" class="jumpAnimation" visibility = "hidden"/>
     <image href="images/slimes/5thSlime.png" id="jump5" class="jumpAnimation" visibility = "hidden"/>
     <image href="images/slimes/4thSlime.png" id="jump6" class="jumpAnimation" visibility = "hidden"/>
-    <image href="images/slimes/7thSlime.png" id="jump8" class="jumpAnimation" visibility = "hidden"/>
     <image href="images/slimes/6thSlime.png" id="jump7" class="jumpAnimation" visibility = "hidden"/>
+    <image href="images/slimes/7thSlime.png" id="jump8" class="jumpAnimation" visibility = "hidden"/>
     <image href="images/slimes/8thSlime.png" id="jump9" class="jumpAnimation" visibility = "hidden"/>
   </g>
 
