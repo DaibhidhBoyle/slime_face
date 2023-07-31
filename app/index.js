@@ -83,7 +83,7 @@ let toggableHTMLElements = document.getElementsByClassName("HiddenOrVisible");
 
 let jumpFrames = document.getElementsByClassName("jumpAnimation");
 
-jumpFrames = [slimeButton, jumpFrames[0], jumpFrames[1], jumpFrames[2], jumpFrames[3], jumpFrames[2], jumpFrames[1], jumpFrames[0], jumpFrames[4], jumpFrames[5], jumpFrames[6], slimeButton]
+jumpFrames = [slimeButton, ...jumpFrames.slice(0, 4), ...jumpFrames.slice(3, 0).reverse(), ...jumpFrames.slice(4), slimeButton];
 
 
 // let slimeAnimationFrameNames = ["1stMainSlime",
@@ -103,6 +103,8 @@ jumpFrames = [slimeButton, jumpFrames[0], jumpFrames[1], jumpFrames[2], jumpFram
 // }
 
 
+let jumpFrameTimes = [75, 75, 75, 75, 75, 75, 75, 75, 400, 500]
+
 
 slimeButton.addEventListener("click", (evt) => {
   toggableHTMLElements.forEach(htmlElement => {
@@ -113,7 +115,7 @@ slimeButton.addEventListener("click", (evt) => {
     setTimeout(() => {
       jumpFrames[index].style.visibility = script.toggleVisibilty(jumpFrames[index]);
       jumpFrames[index - 1].style.visibility = script.toggleVisibilty(jumpFrames[index - 1]);
-    }, index * 75);
+    }, index * jumpFrameTimes[i]);
   })(i);
 }
 });
