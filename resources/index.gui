@@ -1,5 +1,6 @@
 <svg class="layout1" fill="white">
   <image href="images/back.png" />
+
   <g id="informationDisplay">
     <text class="HiddenOrVisible" id="timeLabel" visibility = "visible"/>
     <text class="HiddenOrVisible" id="dateLabel" visibility = "visible"/>
@@ -7,6 +8,11 @@
     <text class="HiddenOrVisible" id="stepsLabel" visibility = "hidden"/>
     <image class="HiddenOrVisible" href="images/sundry/heartCropped.png" id="heart" visibility = "hidden" />
     <text class="HiddenOrVisible" id="heartrateLabel" visibility = "hidden"/>
+  </g>
+
+  <g id="actionButtons">
+    <rect id="fishButton"/>
+    <rect id="foodButton"/>
   </g>
 
   <g id="jumpGroup">
