@@ -1,4 +1,4 @@
-<svg class="layout1" fill="white">
+<svg id="background" fill="white">
   <image href="images/back.png" />
 
   <g id="informationDisplay">
@@ -11,8 +11,10 @@
   </g>
 
   <g id="actionButtons">
-    <rect id="fishButton"/>
+    <rect id="fishButton" class="fishClickable" pointer-events="visible"/>
+    <image href="images/fishing/anchovy.png" class="fishClickable" pointer-events="visible" id="fishIcon"/>
     <rect id="foodButton"/>
+    <image href="images/food/burger1.png" id="foodIcon"/>
   </g>
 
   <g id="jumpGroup">
@@ -26,7 +28,26 @@
     <image href="images/slimes/8thSlime.png" id="jump9" class="jumpAnimation" visibility = "hidden"/>
   </g>
 
+  <g id="fishGroup">
+    <image href="images/fishing/fishin1.png" id="fish1" class="fishAnimation" visibility = "hidden"/>
+    <image href="images/fishing/fishin2.png" id="fish2" class="fishAnimation" visibility = "hidden"/>
+    <image href="images/fishing/fishin3.png" id="fish3" class="fishAnimation" visibility = "hidden"/>
+    <image href="images/fishing/fishin4.png" id="fish4" class="fishAnimation" visibility = "hidden"/>
+    <image href="images/fishing/fishin5.png" id="fish5" class="fishAnimation" visibility = "hidden"/>
+    <image href="images/fishing/fishin6.png" id="fish6" class="fishAnimation" visibility = "hidden"/>
+    <image href="images/fishing/fishin7.png" id="fish7" class="fishAnimation" visibility = "hidden"/>
+    <image href="images/fishing/fishinWin.png" id="fish8" class="fishAnimation" visibility = "hidden"/>
+  </g>
+
   <image href="images/slimes/1stMainSlime.png" id="slime" pointer-events="visible" visibility =  "visible"/>
+
+  <g id="fishWin">
+    <image href="images/fishing/anchovywin.png" id="anchovy" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/blobwin.png" id="blobfish" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/bootwin.png" id="boot" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/breamwin.png" id="bream" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/crimsonwin.png" id="crimson" class="fishWinImage" visibility = "hidden"/>
+  </g>
 
   <text id="batteryLabel"/>
 </svg>

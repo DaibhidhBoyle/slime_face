@@ -1,8 +1,24 @@
-export function toggleVisibilty(handle){
-  let isVisible = handle.style.visibility === "visible";
-  return isVisible ? "hidden" : "visible";
+import * as helper from './helper.js'
+
+export async function visibilityAnimation(frames, times, callback) {
+  for (let i = 1; i < frames.length; i++) {
+    frames[i].style.visibility = helper.toggleVisibilty(frames[i]);
+    frames[i - 1].style.visibility = helper.toggleVisibilty(frames[i - 1]);
+    await waitForNextFrame(times[i]);
+  }
+  if (typeof callback === 'function') {
+    callback();
+  }
 }
 
-export function imageLinkConstructor(name, folder){
-  return `images/${folder}/${name}.png`
+function waitForNextFrame(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export function showPrizeFish(prizeFish){
+  prizeFish.image.style.visibility = helper.toggleVisibilty(prizeFish.image);
+
+  setTimeout(function() {
+    prizeFish.image.style.visibility = helper.toggleVisibilty(prizeFish.image);
+  }, 2500);
 }
