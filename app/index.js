@@ -59,8 +59,6 @@ clock.ontick = (evt) => {
 
  let steps = (userActivity.today.adjusted["steps"] || 0);
  stepsHandle.text = utils.zeroPad(`${steps}`, 5);
-
-
 }
 
 
@@ -108,11 +106,12 @@ slimeButton.addEventListener("click", function() {
 let fishButton = document.getElementsByClassName("fishClickable");
 
 let fishWinFrames = {
-  anchovy : { image: document.getElementById("anchovy"), text: "anc" },
-  blob: { image: document.getElementById("blobfish"), text: "blob" },
+  star : {image: document.getElementById("star"), text: "star" },
   boot: { image: document.getElementById("boot"), text: "boot" },
+  anchovy : { image: document.getElementById("anchovy"), text: "anchovy" },
   bream: { image: document.getElementById("bream"), text: "bream" },
-  crimson: { image: document.getElementById("crimson"), text: "crimson" }
+  crimson: { image: document.getElementById("crimson"), text: "crimson" },
+  blob: { image: document.getElementById("blobfish"), text: "blob" }
   };
 
 let fishFrames = document.getElementsByClassName("fishAnimation");
@@ -129,7 +128,7 @@ function handleFishButtonClick() {
   prizeFish = helper.whichFish(fishWinFrames);
   script.visibilityAnimation(fishFrames, fishFrameTimes,
     () => {
-    script.showPrizeFish(prizeFish);
+    script.showPrizeFish(prizeFish, fishWinFrames.star.image);
   }
 )};
 

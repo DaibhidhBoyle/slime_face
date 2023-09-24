@@ -41,12 +41,13 @@
 
   <image href="images/slimes/1stMainSlime.png" id="slime" pointer-events="visible" visibility =  "visible"/>
 
-  <g id="fishWin">
-    <image href="images/fishing/anchovywin.png" id="anchovy" class="fishWinImage" visibility = "hidden"/>
-    <image href="images/fishing/blobwin.png" id="blobfish" class="fishWinImage" visibility = "hidden"/>
-    <image href="images/fishing/bootwin.png" id="boot" class="fishWinImage" visibility = "hidden"/>
-    <image href="images/fishing/breamwin.png" id="bream" class="fishWinImage" visibility = "hidden"/>
-    <image href="images/fishing/crimsonwin.png" id="crimson" class="fishWinImage" visibility = "hidden"/>
+  <g id="fishPrizes">
+    <image href="images/fishing/star.png" id="star" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/boot.png" id="boot" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/anchovy.png" id="anchovy" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/bream.png" id="bream" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/crimson.png" id="crimson" class="fishWinImage" visibility = "hidden"/>
+    <image href="images/fishing/blobfish.png" id="blobfish" class="fishWinImage" visibility = "hidden"/>
   </g>
 
   <text id="batteryLabel"/>

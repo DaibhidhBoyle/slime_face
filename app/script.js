@@ -15,10 +15,12 @@ function waitForNextFrame(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export function showPrizeFish(prizeFish){
+export function showPrizeFish(prizeFish, star){
+  star.style.visibility = helper.toggleVisibilty(star);
   prizeFish.image.style.visibility = helper.toggleVisibilty(prizeFish.image);
 
   setTimeout(function() {
+    star.style.visibility = helper.toggleVisibilty(star);
     prizeFish.image.style.visibility = helper.toggleVisibilty(prizeFish.image);
   }, 2500);
 }
