@@ -29,9 +29,9 @@ async function visibilityAnimation(frames, times, callback = null) {
     frames[i].style.visibility = helper.toggleVisibilty(frames[i]);
     frames[i - 1].style.visibility = helper.toggleVisibilty(frames[i - 1]);
     await waitForNextFrame(times[i]);
-    // if (typeof callback === 'function') {
-    //   callback();
-    // }
+    }
+    if (typeof callback === 'function') {
+      callback();
   }
 }
 

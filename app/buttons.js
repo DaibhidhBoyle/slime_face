@@ -73,7 +73,7 @@ function fishButton(mainSlime, clickData) {
 
   let fishClick = () => {
     animate.startButtonAnimation(clickData, fishFrames, fishFrameTimes, () => {
-      showPrizeFish(fishWinFrames);
+      animate.showPrizeFish(fishWinFrames);
     });
   };
 
