@@ -10,21 +10,25 @@ import * as helper from './helper.js'
 export function infomaticsBoot(){
   let clockHandles = establishClockHandles();
 
-  clock.granularity = "minutes";
+  clock.granularity = "seconds";
 
   clock.ontick = (evt) => {
     const now = evt.date;
 
-    let hours = now.getHours().toString();
-    let mins = now.getMinutes().toString();
+    toUpdateOnTick(now, clockHandles.time, clockHandles.date)
 
-    let hoursFormatted = helper.timePrefrence(preferences.clockDisplay, hours)
-    let minsFormatted = helper.zeroPad(mins, 2);
-
-    clockHandles.time.text = `${hoursFormatted}:${minsFormatted}`
-
-    toUpdateOnTick(now, clockHandles.date)
   }
+
+  let heartrateHandle = document.getElementById("heartrateLabel");
+  let hrm = new HeartRateSensor();
+
+
+  hrm.onreading = function() {
+    heartrateHandle.text = `${hrm.heartRate}`;
+  }
+
+  hrm.start();
+
 }
 
 
@@ -40,11 +44,22 @@ function establishClockHandles(){
   }
 }
 
-function toUpdateOnTick(now, dateHandle){
+function toUpdateOnTick(now, timeHandle, dateHandle){
+  timeSettings(now, timeHandle)
   dateSettings(now, dateHandle)
   systemSetup(now)
 }
 
+function timeSettings(now, timeHandle){
+
+  let hours = now.getHours().toString();
+  let mins = now.getMinutes().toString();
+
+  let hoursFormatted = helper.timePrefrence(preferences.clockDisplay, hours)
+  let minsFormatted = helper.zeroPad(mins, 2);
+
+  timeHandle.text = `${hoursFormatted}:${minsFormatted}`
+}
 
 function dateSettings(now, dateHandle){
   let date = now.getDate();
@@ -68,17 +83,6 @@ function systemSetup(now){
 
   let steps = (userActivity.today.adjusted["steps"] || 0);
   stepsHandle.text = helper.zeroPad(`${steps}`, 5);
-
-  let heartrateHandle = document.getElementById("heartrateLabel");
-
-  let hrm = new HeartRateSensor();
-
-
-  hrm.onreading = function() {
-    heartrateHandle.text = `${hrm.heartRate}`;
-  }
-
-  hrm.start();
 
 }
 
