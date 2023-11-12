@@ -1,5 +1,5 @@
 <svg id="background" fill="white">
-  <image href="images/back.png" />
+<image href="images/back.png" />
 
   <g id="informationDisplay">
     <text class="HiddenOrVisible" id="timeLabel" visibility = "visible"/>
