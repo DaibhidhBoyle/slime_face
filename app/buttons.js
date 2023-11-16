@@ -10,6 +10,7 @@ export function buttonsBoot(){
   let mainSlime = document.getElementById("slime");
   buttonsAndCallBacksForEventListeners.push(slimeButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
+  buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
   eventListenersHandler(buttonsAndCallBacksForEventListeners);
 }
 
@@ -22,7 +23,7 @@ function slimeButton(mainSlime, clickData) {
   let jumpFrames = document.getElementsByClassName("jumpAnimation");
 
   jumpFrames = [mainSlime, ...jumpFrames.slice(0, 4), ...jumpFrames.slice(3, 0).reverse(), ...jumpFrames.slice(4), mainSlime];
-  let jumpFrameTimes = [75, 75, 75, 75, 75, 75, 75, 1700, 1000, 0];
+  let jumpFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1700, 1000, 0];
 
   let slimeClick = () => {
     handleSlimeButtonClick(
@@ -39,7 +40,7 @@ function slimeButton(mainSlime, clickData) {
 
 function handleSlimeButtonClick(elements, clickData, slimeFrames, slimeTimes){
   info.toggleInfoElements(elements);
-  animate.startButtonAnimation(clickData, slimeFrames, slimeTimes);
+  animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }
 
 
@@ -69,11 +70,13 @@ function fishButton(mainSlime, clickData) {
     mainSlime,
   ];
 
-  let fishFrameTimes = [75, 75, 75, 75, 75, 75, 75, 1300, 500, 1200, 500, 1200, 1000, 0];
+  let fishFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1300, 500, 1200, 500, 1200, 1000, 0];
+
+  let secondaryAnimationTime = 2500
 
   let fishClick = () => {
-    animate.startButtonAnimation(clickData, fishFrames, fishFrameTimes, () => {
-      animate.showPrizeFish(fishWinFrames);
+    animate.startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
+      animate.showPrizeFish(fishWinFrames, secondaryAnimationTime);
     });
   };
 
@@ -85,6 +88,60 @@ function fishButton(mainSlime, clickData) {
 
   return fishButtonData;
 }
+
+
+
+function foodButton(mainSlime, clickData) {
+  let foodButtons = document.getElementsByClassName("foodClickable");
+
+  let eat = document.getElementById("eating")
+
+  let eatFrames = [
+    mainSlime,
+    eat,
+    mainSlime,
+    eat,
+    mainSlime,
+    eat,
+    mainSlime
+  ];
+
+  let eatFrameTimes = [0, 675, 400, 266, 400, 266, 0];
+
+  let foodAnimation = document.getElementsByClassName("foodAnimation");
+
+  let foodClick = () => {
+    handleFoodButtonClick(
+      clickData,
+      foodAnimation,
+      eatFrames,
+      eatFrameTimes
+    );
+  };
+
+
+  let foodButtonData = [];
+
+  foodButtons.forEach((foodButton) => {
+    foodButtonData.push({ button: foodButton, callback: foodClick});
+  });
+
+  return foodButtonData;
+}
+
+function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTimes){
+  let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
+  animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
+  prizeFoodAnimation.style.visibility = helper.toggleVisibilty(prizeFoodAnimation);
+  prizeFoodAnimation.animate("enable");
+
+  setTimeout(function () {
+    prizeFoodAnimation.style.visibility = helper.toggleVisibilty(prizeFoodAnimation);
+    prizeFoodAnimation.animate("disable");
+  }, 2000);
+};
+
+
 
 function eventListenersHandler(listenersClickables){
   listenersClickables.forEach(listenersClickable => {

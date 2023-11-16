@@ -59,6 +59,7 @@ export function toggleVisibilty(handle){
   return isVisible ? "hidden" : "visible";
 }
 
+
 export function whichFish(frames) {
   let randomPercentage =  Math.floor(Math.random() * 100) + 1
   let result = ""

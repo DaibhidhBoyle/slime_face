@@ -2,5 +2,30 @@
   <defs>
     <link rel="stylesheet" href="styles.css" />
     <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
+
+    <symbol id="burger" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="2"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/food/burger_1.png" width="22%" height="22%" x="140" y="200" />
+    
+    </symbol>
+
+    <symbol id="sushi" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="2"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/food/sushi_1.png" width="20%" height="23%" x="127" y="200" />
+
+    </symbol>
+
+    <symbol id="taco" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="2"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/food/taco_1.png" width="30%" height="30%" x="125" y="190" />
+
+    </symbol>
+
   </defs>
 </svg>
