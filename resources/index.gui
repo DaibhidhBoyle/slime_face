@@ -40,9 +40,9 @@
 </g>
 
 
-
 <image href="images/slimes/mainSlime_1.png" id="slime" pointer-events="visible" visibility =  "visible"/>
-<image href="images/slimes/eatSlime_1.png" id="eating" pointer-events="visible" visibility =  "hidden"/>
+<image href="images/slimes/eatSlime_1.png" id="eating" visibility =  "hidden"/>
+<use id="exclaimation" href="#fadeExclaimation" opacity="0" />
 
 
 

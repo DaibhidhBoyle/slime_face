@@ -54,9 +54,32 @@ export function writtenMonth(targetMonth){
 
 //helpers
 
+export function animationObjectify(framesArray){
+  let arrayOfObjects = []
+  framesArray.forEach( animationFrame => {
+    arrayOfObjects.push({frame: animationFrame})
+  });
+  return arrayOfObjects
+}
+
+
 export function toggleVisibilty(handle){
   let isVisible = handle.style.visibility === "visible";
   return isVisible ? "hidden" : "visible";
+}
+
+export function toggleOpacity(handle){
+  let currentOpacity = parseFloat(handle.style.opacity);
+  let newSetting = 0
+
+  if (isNaN(currentOpacity)) {
+    newSetting = 1;
+  } else {
+    newSetting = currentOpacity === 0 ? 1 : 0;
+  }
+
+  return newSetting
+
 }
 
 
