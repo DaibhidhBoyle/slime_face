@@ -148,13 +148,9 @@ function foodButton(mainSlime, clickData) {
 function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTimes){
   let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
   animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
-  prizeFoodAnimation.style.visibility = helper.toggleVisibilty(prizeFoodAnimation);
-  prizeFoodAnimation.animate("enable");
 
-  setTimeout(function () {
-    prizeFoodAnimation.style.visibility = helper.toggleVisibilty(prizeFoodAnimation);
-    prizeFoodAnimation.animate("disable");
-  }, 2000);
+  animate.widgetAnimation(prizeFoodAnimation, 2000);
+
 };
 
 

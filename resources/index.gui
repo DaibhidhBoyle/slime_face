@@ -46,7 +46,7 @@
 
 
 <use id="exclaimation" href="#fadeExclaimation" opacity="0" />
-
+<use id="zzz" href="#fadezzz"  opacity="100" />
 
 <g id= "foodAnimations">
 <use id="burgerAnimation" href="#burger" class = "foodAnimation" visibility = "hidden"/>

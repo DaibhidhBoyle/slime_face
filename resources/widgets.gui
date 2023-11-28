@@ -11,6 +11,14 @@
     <image href="images/sundry/exclaimation_1.png" width="16%" height="20%" x="95" y="155" />
     </symbol>
 
+    <symbol id="fadezzz" href="#sprite-image">
+    <animate attributeName="opacity" begin="enable"
+      from="0" to="0.9" dur="3" final="keep"/>
+    <animate attributeName="opacity" begin="enable+4"
+      from="0.9" to="0" dur="3" final="keep"/>
+    <image href="images/sundry/zzz_1.png" width="50%" height="43%" x="145" y="65" />
+    </symbol>
+
     <symbol id="burger" href="#sprite-image">
     <animate id="anim" attributeName="value" begin="enable"
         from="1" to="4" dur="2"

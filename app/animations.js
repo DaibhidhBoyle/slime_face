@@ -59,7 +59,6 @@ function temporaryToggleVisabilty(frame, duration){
 
 function disableButtonForAnimation(clickData, timeArray) {
   let sumTime = timeArray.reduce((runningTotal, currentInterartive) => runningTotal + currentInterartive, 0);
-  console.log(timeArray);
 
   clickData.forEach((clickableElement) => {
     clickableElement.button.removeEventListener("click", clickableElement.callback);
@@ -68,4 +67,14 @@ function disableButtonForAnimation(clickData, timeArray) {
       clickableElement.button.addEventListener("click", clickableElement.callback);
     }, sumTime);
   });
+}
+
+export function widgetAnimation(targetAnimation, time){
+  targetAnimation.style.visibility = helper.toggleVisibilty(targetAnimation);
+  targetAnimation.animate("enable");
+
+  setTimeout(function () {
+    targetAnimation.style.visibility = helper.toggleVisibilty(targetAnimation);
+    targetAnimation.animate("disable");
+  }, time);
 }
