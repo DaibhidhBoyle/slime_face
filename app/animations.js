@@ -73,8 +73,10 @@ export function widgetAnimation(targetAnimation, time){
   targetAnimation.style.visibility = helper.toggleVisibilty(targetAnimation);
   targetAnimation.animate("enable");
 
-  setTimeout(function () {
-    targetAnimation.style.visibility = helper.toggleVisibilty(targetAnimation);
-    targetAnimation.animate("disable");
-  }, time);
+  if (typeof time === 'number') {
+    setTimeout(function () {
+      targetAnimation.style.visibility = helper.toggleVisibilty(targetAnimation);
+      targetAnimation.animate("disable");
+    }, time);
+  }
 }

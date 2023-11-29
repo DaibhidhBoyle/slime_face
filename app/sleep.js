@@ -1,5 +1,6 @@
 import document from "document";
 import * as animate from './animations.js'
+import * as helper from './helper.js';
 import { BodyPresenceSensor } from "body-presence";
 
 let bodyPresence;
@@ -38,10 +39,7 @@ function sleepMode(sleepSlime, sleepBubble, buttons, toggableHTMLElements) {
   toggableHTMLElements.forEach(element => {
    element.style.visibility = "hidden";
   });
-  animate.widgetAnimation(sleepBubble, 70000);
-  // let animationInterval = setInterval(() => {
-  //    animate.widgetAnimation(sleepBubble, 70000);
-  //  }, 80000);
+  animate.widgetAnimation(sleepBubble);
 }
 
 function wakeMode(sleepSlime, sleepBubble, buttons, toggableHTMLElements) {
@@ -49,8 +47,10 @@ function wakeMode(sleepSlime, sleepBubble, buttons, toggableHTMLElements) {
   buttons.forEach(button => {
    button.style.visibility = "visible";
   });
-  let dateAndTime = toggableHTMLElements.filter(element => element.id === "timeLabel" && "dateLabel");
+  let dateAndTime = toggableHTMLElements.filter(element => element.id === "timeLabel" || element.id ==="dateLabel");
   dateAndTime.forEach(element => {
    element.style.visibility = "visible";
   });
+  sleepBubble.style.visibility = helper.toggleVisibilty(sleepBubble);
+  sleepBubble.animate("disable");
 }
