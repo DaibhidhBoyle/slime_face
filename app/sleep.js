@@ -4,28 +4,28 @@ import * as helper from './helper.js';
 import { BodyPresenceSensor } from "body-presence";
 
 let bodyPresence;
-let buttons2;
-let elements;
 
 export function sleepBoot(buttons, toggableHTMLElements) {
-  buttons2 = [...buttons]
-  elements = [...toggableHTMLElements]
+  let buttons = [...buttons]
+  let toggableHTMLElements = [...toggableHTMLElements]
   if (BodyPresenceSensor) {
     bodyPresence = new BodyPresenceSensor();
-    bodyPresence.onreading = checkBodyPresence
+    bodyPresence.onreading = () => checkBodyPresence(buttons, toggableHTMLElements)
     bodyPresence.start();
   } else {
     console.log("No body sensor. No alteration to display.");
   }
 }
 
-function checkBodyPresence() {
+function checkBodyPresence(buttons, elements) {
   let sleepSlime = document.getElementById("sleeping");
   let sleepBubble = document.getElementById("zzz");
   if (bodyPresence && bodyPresence.present) {
-    wakeMode(sleepSlime, sleepBubble, buttons2, elements);
+    wakeMode(sleepSlime, sleepBubble, buttons, elements);
+    console.log("wake");
   } else {
-    sleepMode(sleepSlime, sleepBubble, buttons2, elements);
+    sleepMode(sleepSlime, sleepBubble, buttons, elements);
+    console.log("sleep");
   }
 }
 
@@ -51,6 +51,6 @@ function wakeMode(sleepSlime, sleepBubble, buttons, toggableHTMLElements) {
   dateAndTime.forEach(element => {
    element.style.visibility = "visible";
   });
-  sleepBubble.style.visibility = helper.toggleVisibilty(sleepBubble);
+  sleepBubble.style.visibility = "hidden"
   sleepBubble.animate("disable");
 }

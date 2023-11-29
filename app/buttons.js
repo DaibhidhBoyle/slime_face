@@ -15,7 +15,6 @@ export function buttonsBoot(){
   eventListenersHandler(buttonsAndCallBacksForEventListeners);
   let buttons = buttonsAndCallBacksForEventListeners.map(buttonsAndCallBacksForEventListeners => buttonsAndCallBacksForEventListeners.button);
   buttons = [...buttons]
-  console.log("buttons check 1 " + " " + buttons);
   return { allButtons: buttons, elements: toggableHTMLElements };
 }
 

@@ -70,12 +70,12 @@ function disableButtonForAnimation(clickData, timeArray) {
 }
 
 export function widgetAnimation(targetAnimation, time){
-  targetAnimation.style.visibility = helper.toggleVisibilty(targetAnimation);
+  targetAnimation.style.visibility = "visible"
   targetAnimation.animate("enable");
 
   if (typeof time === 'number') {
     setTimeout(function () {
-      targetAnimation.style.visibility = helper.toggleVisibilty(targetAnimation);
+      targetAnimation.style.visibility = "hidden"
       targetAnimation.animate("disable");
     }, time);
   }
