@@ -71,7 +71,7 @@
 
 /* Slime Button and animation*/
 
-#slime {
+.coreSlime {
   position: absolute;
   object-fit: cover;
   background-color: transparent;
@@ -329,26 +329,4 @@
   height: 15%;
   x: 252;
   y: 255;
-}
-
-#eating {
-  position: absolute;
-  object-fit: cover;
-  background-color: transparent;
-  width: 38%;
-  height: 30%;
-  x: 86;
-  y: 170;
-}
-
-/* sleeping */
-
-#sleeping {
-  position: absolute;
-  object-fit: cover;
-  background-color: transparent;
-  width: 38%;
-  height: 30%;
-  x: 86;
-  y: 170;
 }

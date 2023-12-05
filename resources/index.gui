@@ -40,9 +40,11 @@
 </g>
 
 
-<image href="images/slimes/sleepSlime.png" id="sleeping" visibility =  "hidden"/>
-<image href="images/slimes/mainSlime_1.png" id="slime" pointer-events="visible" visibility =  "visible"/>
-<image href="images/slimes/eatSlime_1.png" id="eating" visibility =  "hidden"/>
+<image href="images/slimes/sleepSlime_1.png" id="sleeping" class="coreSlime" visibility =  "hidden"/>
+<image href="images/slimes/sadSlime_1.png" id="sad" class="coreSlime" visibility =  "hidden"/>
+<image href="images/slimes/mainSlime_1.png" id="slime" class="coreSlime" pointer-events="visible" visibility =  "visible"/>
+<image href="images/slimes/eatSlime_1.png" id="eating" class="coreSlime" visibility =  "hidden"/>
+
 
 
 <use id="exclaimation" href="#fadeExclaimation" opacity="0" />
