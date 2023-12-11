@@ -71,8 +71,6 @@ function dateSettings(now, dateHandle){
   dateHandle.text = `${date}${suffix} ${writtenMonth}`;
 }
 
-
-
 function systemSetup(now){
 
   let stepsHandle = document.getElementById("stepsLabel");

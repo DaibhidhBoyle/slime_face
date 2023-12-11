@@ -1,20 +1,24 @@
 <svg id="svg" fill="white">
 <image href="images/back.png" id="background" />
 
-<g id="informationDisplay">
+
+<g id="displayElements">
 <text class="HiddenOrVisible" id="timeLabel" visibility = "visible"/>
 <text class="HiddenOrVisible" id="dateLabel" visibility = "visible"/>
 <image class="HiddenOrVisible" href="images/sundry/footPrint_1.png" id="footPrint" visibility = "hidden" />
 <text class="HiddenOrVisible" id="stepsLabel" visibility = "hidden"/>
 <image class="HiddenOrVisible" href="images/sundry/heart_1.png" id="heart" visibility = "hidden" />
 <text class="HiddenOrVisible" id="heartrateLabel" visibility = "hidden"/>
+<text id="batteryLabel"/>
+<animate id="sleepElement1" class="animateSleepElement" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </g>
 
-<g id="actionButtons">
+<g id="cornerButtons">
 <rect id="fishButton" class="fishClickable" pointer-events="visible"/>
 <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" />
 <rect id="foodButton" class="foodClickable" pointer-events="visible"/>
 <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" />
+<animate id="sleepElement2" class="animateSleepElement" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </g>
 
 <g id="jumpGroup">
@@ -39,13 +43,8 @@
 <image href="images/fishing/fishin_8.png" id="fish8" class="fishAnimation" visibility = "hidden"/>
 </g>
 
-
-<image href="images/slimes/sleepSlime_1.png" id="sleeping" class="coreSlime" visibility =  "hidden"/>
-<image href="images/slimes/sadSlime_1.png" id="sad" class="coreSlime" visibility =  "hidden"/>
 <image href="images/slimes/mainSlime_1.png" id="slime" class="coreSlime" pointer-events="visible" visibility =  "visible"/>
 <image href="images/slimes/eatSlime_1.png" id="eating" class="coreSlime" visibility =  "hidden"/>
-
-
 
 <use id="exclaimation" href="#fadeExclaimation" opacity="0" />
 <use id="zzz" href="#fadezzz"  visibility = "hidden" opacity="0" />
@@ -66,5 +65,4 @@
 <image href="images/fishing/blobfish_1.png" id="blobfish" class="fishWinImage" visibility = "hidden"/>
 </g>
 
-<text id="batteryLabel"/>
 </svg>

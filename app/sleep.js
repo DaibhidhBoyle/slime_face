@@ -5,52 +5,53 @@ import { BodyPresenceSensor } from "body-presence";
 
 let bodyPresence;
 
-export function sleepBoot(buttons, toggableHTMLElements) {
-  let buttons = [...buttons]
-  let toggableHTMLElements = [...toggableHTMLElements]
+export function sleepBoot(slime) {
+  // let buttons = [...buttons]
+  // let nonSlimeButtons = buttons.filter(button => button !== slime);
+  // let nonSlimeButtons = document.getElementById("zzz");
+  // let toggableHTMLElements = [...toggableHTMLElements]
+  // <animate attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+  let sleepBubble = document.getElementById("zzz");
+  let animatedSleepElements = document.getElementsByClassName("animateSleepElement");
   if (BodyPresenceSensor) {
     bodyPresence = new BodyPresenceSensor();
-    bodyPresence.onreading = () => checkBodyPresence(buttons, toggableHTMLElements)
+    bodyPresence.onreading = () => checkBodyPresence(slime, sleepBubble, animatedSleepElements)
     bodyPresence.start();
   } else {
     console.log("No body sensor. No alteration to display.");
   }
 }
 
-function checkBodyPresence(buttons, elements) {
-  let sleepSlime = document.getElementById("sleeping");
-  let sleepBubble = document.getElementById("zzz");
+function checkBodyPresence(slime, sleepBubble, animatedSleepElements) {
+
   if (bodyPresence && bodyPresence.present) {
-    wakeMode(sleepSlime, sleepBubble, buttons, elements);
+    wakeMode(slime, sleepBubble, animatedSleepElements);
     console.log("wake");
   } else {
-    sleepMode(sleepSlime, sleepBubble, buttons, elements);
+    sleepMode(slime, sleepBubble, animatedSleepElements);
     console.log("sleep");
   }
 }
 
 
-function sleepMode(sleepSlime, sleepBubble, buttons, toggableHTMLElements) {
+function sleepMode(slime, sleepBubble, animatedSleepElements) {
 
-  sleepSlime.style.visibility = "visible";
-  buttons.forEach(button => {
-   button.style.visibility = "hidden";
-  });
-  toggableHTMLElements.forEach(element => {
-   element.style.visibility = "hidden";
-  });
+  slime.image = "images/slimes/sleepSlime_1.png"
+  fadeSleepElement(animatedSleepElements, 1, 0);
   animate.widgetAnimation(sleepBubble);
 }
 
-function wakeMode(sleepSlime, sleepBubble, buttons, toggableHTMLElements) {
-  sleepSlime.style.visibility = "hidden";
-  buttons.forEach(button => {
-   button.style.visibility = "visible";
-  });
-  let dateAndTime = toggableHTMLElements.filter(element => element.id === "timeLabel" || element.id ==="dateLabel");
-  dateAndTime.forEach(element => {
-   element.style.visibility = "visible";
-  });
+function wakeMode(slime, sleepBubble, animatedSleepElements) {
+  slime.image = "images/slimes/mainSlime_1.png"
+  fadeSleepElement(animatedSleepElements, 0, 1);
   sleepBubble.style.visibility = "hidden"
   sleepBubble.animate("disable");
+}
+
+function fadeSleepElement(elements, from, to){
+  elements.forEach(element => {
+    element.from = from
+    element.to = to
+    element.animate("enable");
+  });
 }

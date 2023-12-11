@@ -13,9 +13,10 @@ export function buttonsBoot(){
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
   eventListenersHandler(buttonsAndCallBacksForEventListeners);
-  let buttons = buttonsAndCallBacksForEventListeners.map(buttonsAndCallBacksForEventListeners => buttonsAndCallBacksForEventListeners.button);
-  buttons = [...buttons]
-  return { allButtons: buttons, elements: toggableHTMLElements };
+  // let buttons = buttonsAndCallBacksForEventListeners.map(buttonsAndCallBacksForEventListeners => buttonsAndCallBacksForEventListeners.button);
+  // buttons = [...buttons]
+  // return { mainSlime: mainSlime, allButtons: buttons, elements: toggableHTMLElements };
+  return mainSlime
 }
 
 
@@ -36,7 +37,7 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
       toggableHTMLElements,
       clickData,
       jumpFrames,
-      jumpFrameTimes,
+      jumpFrameTimes
     );
   };
 
