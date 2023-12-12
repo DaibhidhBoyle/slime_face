@@ -43,7 +43,7 @@
 <image href="images/fishing/fishin_8.png" id="fish8" class="fishAnimation" visibility = "hidden"/>
 </g>
 
-<image href="images/slimes/mainSlime_1.png" id="slime" class="coreSlime" pointer-events="visible" visibility =  "visible"/>
+<image href="images/slimes/sadSlime_1.png" id="slime" class="coreSlime" pointer-events="visible" visibility =  "visible"/>
 <image href="images/slimes/eatSlime_1.png" id="eating" class="coreSlime" visibility =  "hidden"/>
 
 <use id="exclaimation" href="#fadeExclaimation" opacity="0" />

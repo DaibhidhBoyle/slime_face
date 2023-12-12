@@ -1,6 +1,7 @@
 import document from "document";
 import * as info from './info.js'
 import * as animate from './animations.js'
+import * as mood from './mood.js'
 import * as helper from './helper.js'
 
 
@@ -13,9 +14,6 @@ export function buttonsBoot(){
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
   eventListenersHandler(buttonsAndCallBacksForEventListeners);
-  // let buttons = buttonsAndCallBacksForEventListeners.map(buttonsAndCallBacksForEventListeners => buttonsAndCallBacksForEventListeners.button);
-  // buttons = [...buttons]
-  // return { mainSlime: mainSlime, allButtons: buttons, elements: toggableHTMLElements };
   return mainSlime
 }
 
@@ -47,6 +45,8 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
 function handleSlimeButtonClick(elements, clickData, slimeFrames, slimeTimes){
   info.toggleInfoElements(elements);
+  // 30 minutes (1800000) passed to makeHappy
+  mood.makeHappy(1800000)
   animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }
 
@@ -89,9 +89,12 @@ function fishButton(mainSlime, clickData) {
   let secondaryAnimationTime = 2500
 
   let fishClick = () => {
-    animate.startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
-      animate.showPrizeFish(fishWinFrames, secondaryAnimationTime);
-    });
+      handleFishButtonClick(
+        fishFrames,
+        fishFrameTimes,
+        clickData,
+        secondaryAnimationTime,
+        fishWinFrames)
   };
 
   let fishButtonData = [];
@@ -103,6 +106,13 @@ function fishButton(mainSlime, clickData) {
   return fishButtonData;
 }
 
+function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames){
+  // 1 hour (3600000) passed to makeHappy
+  mood.makeHappy(3600000)
+  animate.startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
+    animate.showPrizeFish(fishWinFrames, secondaryAnimationTime);
+  });
+}
 
 
 function foodButton(mainSlime, clickData) {
@@ -147,6 +157,10 @@ function foodButton(mainSlime, clickData) {
 
 function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTimes){
   let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
+
+  //15 mintues (900000) sent to be happy
+  mood.makeHappy(900000)
+
   animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
 
   animate.widgetAnimation(prizeFoodAnimation, 2000);

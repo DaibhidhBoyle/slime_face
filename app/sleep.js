@@ -6,11 +6,6 @@ import { BodyPresenceSensor } from "body-presence";
 let bodyPresence;
 
 export function sleepBoot(slime) {
-  // let buttons = [...buttons]
-  // let nonSlimeButtons = buttons.filter(button => button !== slime);
-  // let nonSlimeButtons = document.getElementById("zzz");
-  // let toggableHTMLElements = [...toggableHTMLElements]
-  // <animate attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
   let sleepBubble = document.getElementById("zzz");
   let animatedSleepElements = document.getElementsByClassName("animateSleepElement");
   if (BodyPresenceSensor) {
