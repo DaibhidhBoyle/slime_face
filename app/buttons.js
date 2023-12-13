@@ -10,10 +10,13 @@ export function buttonsBoot(){
   let buttonsAndCallBacksForEventListeners = []
   let mainSlime = document.getElementById("slime");
   let toggableHTMLElements = document.getElementsByClassName("HiddenOrVisible");
+
   buttonsAndCallBacksForEventListeners.push(slimeButton(mainSlime, toggableHTMLElements, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
+
   eventListenersHandler(buttonsAndCallBacksForEventListeners);
+
   return mainSlime
 }
 
@@ -45,8 +48,8 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
 function handleSlimeButtonClick(elements, clickData, slimeFrames, slimeTimes){
   info.toggleInfoElements(elements);
-  // 30 minutes (1800000) passed to makeHappy
-  mood.makeHappy(1800000)
+  // 30 minutes passed to makeHappy
+  mood.makeHappy(30 * 60 * 1000)
   animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }
 
@@ -107,8 +110,8 @@ function fishButton(mainSlime, clickData) {
 }
 
 function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames){
-  // 1 hour (3600000) passed to makeHappy
-  mood.makeHappy(3600000)
+  // 1 hour passed to makeHappy
+  mood.makeHappy(60 * 60 * 1000)
   animate.startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
     animate.showPrizeFish(fishWinFrames, secondaryAnimationTime);
   });
@@ -158,8 +161,8 @@ function foodButton(mainSlime, clickData) {
 function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTimes){
   let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
 
-  //15 mintues (900000) sent to be happy
-  mood.makeHappy(900000)
+  //15 mintues sent to be happy
+  mood.makeHappy(15 * 60 * 1000)
 
   animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
 
