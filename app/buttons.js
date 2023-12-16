@@ -2,6 +2,7 @@ import document from "document";
 import * as info from './info.js'
 import * as animate from './animations.js'
 import * as mood from './mood.js'
+import * as sleep from './sleep.js'
 import * as helper from './helper.js'
 
 
@@ -35,6 +36,7 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
   let slimeClick = () => {
     handleSlimeButtonClick(
+      mainSlime,
       toggableHTMLElements,
       clickData,
       jumpFrames,
@@ -46,10 +48,21 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 }
 
 
-function handleSlimeButtonClick(elements, clickData, slimeFrames, slimeTimes){
+function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
+
+  if (mainSlime.image === "images/slimes/sleepSlime_1.png") {
+    sleep.wakeMode(mainSlime, sleep.sleepBubble, sleep.animatedSleepElements);
+
+    setInterval(() => {
+      if (sleep.bodyPresence && !sleep.bodyPresence.present) {
+        sleep.sleepMode(mainSlime, sleep.sleepBubble, sleep.animatedSleepElements);
+      }
+    }, 60 * 1000);
+  }
+
   info.toggleInfoElements(elements);
-  // 30 minutes passed to makeHappy
-  mood.makeHappy(30 * 60 * 1000)
+  // 15 minutes passed to makeHappy
+  mood.makeHappy(15 * 60 * 1000);
   animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }
 
@@ -92,92 +105,92 @@ function fishButton(mainSlime, clickData) {
   let secondaryAnimationTime = 2500
 
   let fishClick = () => {
-      handleFishButtonClick(
-        fishFrames,
-        fishFrameTimes,
-        clickData,
-        secondaryAnimationTime,
-        fishWinFrames)
-  };
-
-  let fishButtonData = [];
-
-  fishButtons.forEach((fishButton) => {
-    fishButtonData.push({ button: fishButton, callback: fishClick });
-  });
-
-  return fishButtonData;
-}
-
-function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames){
-  // 1 hour passed to makeHappy
-  mood.makeHappy(60 * 60 * 1000)
-  animate.startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
-    animate.showPrizeFish(fishWinFrames, secondaryAnimationTime);
-  });
-}
-
-
-function foodButton(mainSlime, clickData) {
-  let foodButtons = document.getElementsByClassName("foodClickable");
-
-  let eat = document.getElementById("eating")
-
-  let eatFrames = [
-    mainSlime,
-    eat,
-    mainSlime,
-    eat,
-    mainSlime,
-    eat,
-    mainSlime
-  ];
-
-  eatFrames = helper.animationObjectify(eatFrames)
-
-  let eatFrameTimes = [0, 675, 400, 266, 400, 266, 0];
-
-  let foodAnimation = document.getElementsByClassName("foodAnimation");
-
-  let foodClick = () => {
-    handleFoodButtonClick(
+    handleFishButtonClick(
+      fishFrames,
+      fishFrameTimes,
       clickData,
-      foodAnimation,
-      eatFrames,
-      eatFrameTimes
-    );
+      secondaryAnimationTime,
+      fishWinFrames)
+    };
+
+    let fishButtonData = [];
+
+    fishButtons.forEach((fishButton) => {
+      fishButtonData.push({ button: fishButton, callback: fishClick });
+    });
+
+    return fishButtonData;
+  }
+
+  function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames){
+    // 1 hour passed to makeHappy
+    mood.makeHappy(60 * 60 * 1000)
+    animate.startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
+      animate.showPrizeFish(fishWinFrames, secondaryAnimationTime);
+    });
+  }
+
+
+  function foodButton(mainSlime, clickData) {
+    let foodButtons = document.getElementsByClassName("foodClickable");
+
+    let eat = document.getElementById("eating")
+
+    let eatFrames = [
+      mainSlime,
+      eat,
+      mainSlime,
+      eat,
+      mainSlime,
+      eat,
+      mainSlime
+    ];
+
+    eatFrames = helper.animationObjectify(eatFrames)
+
+    let eatFrameTimes = [0, 675, 400, 266, 400, 266, 0];
+
+    let foodAnimation = document.getElementsByClassName("foodAnimation");
+
+    let foodClick = () => {
+      handleFoodButtonClick(
+        clickData,
+        foodAnimation,
+        eatFrames,
+        eatFrameTimes
+      );
+    };
+
+
+    let foodButtonData = [];
+
+    foodButtons.forEach((foodButton) => {
+      foodButtonData.push({ button: foodButton, callback: foodClick});
+    });
+
+    return foodButtonData;
+  }
+
+  function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTimes){
+    let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
+
+    //30 mintues sent to be happy
+    mood.makeHappy(30 * 60 * 1000)
+
+    animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
+
+    animate.widgetAnimation(prizeFoodAnimation, 2000);
+
   };
 
 
-  let foodButtonData = [];
 
-  foodButtons.forEach((foodButton) => {
-    foodButtonData.push({ button: foodButton, callback: foodClick});
-  });
+  function eventListenersHandler(listenersClickables){
+    listenersClickables.forEach(listenersClickable => {
+      eventListenerSetup(listenersClickable.button, listenersClickable.callback)
+    });
+  }
 
-  return foodButtonData;
-}
-
-function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTimes){
-  let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
-
-  //15 mintues sent to be happy
-  mood.makeHappy(15 * 60 * 1000)
-
-  animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
-
-  animate.widgetAnimation(prizeFoodAnimation, 2000);
-
-};
-
-
-
-function eventListenersHandler(listenersClickables){
-  listenersClickables.forEach(listenersClickable => {
-    eventListenerSetup(listenersClickable.button, listenersClickable.callback)
-  });
-}
-
-function eventListenerSetup(button, callback){
-  button.addEventListener("click", callback);
-}
+  function eventListenerSetup(button, callback){
+    button.addEventListener("click", callback);
+  }

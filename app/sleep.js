@@ -3,18 +3,21 @@ import * as animate from './animations.js'
 import * as helper from './helper.js';
 import { BodyPresenceSensor } from "body-presence";
 
-let bodyPresence;
+export let bodyPresence;
+export let sleepBubble;
+export let animatedSleepElements;
 
 export function sleepBoot(slime) {
-  let sleepBubble = document.getElementById("zzz");
-  let animatedSleepElements = document.getElementsByClassName("animateSleepElement");
+  sleepBubble = document.getElementById("zzz");
+  animatedSleepElements = document.getElementsByClassName("animateSleepElement");
   if (BodyPresenceSensor) {
     bodyPresence = new BodyPresenceSensor();
     bodyPresence.onreading = () => checkBodyPresence(slime, sleepBubble, animatedSleepElements)
     bodyPresence.start();
   } else {
-    console.log("No body sensor. No alteration to display.");
+    console.log("No body sensor.");
   }
+
 }
 
 function checkBodyPresence(slime, sleepBubble, animatedSleepElements) {
@@ -29,18 +32,21 @@ function checkBodyPresence(slime, sleepBubble, animatedSleepElements) {
 }
 
 
-function sleepMode(slime, sleepBubble, animatedSleepElements) {
+export function sleepMode(slime, sleepBubble, animatedSleepElements) {
 
-  slime.image = "images/slimes/sleepSlime_1.png"
   fadeSleepElement(animatedSleepElements, 1, 0);
   animate.widgetAnimation(sleepBubble);
+  slime.image = "images/slimes/sleepSlime_1.png"
+
 }
 
-function wakeMode(slime, sleepBubble, animatedSleepElements) {
-  slime.image = "images/slimes/mainSlime_1.png"
+export function wakeMode(slime, sleepBubble, animatedSleepElements) {
+
   fadeSleepElement(animatedSleepElements, 0, 1);
   sleepBubble.style.visibility = "hidden"
   sleepBubble.animate("disable");
+
+  slime.image = "images/slimes/mainSlime_1.png"
 }
 
 function fadeSleepElement(elements, from, to){
