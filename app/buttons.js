@@ -10,15 +10,18 @@ import * as helper from './helper.js'
 export function buttonsBoot(){
   let buttonsAndCallBacksForEventListeners = []
   let mainSlime = document.getElementById("slime");
+  let sleepSlime = document.getElementById("sleeping");
   let toggableHTMLElements = document.getElementsByClassName("HiddenOrVisible");
 
+
   buttonsAndCallBacksForEventListeners.push(slimeButton(mainSlime, toggableHTMLElements, buttonsAndCallBacksForEventListeners));
+  buttonsAndCallBacksForEventListeners.push(sleepButton(mainSlime, sleepSlime));
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
 
   eventListenersHandler(buttonsAndCallBacksForEventListeners);
 
-  return mainSlime
+  return {main: mainSlime, sleep: sleepSlime}
 }
 
 
@@ -33,6 +36,8 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
   jumpFrames = helper.animationObjectify(jumpFrames);
 
   let jumpFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1700, 1000, 0];
+
+  // let flag = new Boolean(true)
 
   let slimeClick = () => {
     handleSlimeButtonClick(
@@ -50,15 +55,20 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
 function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
 
-  if (mainSlime.image === "images/slimes/sleepSlime_1.png") {
-    sleep.wakeMode(mainSlime, sleep.sleepBubble, sleep.animatedSleepElements);
-
-    setInterval(() => {
-      if (sleep.bodyPresence && !sleep.bodyPresence.present) {
-        sleep.sleepMode(mainSlime, sleep.sleepBubble, sleep.animatedSleepElements);
-      }
-    }, 60 * 1000);
-  }
+  // if (mainSlime.image === "images/slimes/sleepSlime_1.png") {
+  //   sleep.wakeMode(mainSlime, sleep.sleepBubble, sleep.animatedSleepElements);
+  //
+  //   if (flag){
+  //     setInterval(() => {
+  //       if (sleep.bodyPresence && !sleep.bodyPresence.present) {
+  //         flag = true
+  //         sleep.sleepMode(mainSlime, sleep.sleepBubble, sleep.animatedSleepElements);
+  //       }
+  //     }, 60 * 1000);
+  //   }
+  //
+  //   flag = false
+  // }
 
   info.toggleInfoElements(elements);
   // 15 minutes passed to makeHappy
@@ -66,10 +76,33 @@ function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, sli
   animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }
 
+function sleepButton(mainSlime, sleepSlime){
 
+  let sleepClick = () => {
+    handleSleepButtonClick(
+      mainSlime,
+      sleepSlime
+    );
+
+  };
+
+  return {button: sleepSlime, callback: sleepClick}
+}
+
+function handleSleepButtonClick(mainSlime, sleepSlime){
+
+  sleep.wakeMode(mainSlime, sleepSlime, sleep.sleepBubble, sleep.animatedSleepElements);
+  setTimeout(() => {
+    if (sleep.bodyPresence && !sleep.bodyPresence.present) {
+      sleep.sleepMode(mainSlime, sleepSlime, sleep.sleepBubble, sleep.animatedSleepElements);
+    }
+  }, 60 * 1000);
+
+}
 
 
 function fishButton(mainSlime, clickData) {
+
   let fishButtons = document.getElementsByClassName("fishClickable");
   let exclaimation = document.getElementById("exclaimation");
 
@@ -120,6 +153,7 @@ function fishButton(mainSlime, clickData) {
     });
 
     return fishButtonData;
+
   }
 
   function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames){

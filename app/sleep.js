@@ -7,12 +7,13 @@ export let bodyPresence;
 export let sleepBubble;
 export let animatedSleepElements;
 
-export function sleepBoot(slime) {
+export function sleepBoot(slime, sleepSlime) {
+  
   sleepBubble = document.getElementById("zzz");
   animatedSleepElements = document.getElementsByClassName("animateSleepElement");
   if (BodyPresenceSensor) {
     bodyPresence = new BodyPresenceSensor();
-    bodyPresence.onreading = () => checkBodyPresence(slime, sleepBubble, animatedSleepElements)
+    bodyPresence.onreading = () => checkBodyPresence(slime, sleepSlime, sleepBubble, animatedSleepElements);
     bodyPresence.start();
   } else {
     console.log("No body sensor.");
@@ -20,39 +21,46 @@ export function sleepBoot(slime) {
 
 }
 
-function checkBodyPresence(slime, sleepBubble, animatedSleepElements) {
+function checkBodyPresence(slime, sleepSlime, sleepBubble, animatedSleepElements) {
 
   if (bodyPresence && bodyPresence.present) {
-    wakeMode(slime, sleepBubble, animatedSleepElements);
+    wakeMode(slime, sleepSlime, sleepBubble, animatedSleepElements);
     console.log("wake");
   } else {
-    sleepMode(slime, sleepBubble, animatedSleepElements);
+    sleepMode(slime, sleepSlime, sleepBubble, animatedSleepElements);
     console.log("sleep");
   }
+
 }
 
 
-export function sleepMode(slime, sleepBubble, animatedSleepElements) {
+export function sleepMode(slime, sleepSlime, sleepBubble, animatedSleepElements) {
 
+  sleepSlime.style.visibility = "visible"
+  slime.style.visibility = "hidden"
   fadeSleepElement(animatedSleepElements, 1, 0);
   animate.widgetAnimation(sleepBubble);
-  slime.image = "images/slimes/sleepSlime_1.png"
 
 }
 
-export function wakeMode(slime, sleepBubble, animatedSleepElements) {
+export function wakeMode(slime, sleepSlime, sleepBubble, animatedSleepElements) {
 
-  fadeSleepElement(animatedSleepElements, 0, 1);
   sleepBubble.style.visibility = "hidden"
+  sleepSlime.style.visibility = "hidden"
+  slime.style.visibility = "visible"
+  fadeSleepElement(animatedSleepElements, 0, 1);
   sleepBubble.animate("disable");
 
-  slime.image = "images/slimes/mainSlime_1.png"
+
 }
 
 function fadeSleepElement(elements, from, to){
+
+  console.trace();
   elements.forEach(element => {
     element.from = from
     element.to = to
     element.animate("enable");
   });
+
 }
