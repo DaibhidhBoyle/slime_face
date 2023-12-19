@@ -108,3 +108,19 @@ export function whichFish(frames) {
   return result
 
 }
+
+//event lsiteners
+
+export function eventListenersHandler(listenersClickables, setUpOrRemoveFunction){
+  listenersClickables.forEach(listenersClickable => {
+    setUpOrRemoveFunction(listenersClickable.button, listenersClickable.callback)
+  });
+}
+
+export function eventListenerSetup(button, callback){
+  button.addEventListener("click", callback);
+}
+
+export function eventListenerRemoved(button, callback){
+  button.removeEventListener("click", callback);
+}

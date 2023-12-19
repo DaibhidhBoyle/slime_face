@@ -19,9 +19,9 @@ export function buttonsBoot(){
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
 
-  eventListenersHandler(buttonsAndCallBacksForEventListeners);
+  helper.eventListenersHandler(buttonsAndCallBacksForEventListeners, helper.eventListenerSetup);
 
-  return {main: mainSlime, sleep: sleepSlime}
+  return {main: mainSlime, sleep: sleepSlime, allButtonsAndCallbacks: buttonsAndCallBacksForEventListeners}
 }
 
 
@@ -54,21 +54,6 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
 
 function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
-
-  // if (mainSlime.image === "images/slimes/sleepSlime_1.png") {
-  //   sleep.wakeMode(mainSlime, sleep.sleepBubble, sleep.animatedSleepElements);
-  //
-  //   if (flag){
-  //     setInterval(() => {
-  //       if (sleep.bodyPresence && !sleep.bodyPresence.present) {
-  //         flag = true
-  //         sleep.sleepMode(mainSlime, sleep.sleepBubble, sleep.animatedSleepElements);
-  //       }
-  //     }, 60 * 1000);
-  //   }
-  //
-  //   flag = false
-  // }
 
   info.toggleInfoElements(elements);
   // 15 minutes passed to makeHappy
@@ -216,15 +201,3 @@ function fishButton(mainSlime, clickData) {
     animate.widgetAnimation(prizeFoodAnimation, 2000);
 
   };
-
-
-
-  function eventListenersHandler(listenersClickables){
-    listenersClickables.forEach(listenersClickable => {
-      eventListenerSetup(listenersClickable.button, listenersClickable.callback)
-    });
-  }
-
-  function eventListenerSetup(button, callback){
-    button.addEventListener("click", callback);
-  }

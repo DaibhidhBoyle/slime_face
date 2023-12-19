@@ -9,8 +9,8 @@ boot();
 function boot(){
 
   info.infomaticsBoot();
-  let slimes = buttons.buttonsBoot();
-  mood.moodBoot(slimes.main);
-  sleep.sleepBoot(slimes.main, slimes.sleep);
+  let allButtons = buttons.buttonsBoot();
+  mood.moodBoot(allButtons.main);
+  sleep.sleepBoot(allButtons.main, allButtons.sleep, allButtons.allButtonsAndCallbacks);
 
 }
