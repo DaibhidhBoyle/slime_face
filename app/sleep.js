@@ -47,12 +47,13 @@ export function sleepMode(slime, sleepSlime, sleepBubble, animatedSleepElements)
 
 export function wakeMode(slime, sleepSlime, sleepBubble, animatedSleepElements) {
 
-
-  sleepBubble.style.visibility = "hidden"
-  sleepSlime.style.visibility = "hidden"
-  slime.style.visibility = "visible"
-  fadeSleepElement(animatedSleepElements, 0, 1);
-  sleepBubble.animate("disable");
+  if (slime.style.visibility !== "visible"){
+    sleepBubble.style.visibility = "hidden"
+    sleepSlime.style.visibility = "hidden"
+    slime.style.visibility = "visible"
+    fadeSleepElement(animatedSleepElements, 0, 1);
+    sleepBubble.animate("disable");
+  }
   helper.eventListenersHandler(buttonsAndCallbacksWithoutSleep, helper.eventListenerSetup);
 
 }
