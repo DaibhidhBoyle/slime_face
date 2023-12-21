@@ -3,6 +3,14 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
 
+    <symbol id="background" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="load"
+        from="01" to="16" dur="0.5"
+        repeatCount="indefinite" />
+    <image href="images/background_01.png"/>
+
+    </symbol>
+
     <symbol id="fadeExclaimation" href="#sprite-image">
     <animate attributeName="opacity" begin="enable"
       from="0" to="0.6" dur="0.2" final="keep"/>
