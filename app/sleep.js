@@ -6,16 +6,17 @@ import { BodyPresenceSensor } from "body-presence";
 export let bodyPresence;
 export let sleepBubble;
 export let animatedSleepElements;
+export let buttonsAndCallbacksWithoutSleep
 
 export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
   sleepBubble = document.getElementById("zzz");
   animatedSleepElements = document.getElementsByClassName("animateSleepElement");
-  let buttonsAndCallbacksWithoutSleep = allButtonsAndCallbacks.filter(buttonsAndCallback => buttonsAndCallback.button !== sleepSlime)
+  buttonsAndCallbacksWithoutSleep = allButtonsAndCallbacks.filter(buttonsAndCallback => buttonsAndCallback.button !== sleepSlime)
 
   if (BodyPresenceSensor) {
     bodyPresence = new BodyPresenceSensor();
-    bodyPresence.onreading = () => checkBodyPresence(slime, sleepSlime, sleepBubble, animatedSleepElements, buttonsAndCallbacksWithoutSleep);
+    bodyPresence.onreading = () => checkBodyPresence(slime, sleepSlime, sleepBubble, animatedSleepElements);
     bodyPresence.start();
   } else {
     console.log("No body sensor.");
@@ -23,18 +24,18 @@ export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
 }
 
-function checkBodyPresence(slime, sleepSlime, sleepBubble, animatedSleepElements, buttonsAndCallbacksWithoutSleep) {
+function checkBodyPresence(slime, sleepSlime, sleepBubble, animatedSleepElements) {
 
   if (bodyPresence && bodyPresence.present) {
-    wakeMode(slime, sleepSlime, sleepBubble, animatedSleepElements, buttonsAndCallbacksWithoutSleep);
+    wakeMode(slime, sleepSlime, sleepBubble, animatedSleepElements);
   } else {
-    sleepMode(slime, sleepSlime, sleepBubble, animatedSleepElements, buttonsAndCallbacksWithoutSleep);
+    sleepMode(slime, sleepSlime, sleepBubble, animatedSleepElements);
   }
 
 }
 
 
-export function sleepMode(slime, sleepSlime, sleepBubble, animatedSleepElements, buttonsAndCallbacksWithoutSleep) {
+export function sleepMode(slime, sleepSlime, sleepBubble, animatedSleepElements) {
 
   sleepSlime.style.visibility = "visible"
   slime.style.visibility = "hidden"
@@ -44,7 +45,8 @@ export function sleepMode(slime, sleepSlime, sleepBubble, animatedSleepElements,
 
 }
 
-export function wakeMode(slime, sleepSlime, sleepBubble, animatedSleepElements, buttonsAndCallbacksWithoutSleep) {
+export function wakeMode(slime, sleepSlime, sleepBubble, animatedSleepElements) {
+
 
   sleepBubble.style.visibility = "hidden"
   sleepSlime.style.visibility = "hidden"
