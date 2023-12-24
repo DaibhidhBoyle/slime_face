@@ -3,12 +3,15 @@ import { vibration } from "haptics";
 
 let moodSlime;
 let timeTillSad;
+let slimeCheckInterval;
 
 export function moodBoot(slime) {
   moodSlime = slime
 }
 
 export function makeHappy(time){
+
+  console. trace()
   if(moodSlime.image === "images/slimes/sleepSlime_1.png"){
     console.log("not activated as asleep");
   }
@@ -20,24 +23,25 @@ export function makeHappy(time){
       clearTimeout(timeTillSad);
     }
 
-
-
     timeTillSad = setTimeout(() => makeSad(), time);
   }
 }
 
 function makeSad(){
 
+  console. trace()
   vibration.start("nudge-max");
 
-  setInterval(slimeCheckIn, 5 * 60 * 1000);
+  clearInterval(slimeCheckInterval);
+
+  slimeCheckInterval = setInterval(slimeCheckIn, 5 * 60 * 1000);
 
   moodSlime.image  = "images/slimes/sadSlime_1.png"
 }
 
 function slimeCheckIn(){
 
-  if(moodSlime.image  = "images/slimes/sadSlime_1.png"){
+  if(moodSlime.image  === "images/slimes/sadSlime_1.png"){
     vibration.start("nudge");
   }
 

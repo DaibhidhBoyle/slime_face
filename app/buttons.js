@@ -194,7 +194,7 @@ function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTime
   let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
 
   //30 mintues sent to be happy
-  mood.makeHappy(30 * 60 * 1000)
+  mood.makeHappy(30* 60 * 1000);
 
   animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
 
