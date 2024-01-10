@@ -11,7 +11,6 @@ export function moodBoot(slime) {
 
 export function makeHappy(time){
 
-  console. trace()
   if(moodSlime.image === "images/slimes/sleepSlime_1.png"){
     console.log("not activated as asleep");
   }
@@ -29,7 +28,6 @@ export function makeHappy(time){
 
 function makeSad(){
 
-  console. trace()
   vibration.start("nudge-max");
 
   clearInterval(slimeCheckInterval);
