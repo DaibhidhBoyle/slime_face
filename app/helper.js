@@ -16,6 +16,19 @@ export function zeroPad(num, targetLength) {
 }
 
 
+export function writtenDay(targetDay){
+  let day = new Array();
+  day[0] = "Sunday";
+  day[1] = "Monday";
+  day[2] = "Tuesday";
+  day[3] = "Wednesday";
+  day[4] = "Thursday";
+  day[5] = "Friday";
+  day[6] = "Saturday";
+  return day[targetDay]
+}
+
+
 export function dateSuffixCreator(date) {
   let result = ""
 

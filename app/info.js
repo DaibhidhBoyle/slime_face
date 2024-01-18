@@ -4,6 +4,7 @@ import { preferences } from "user-settings";
 import { HeartRateSensor } from "heart-rate";
 import { battery } from "power";
 import userActivity from "user-activity";
+import * as alarm from './alarm.js'
 import * as helper from './helper.js'
 
 
@@ -45,9 +46,16 @@ function establishClockHandles(){
 }
 
 function toUpdateOnTick(now, timeHandle, dateHandle){
-  timeSettings(now, timeHandle)
+  let timeAsString = timeSettings(now, timeHandle)
+  let dayAsString =  daySettings(now)
+  dayAsString = dayAsString.toUpperCase()
+  
   dateSettings(now, dateHandle)
   systemSetup(now)
+
+
+  alarm.alarmBoot(timeAsString, dayAsString);
+
 }
 
 function timeSettings(now, timeHandle){
@@ -59,6 +67,16 @@ function timeSettings(now, timeHandle){
   let minsFormatted = helper.zeroPad(mins, 2);
 
   timeHandle.text = `${hoursFormatted}:${minsFormatted}`
+
+  return timeHandle.text
+}
+
+function daySettings(now){
+  let dayAsNumber = now.getDay();
+
+  let day = helper.writtenDay(dayAsNumber);
+
+  return day
 }
 
 function dateSettings(now, dateHandle){
