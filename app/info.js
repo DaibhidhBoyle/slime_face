@@ -49,12 +49,12 @@ function toUpdateOnTick(now, timeHandle, dateHandle){
   let timeAsString = timeSettings(now, timeHandle)
   let dayAsString =  daySettings(now)
   dayAsString = dayAsString.toUpperCase()
-  
+
   dateSettings(now, dateHandle)
   systemSetup(now)
 
 
-  alarm.alarmBoot(timeAsString, dayAsString);
+  alarm.alarmByTick(timeAsString, dayAsString);
 
 }
 
