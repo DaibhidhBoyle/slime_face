@@ -338,3 +338,33 @@
   x: 127;
   y: 155;
 }
+
+/* alarms*/
+
+.plusSign{
+  fill: fb-green;
+  stroke-width: 20;
+  stroke-linecap: round;
+}
+
+#plusButton{
+  x: 0;
+  y: 0;
+  width: 145;
+  height: 145;
+  fill: blue;
+}
+
+.minusSign{
+  fill: fb-pink;
+  stroke-width: 20;
+  stroke-linecap: round;
+}
+
+#minusButton{
+  x: 155;
+  y: 155;
+  width: 145;
+  height: 145;
+  fill: blue;
+}

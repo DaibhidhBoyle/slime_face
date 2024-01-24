@@ -19,6 +19,7 @@ console.log("noted");
 // if (companion.launchReasons.wokenUp) {
 //   let alarminfo = doThis();
 // // make this a then
+// // send to alarm if difference
 // }
 //
 // function doThis() {
