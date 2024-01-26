@@ -26,7 +26,7 @@ export function makeHappy(time){
   }
 }
 
-function makeSad(){
+export function makeSad(){
 
   vibration.start("nudge-max");
 
