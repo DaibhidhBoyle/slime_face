@@ -18,13 +18,13 @@ export function zeroPad(num, targetLength) {
 
 export function writtenDay(targetDay){
   let day = new Array();
-  day[0] = "Sunday";
-  day[1] = "Monday";
-  day[2] = "Tuesday";
-  day[3] = "Wednesday";
-  day[4] = "Thursday";
-  day[5] = "Friday";
-  day[6] = "Saturday";
+  day[0] = "MONDAY";
+  day[1] = "TUESDAY";
+  day[2] = "WEDNESDAY";
+  day[3] = "THURSDAY";
+  day[4] = "FRIDAY";
+  day[5] = "SATURDAY";
+  day[6] = "SUNDAY";
   return day[targetDay]
 }
 
@@ -36,18 +36,23 @@ export function dateSuffixCreator(date) {
     result = "th"
   };
 
+
   switch (date % 10) {
     case 1:
     result = "st";
+    break;
     case 2:
     result = "nd";
+    break;
     case 3:
     result = "rd";
+    break;
     default:
     result = "th";
-
-    return result
+    break;
   }
+
+  return result
 }
 
 export function writtenMonth(targetMonth){

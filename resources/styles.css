@@ -1,33 +1,62 @@
 /* System Info Displays*/
-
-#timeLabel {
-  font-size: 150;
+/* time Display*/
+.textInfoElements{
   font-family: Tungsten-Medium;
-  text-length: 8;
-  text-anchor: middle;
-  x:140;
-  y: 138;
+  font-size: 150;
   fill: #f887bd;
+}
+
+#hourLabel {
+  text-length: 2;
+  letter-spacing: 3;
+  text-anchor: end;
+  x:137;
+  y: 138;
+}
+
+#minuteLabel {
+  text-length: 2;
+  letter-spacing: 3;
+  text-anchor: start;
+  x:163;
+  y: 138;
+}
+
+#tumbler-hour {
+  x: 11;
+  y: 43;
+  width: 120;
+  height: 120;
+}
+
+#tumbler-mins{
+  x: 148;
+  y: 43;
+  width: 120;
+  height: 120;
+}
+
+#timeColon {
+  text-anchor: middle;
+  x: 150;
+  y: 138;
 }
 
 #dateLabel {
   font-size: 45;
-  font-family: Tungsten-Medium;
   text-length: 16;
   text-anchor: middle;
-  x: 140;
+  x: 150;
   y: 175;
-  fill: #f887bd;
 }
 
+/* Bio Display*/
 #stepsLabel {
   font-size: 125;
-  font-family: Tungsten-Medium;
   text-length: 6;
   text-anchor: middle;
   x: 175;
   y: 130;
-  fill: #f887bd;
 }
 
 #footPrint {
@@ -41,7 +70,6 @@
 
 #heartrateLabel {
   font-size: 50;
-  font-family: Tungsten-Medium;
   text-length: 5;
   x: 130;
   y: 175;
@@ -339,7 +367,7 @@
   y: 155;
 }
 
-/* alarms*/
+/* snooze Buttons*/
 
 .plusSign{
   fill: fb-green;

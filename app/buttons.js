@@ -11,7 +11,9 @@ export function buttonsBoot(){
   let buttonsAndCallBacksForEventListeners = []
   let mainSlime = document.getElementById("slime");
   let sleepSlime = document.getElementById("sleeping");
-  let toggableHTMLElements = document.getElementsByClassName("HiddenOrVisible");
+  let displayGroup = document.getElementById("displayElements");
+  let toggableHTMLElements = displayGroup.getElementsByTagName("text");
+  toggableHTMLElements.push(...displayGroup.getElementsByTagName("image"))
 
   buttonsAndCallBacksForEventListeners.push(slimeButton(mainSlime, toggableHTMLElements, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(sleepButton(mainSlime, sleepSlime));

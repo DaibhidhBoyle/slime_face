@@ -1,7 +1,9 @@
 <svg>
   <defs>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets_common.gui"/>
+    <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/tumblerview_widget.gui" />
 
     <symbol id="background" href="#sprite-image">
     <animate id="anim" attributeName="value" begin="load"

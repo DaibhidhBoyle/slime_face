@@ -36,17 +36,18 @@ export function infomaticsBoot(){
 
 function establishClockHandles(){
 
-  let timeHandle = document.getElementById("timeLabel");
+  let hourHandle = document.getElementById("hourLabel");
+  let minHandle = document.getElementById("minuteLabel");
   let dateHandle = document.getElementById("dateLabel");
 
   return {
-    time: timeHandle,
+    time: {hour: hourHandle, min: minHandle},
     date: dateHandle
   }
 }
 
-function toUpdateOnTick(now, timeHandle, dateHandle){
-  let timeAsString = timeSettings(now, timeHandle)
+function toUpdateOnTick(now, timeHandles, dateHandle){
+  let timeAsString = timeSettings(now, timeHandles)
   let dayAsString =  daySettings(now)
   dayAsString = dayAsString.toUpperCase()
 
@@ -58,7 +59,7 @@ function toUpdateOnTick(now, timeHandle, dateHandle){
 
 }
 
-function timeSettings(now, timeHandle){
+function timeSettings(now, timeHandles){
 
   let hours = now.getHours().toString();
   let mins = now.getMinutes().toString();
@@ -66,9 +67,12 @@ function timeSettings(now, timeHandle){
   let hoursFormatted = helper.timePrefrence(preferences.clockDisplay, hours)
   let minsFormatted = helper.zeroPad(mins, 2);
 
-  timeHandle.text = `${hoursFormatted}:${minsFormatted}`
+  timeHandles.hour.text = `${hoursFormatted}`
+  timeHandles.min.text = `${minsFormatted}`
 
-  return timeHandle.text
+  let timeAsString = `${hoursFormatted}:${minsFormatted}`
+
+  return timeAsString
 }
 
 function daySettings(now){
