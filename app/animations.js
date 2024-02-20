@@ -69,6 +69,16 @@ function disableButtonForAnimation(clickData, timeArray) {
   });
 }
 
+export function fadeElement(elements, from, to){
+
+  elements.forEach(element => {
+    element.from = from
+    element.to = to
+    element.animate("enable");
+  });
+
+}
+
 export function widgetAnimation(targetAnimation, time){
   targetAnimation.style.visibility = "visible"
   targetAnimation.animate("enable");

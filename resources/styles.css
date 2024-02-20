@@ -20,6 +20,30 @@
   text-anchor: start;
   x:163;
   y: 138;
+  height: 140;
+}
+
+#timeColon {
+  text-anchor: middle;
+  x: 150;
+  y: 138;
+}
+
+#tumblerColon{
+  font-family: Tungsten-Medium;
+  font-size: 150;
+  fill: #f887bd;
+  text-anchor: middle;
+  x: 150;
+  y: 138;
+}
+
+#setAlarmModeClickBox{
+  x: 45;
+  y: 30;
+  height: 110;
+  width: 225;
+  fill: none;
 }
 
 #tumbler-hour {
@@ -34,12 +58,6 @@
   y: 43;
   width: 120;
   height: 120;
-}
-
-#timeColon {
-  text-anchor: middle;
-  x: 150;
-  y: 138;
 }
 
 #dateLabel {

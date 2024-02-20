@@ -56,9 +56,9 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
 function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
 
-  info.toggleInfoElements(elements);
-  // 15 minutes passed to makeHappy
-  mood.makeHappy(15 * 60 * 1000);
+  if(elements[0].style.opacity !== 0){
+    info.toggleInfoElements(elements);
+  }
   animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }
 
@@ -196,7 +196,7 @@ function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTime
   let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
 
   //30 mintues sent to be happy
-  mood.makeHappy(30* 60 * 1000);
+  mood.makeHappy(15* 60 * 1000);
 
   animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
 

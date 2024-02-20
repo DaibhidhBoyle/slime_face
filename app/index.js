@@ -10,8 +10,8 @@ boot();
 function boot(){
 
   info.infomaticsBoot();
-  alarm.alarmBoot();
   let allButtons = buttons.buttonsBoot();
+  alarm.alarmBoot(allButtons.main);
   mood.moodBoot(allButtons.main);
   sleep.sleepBoot(allButtons.main, allButtons.sleep, allButtons.allButtonsAndCallbacks);
 

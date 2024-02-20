@@ -2,22 +2,10 @@
 
 <use id="backgroundAnimation" href="#background"/>
 
-
-<g id="displayElements">
-  <text class="textInfoElements" id="hourLabel" visibility = "hidden"/>
-  <text class="textInfoElements" id="minuteLabel" visibility = "visible"/>
-  <text class="textInfoElements" id="timeColon" visibility = "visible">:</text>
-  <text class="textInfoElements" id="dateLabel" visibility = "visible"/>
-  <image href="images/sundry/footPrint_1.png" id="footPrint" visibility = "hidden" />
-  <text class="textInfoElements" id="stepsLabel" visibility = "hidden"/>
-  <image href="images/sundry/heart_1.png" id="heart" visibility = "hidden" />
-  <text class="textInfoElements" id="heartrateLabel" visibility = "hidden"/>
-  <animate id="sleepElement1" class="animateSleepElement" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
-</g>
-
 <text id="batteryLabel"/>
 
-<use id="tumbler-hour" href="#tumblerview" visibility = "visible">
+
+<use id="tumbler-hour" href="#tumblerview" visibility = "hidden">
   <use id="hour-item0" href="#tumbler-item">
   </use>
 
@@ -274,6 +262,19 @@
 
 </use>
 
+<g id="displayElements">
+  <text class="textInfoElements" id="hourLabel" visibility = "visible" pointer-events="visible"/>
+  <text class="textInfoElements" id="minuteLabel" visibility = "visible" pointer-events="visible"/>
+  <text class="textInfoElements" id="timeColon" visibility = "visible" pointer-events="visible">:</text>
+  <text class="textInfoElements" id="dateLabel" visibility = "visible"/>
+  <image href="images/sundry/footPrint_1.png" id="footPrint" visibility = "hidden" />
+  <text class="textInfoElements" id="stepsLabel" visibility = "hidden"/>
+  <image href="images/sundry/heart_1.png" id="heart" visibility = "hidden" />
+  <text class="textInfoElements" id="heartrateLabel" visibility = "hidden"/>
+  <animate id="sleepElement1" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+</g>
+
+<text id="tumblerColon" visibility = "hidden">:</text>
 
 <g id="cornerButtons">
   <rect id="fishButton" class="fishClickable" pointer-events="visible"/>
