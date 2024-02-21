@@ -59,7 +59,8 @@ function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, sli
   if(elements[0].style.opacity !== 0){
     info.toggleInfoElements(elements);
   }
-  animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
+
+  animate.startButtonAnimation(slimeFrames, slimeTimes, clickData); //error here
 }
 
 function sleepButton(mainSlime, sleepSlime){
@@ -76,10 +77,10 @@ function sleepButton(mainSlime, sleepSlime){
 
 function handleSleepButtonClick(mainSlime, sleepSlime){
 
-  sleep.wakeMode(mainSlime, sleepSlime, sleep.sleepBubble, sleep.animatedSleepElements);
+  sleep.wakeMode(mainSlime, sleepSlime, sleep.sleepBubble, sleep.animateSleepElements);
   setTimeout(() => {
     if (sleep.bodyPresence && !sleep.bodyPresence.present) {
-      sleep.sleepMode(mainSlime, sleepSlime, sleep.sleepBubble, sleep.animatedSleepElements);
+      sleep.sleepMode(mainSlime, sleepSlime, sleep.sleepBubble, sleep.animateSleepElements);
     }
   }, 60 * 1000);
 

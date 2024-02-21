@@ -5,13 +5,13 @@ import { BodyPresenceSensor } from "body-presence";
 
 export let bodyPresence;
 export let sleepBubble;
-export let animatedSleepElements;
+export let animateSleepElements;
 export let buttonsAndCallbacksWithoutSleep
 
 export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
   sleepBubble = document.getElementById("zzz");
-  let animateSleepElements = document.getElementsByClassName("fadeDisplayElements");
+  animateSleepElements = document.getElementsByClassName("fadeDisplayElements");
   buttonsAndCallbacksWithoutSleep = allButtonsAndCallbacks.filter(buttonsAndCallback => buttonsAndCallback.button !== sleepSlime)
 
   if (BodyPresenceSensor) {

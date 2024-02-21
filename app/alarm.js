@@ -45,7 +45,6 @@ function setUpTumblerStyle(tumblerElement){
 }
 
 function setAlarmMode(tumblerElements, mainSlime){
-
   let tumblers = Object.keys(tumblerElements).map(key => tumblerElements[key].tumbler);
   // grab elements
   let tumblerColon = document.getElementById("tumblerColon");
@@ -53,15 +52,15 @@ function setAlarmMode(tumblerElements, mainSlime){
   let minClock = document.getElementById("minuteLabel");
   let clockColon = document.getElementById("timeColon");
   let clockElements = [hourClock, minClock, clockColon];
-  let clockClickBox = document.getElementById("setAlarmModeClickBox")
   // set up event listener
-  let animateDisplayElements = document.getElementsByClassName("fadeDisplayElements");
+  let animateDisplayElements = document.getElementsByClassName("fadeDisplayElements")
 
-  let slimeButtonClick = () => slimeButtonClickFunctionality(tumblerElements);
+  let slimeButtonClick = () => slimeButtonClickFunctionality(tumblerElements)
   let clockButtonclick = () =>
   {
     tumblerColon.style.visibility = helper.toggleVisibilty(tumblerColon)
     animate.fadeElement(animateDisplayElements, 1, 0);
+
     tumblers.forEach((element) => {
       element.style.visibility = helper.toggleVisibilty(element);
     });
@@ -80,7 +79,6 @@ function setAlarmMode(tumblerElements, mainSlime){
   // helper.eventListenerSetup(clockClickBox, clockButtonclick);
   // event has a switch to tumblers, start flashing, get rid of the other elements
   // change the alarm
-
 }
 
 
