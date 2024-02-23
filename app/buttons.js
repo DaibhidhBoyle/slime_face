@@ -1,5 +1,7 @@
 import document from "document";
 import * as info from './info.js'
+import * as alarm from './alarm.js'
+import * as setAlarm from './setAlarm.js'
 import * as animate from './animations.js'
 import * as mood from './mood.js'
 import * as sleep from './sleep.js'
@@ -56,11 +58,13 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
 function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
 
-  if(elements[0].style.opacity !== 0){
+  if (setAlarm.tumblerHour.style.visibility !== "visible" && setAlarm.tumblerMin.style.visibility !== "visible"){
     info.toggleInfoElements(elements);
+  } else {
+    let tumblerElements = setAlarm.bothTumblersIntoInformationDictionaries(setAlarm.tumblerHour, setAlarm.tumblerMin);
+    setAlarm.slimeButtonClickFunctionality(tumblerElements);
   }
-
-  animate.startButtonAnimation(slimeFrames, slimeTimes, clickData); //error here
+  animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }
 
 function sleepButton(mainSlime, sleepSlime){

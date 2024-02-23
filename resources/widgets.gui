@@ -5,6 +5,7 @@
     <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
     <link rel="import" href="/mnt/sysassets/widgets/tumblerview_widget.gui" />
 
+
     <symbol id="background" href="#sprite-image">
     <animate id="anim" attributeName="value" begin="load"
         from="01" to="16" dur="0.5"

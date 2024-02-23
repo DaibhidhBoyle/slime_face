@@ -1,4 +1,51 @@
 /* System Info Displays*/
+
+.alarmMushroom{
+  height: 18%;
+  width: 18%;
+}
+
+#alarmSun{
+  height: 24%;
+  width: 30%;
+  x: 108;
+  y: 5;
+}
+#monMushroom{
+  x: 15;
+  y: 70;
+}
+
+#tueMushroom{
+  x: 85;
+  y: 70;
+}
+
+#wedMushroom{
+  x: 160;
+  y: 70;
+}
+
+#thurMushroom{
+  x: 235;
+  y: 70;
+}
+
+#friMushroom{
+  x: 47;
+  y: 120;
+}
+
+#satMushroom{
+  x: 127;
+  y: 120;
+}
+
+#sunMushroom{
+  x: 197;
+  y: 120;
+}
+
 /* time Display*/
 .textInfoElements{
   font-family: Tungsten-Medium;
