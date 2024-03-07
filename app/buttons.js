@@ -7,6 +7,7 @@ import * as mood from './mood.js'
 import * as sleep from './sleep.js'
 import * as helper from './helper.js'
 
+let alarmElementListeners;
 
 
 export function buttonsBoot(){
@@ -58,12 +59,21 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
 function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
 
-  if (setAlarm.tumblerHour.style.visibility !== "visible" && setAlarm.tumblerMin.style.visibility !== "visible"){
+
+  if (setAlarm.slimeButtonState === 1){
     info.toggleInfoElements(elements);
-  } else {
+  } else if (setAlarm.slimeButtonState === 2){
     let tumblerElements = setAlarm.bothTumblersIntoInformationDictionaries(setAlarm.tumblerHour, setAlarm.tumblerMin);
-    setAlarm.slimeButtonClickFunctionality(tumblerElements);
+    alarmElementListeners = setAlarm.slimeButtonClickFunctionality(tumblerElements);
+  } else if (setAlarm.slimeButtonState === 3){
+    setAlarm.sendToAlarm();
+    setAlarm.resetScreen();
+    setAlarm.resetAlarmElements(alarmElementListeners);
   }
+  // else
+
+
+
   animate.startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }
 

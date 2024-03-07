@@ -266,14 +266,14 @@
 <text id="tumblerColon" visibility = "hidden">:</text>
 
 <g id="alarmDaySettings">
-  <image href="images/setAlarmDay/unselectedSun.png" id="alarmSun" visibility =  "hidden"/>
-  <image href="images/setAlarmDay/mushroomRedMonday.png" class="alarmMushroom" id="monMushroom" visibility =  "hidden"/>
-  <image href="images/setAlarmDay/mushroomRedTuesday.png" class="alarmMushroom" id="tueMushroom" visibility =  "hidden"/>
-  <image href="images/setAlarmDay/mushroomRedWednesday.png" class="alarmMushroom" id="wedMushroom" visibility =  "hidden"/>
-  <image href="images/setAlarmDay/mushroomRedThursday.png" class="alarmMushroom" id="thurMushroom" visibility =  "hidden"/>
-  <image href="images/setAlarmDay/mushroomRedFriday.png" class="alarmMushroom" id="friMushroom" visibility =  "hidden"/>
-  <image href="images/setAlarmDay/mushroomRedSaturday.png" class="alarmMushroom" id="satMushroom" visibility =  "hidden"/>
-  <image href="images/setAlarmDay/mushroomRedSunday.png" class="alarmMushroom" id="sunMushroom" visibility =  "hidden"/>
+  <image href="images/setAlarmDay/unselectedSun.png" id="alarmSun" visibility =  "hidden" pointer-events="visible"/>
+  <image href="images/setAlarmDay/mushroomRed1.png" class="alarmMushroom" id="monMushroom" visibility =  "hidden" pointer-events="visible"/>
+  <image href="images/setAlarmDay/mushroomRed2.png" class="alarmMushroom" id="tueMushroom" visibility =  "hidden" pointer-events="visible"/>
+  <image href="images/setAlarmDay/mushroomRed3.png" class="alarmMushroom" id="wedMushroom" visibility =  "hidden" pointer-events="visible"/>
+  <image href="images/setAlarmDay/mushroomRed4.png" class="alarmMushroom" id="thurMushroom" visibility =  "hidden" pointer-events="visible"/>
+  <image href="images/setAlarmDay/mushroomRed5.png" class="alarmMushroom" id="friMushroom" visibility =  "hidden" pointer-events="visible"/>
+  <image href="images/setAlarmDay/mushroomRed6.png" class="alarmMushroom" id="satMushroom" visibility =  "hidden" pointer-events="visible"/>
+  <image href="images/setAlarmDay/mushroomRed7.png" class="alarmMushroom" id="sunMushroom" visibility =  "hidden" pointer-events="visible"/>
 </g>
 
 

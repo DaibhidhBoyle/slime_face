@@ -6,9 +6,10 @@ import * as helper from './helper.js'
 
 let alarmState = []
 let timeForAlarmBeingSet = ""
-let currentAlarmTime = "14:54";
-let previousAlarmTime = "";
-let alarmDays = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+let currentAlarmTime = "";
+let previousTime = "";
+let alarms = []
+let alarmTimes = [];
 let alarmVibrationTimeout;
 
 export function alarmBoot(mainSlime){
@@ -42,18 +43,40 @@ function snoozeMode(){
 }
 
 export function alarmByTick(currentTime, currentDay) {
-  if (alarmDays.indexOf(currentDay) !== -1) {
-    if (currentTime === currentAlarmTime && currentAlarmTime !== previousAlarmTime){
-      switchAlarmState();
-      previousAlarmTime = currentAlarmTime;
-      //constant buzz//
+
+    if (alarmTimes.indexOf(currentTime) !== -1 && currentTime !== previousTime){
+
+      let indexOfTime = alarmTimes.indexOf(currentTime)
+
+      if(alarms[indexOfTime][currentTime].indexOf(currentDay) !== -1){
+
+        switchAlarmState()
+        previousTime = currentTime;
+        //constant buzz//
+      }
     }
-  }
+
 }
 
-export function setComparisionStandards(standards) {
-  alarmTime = standards.time.substring(0, 5);
-  alarmDays = standards.days;
+export function setNewAlarm(newAlarm) {
+
+
+
+  alarmTimes = []
+
+  alarms.push(newAlarm)
+
+  console.log(alarms.length);
+
+  for (let obj of alarms) {
+    let keys = Object.keys(obj);
+    alarmTimes = alarmTimes.concat(keys);
+  }
+
+  console.log("NEW ALARM" + " " + newAlarm[alarmTimes[0]]);
+
+  console.log(alarmTimes);
+
 }
 
 function switchAlarmState(){
