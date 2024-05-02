@@ -7,7 +7,7 @@ import * as helper from './helper.js'
 let alarmState = []
 let currentAlarmTime = "";
 let previousTime = "";
-let alarms = [];
+export let alarms = [];
 
 let alarmVibrationTimeout;
 

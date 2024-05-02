@@ -39,7 +39,7 @@ export function setAlarmBoot(mainSlime){
   setAlarmMode(tumblerElements, deleteTumblerElement, mainSlime);
 }
 
-function setUpTumblerStyle(tumblerElement, baseTextValue){
+export function setUpTumblerStyle(tumblerElement, baseTextValue){
 
   for (let i = 0; i <= tumblerElement["numberOfItems"]; i++){
     let item = tumblerElement["tumbler"].getElementById(tumblerElement["itemIdPrefix"] + i)
@@ -112,34 +112,6 @@ function setAlarmMode(tumblerElements, deleteTumblerElement, mainSlime){
 
   clockElements.push(date)
 
-
-
-  // let deleteAlarmElements = cornerButtons.filter(element => element.class === "deleteAlarmClickable");
-  //
-  // let deleteButtonclick = () =>
-  // {
-  //   console.log("fuck");
-  //
-  //   tumblerColon.style.visibility = helper.toggleVisibilty(tumblerColon)
-  //
-  //   tumblers.forEach((element) => {
-  //     element.style.visibility = helper.toggleVisibilty(element);
-  //   });
-  //
-  //   mainSlime.style.visibility = helper.toggleVisibilty(mainSlime);
-  //
-  //   alarm.populateDeleteAlarmTumbler(deleteTumblerElement);
-  //
-  //   deleteTumblerElement["tumbler"].style.visibility = helper.toggleVisibilty(deleteTumblerElement["tumbler"]);
-  //
-  //
-  //
-  // }
-  //
-  // deleteAlarmElements.forEach((deleteElement) => {
-  //   helper.eventListenerSetup(deleteElement, deleteButtonclick);
-  // });
-  //
 
 }
 
@@ -312,7 +284,7 @@ export function resetAlarmElements(alarmElementListeners) {
 }
 
 
-function switchCornerButtons(group1Visibilty, group2Visibilty) {
+export function switchCornerButtons(group1Visibilty, group2Visibilty) {
 
   let timerButtonElements = document.getElementById("timerButtons");
   let deleteButtonElements = document.getElementById("deleteButtons")
@@ -320,10 +292,6 @@ function switchCornerButtons(group1Visibilty, group2Visibilty) {
   timerButtonElements.children.forEach((timerButtonsElement) => {
     timerButtonsElement.style.visibility = group1Visibilty;
   });
-
-  // tumblers.forEach((element) => {
-  //   element.style.visibility = helper.toggleVisibilty(element);
-  // });
 
   deleteButtonElements.children.forEach((deleteButtonElement) => {
     deleteButtonElement.style.visibility = group2Visibilty;

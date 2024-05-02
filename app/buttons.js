@@ -8,6 +8,7 @@ import * as sleep from './sleep.js'
 import * as helper from './helper.js'
 
 let alarmElementListeners;
+let deleteButtonState = 1
 
 
 export function buttonsBoot(){
@@ -17,12 +18,15 @@ export function buttonsBoot(){
   let displayGroup = document.getElementById("displayElements");
   let toggableHTMLElements = displayGroup.getElementsByTagName("text");
   toggableHTMLElements.push(...displayGroup.getElementsByTagName("image"))
+  let deleteAlarmButtons = document.getElementsByClassName("deleteAlarmClickable");
+  let baseDisplayElements = document.getElementById("displayElementsBaseView");
+  baseDisplayElements = [...baseDisplayElements.children];
 
   buttonsAndCallBacksForEventListeners.push(slimeButton(mainSlime, toggableHTMLElements, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(sleepButton(mainSlime, sleepSlime));
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
-  buttonsAndCallBacksForEventListeners.push(...deleteButton(mainSlime));
+  buttonsAndCallBacksForEventListeners.push(...deleteButton(mainSlime, deleteAlarmButtons, baseDisplayElements));
 
   helper.eventListenersHandler(buttonsAndCallBacksForEventListeners, helper.eventListenerSetup);
 
@@ -41,8 +45,6 @@ function slimeButton(mainSlime, toggableHTMLElements, clickData) {
   jumpFrames = helper.animationObjectify(jumpFrames);
 
   let jumpFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1700, 1000, 0];
-
-  // let flag = new Boolean(true)
 
   let slimeClick = () => {
     handleSlimeButtonClick(
@@ -71,7 +73,6 @@ function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, sli
     setAlarm.resetScreen();
     setAlarm.resetAlarmElements(alarmElementListeners);
   }
-  // else
 
 
 
@@ -220,12 +221,33 @@ function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTime
 
 };
 
-function deleteButton(mainSlime) {
 
-  let deleteAlarmButtons = document.getElementsByClassName("deleteAlarmClickable");
+function deleteButton(mainSlime, deleteAlarmButtons, baseDisplayElements) {
+
+
+
 
   let deleteButtonClick = () =>
   {
+    handleDeleteTumblerClick(
+      mainSlime,
+      baseDisplayElements
+    );
+  };
+
+  let deleteButtonData = [];
+
+  deleteAlarmButtons.forEach((deleteAlarmButton) => {
+    deleteButtonData.push({ button: deleteAlarmButton, callback: deleteButtonClick });
+  });
+
+  return deleteButtonData;
+};
+
+function handleDeleteTumblerClick (mainSlime, baseDisplayElements){
+  console.log(deleteButtonState);
+  if (deleteButtonState === 1){
+    console.log("yip yip appa");
     setAlarm.tumblerColon.style.visibility = helper.toggleVisibilty(setAlarm.tumblerColon);
     setAlarm.tumblerHour.style.visibility = helper.toggleVisibilty(setAlarm.tumblerHour);
     setAlarm.tumblerMin.style.visibility = helper.toggleVisibilty(setAlarm.tumblerMin);
@@ -236,17 +258,29 @@ function deleteButton(mainSlime) {
 
     setAlarm.deleteTumblerElement['tumbler'].style.visibility = helper.toggleVisibilty(setAlarm.deleteTumblerElement['tumbler']);
 
+    deleteButtonState = 2
 
+    console.log(deleteButtonState);
+  } else if (deleteButtonState === 2)
+  {
 
+    console.log("yup");
+    let deleteTumblerSelectedIndex = parseInt(setAlarm.deleteTumblerElement.tumbler.value);
+
+    alarm.alarms.splice(deleteTumblerSelectedIndex, 1)
+
+    deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements);
+
+    deleteButtonState = 1
   }
 
+}
 
-  let deleteButtonData = [];
-
-  deleteAlarmButtons.forEach((deleteAlarmButton) => {
-    deleteButtonData.push({ button: deleteAlarmButton, callback: deleteButtonClick });
+function deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements){
+  setAlarm.deleteTumblerElement.tumbler.style.visibility = helper.toggleVisibilty(setAlarm.deleteTumblerElement.tumbler);
+  setAlarm.switchCornerButtons("visible", "hidden");
+  mainSlime.style.visibility = helper.toggleVisibilty(mainSlime);
+  baseDisplayElements.forEach((  baseDisplayElement) => {
+    baseDisplayElement.style.visibility = helper.toggleVisibilty(baseDisplayElement);
   });
-
-  return deleteButtonData;
-
 }
