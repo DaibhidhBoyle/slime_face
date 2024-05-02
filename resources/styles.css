@@ -11,37 +11,38 @@
   x: 108;
   y: 5;
 }
-#monMushroom{
+
+#sunMushroom{
   x: 15;
   y: 70;
 }
 
-#tueMushroom{
+#monMushroom{
   x: 85;
   y: 70;
 }
 
-#wedMushroom{
+#tueMushroom{
   x: 160;
   y: 70;
 }
 
-#thurMushroom{
+#wedMushroom{
   x: 235;
   y: 70;
 }
 
-#friMushroom{
+#thurMushroom{
   x: 47;
   y: 120;
 }
 
-#satMushroom{
+#friMushroom{
   x: 127;
   y: 120;
 }
 
-#sunMushroom{
+#satMushroom{
   x: 197;
   y: 120;
 }
@@ -85,14 +86,6 @@
   y: 138;
 }
 
-/* no longer needed*/
-#setAlarmModeClickBox{
-  x: 45;
-  y: 30;
-  height: 110;
-  width: 225;
-  fill: none;
-}
 
 #tumbler-hour {
   x: 11;
@@ -107,6 +100,11 @@
   width: 120;
   height: 120;
 }
+
+#tumbler-delete{
+                x: -150;
+                y: 120;
+                }
 
 #dateLabel {
   font-size: 45;
@@ -211,6 +209,25 @@
   height: 15%;
   x: 252;
   y: 255;
+}
+
+#deleteAlarmButton {
+  position: fixed;
+  width: 120;
+  height: 120;
+  x: -60;
+  y: 260;
+  rx: 100;
+  ry: 100;
+  fill: #f887bd;
+}
+
+#deleteAlarmIcon{
+  position: absolute;
+  width: 15%;
+  height: 15%;
+  x: 5;
+  y: 250;
 }
 
 /* Animations*/

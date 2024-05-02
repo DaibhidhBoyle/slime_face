@@ -12,6 +12,7 @@ export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
   sleepBubble = document.getElementById("zzz");
   animateSleepElements = document.getElementsByClassName("fadeDisplayElements");
+  // animateSleepCorners = document.getElementById("fadeCornerButtons");
   buttonsAndCallbacksWithoutSleep = allButtonsAndCallbacks.filter(buttonsAndCallback => buttonsAndCallback.button !== sleepSlime)
 
   if (BodyPresenceSensor) {
@@ -23,6 +24,7 @@ export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
   }
 
 }
+
 
 function checkBodyPresence(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
@@ -50,7 +52,10 @@ export function wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
   if (slime.style.visibility !== "visible"){
     sleepBubble.style.visibility = "hidden"
     sleepSlime.style.visibility = "hidden"
-    slime.style.visibility = "visible"
+    let onDeleteReelScreen = document.getElementById("tumbler-delete")
+    if (onDeleteReelScreen.style.visibility !== "visible"){
+      slime.style.visibility = "visible"
+    }
     animate.fadeElement(animateSleepElements, 0, 1);
     sleepBubble.animate("disable");
   }

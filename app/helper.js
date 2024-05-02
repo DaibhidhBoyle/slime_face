@@ -18,13 +18,13 @@ export function zeroPad(num, targetLength) {
 
 export function writtenDay(targetDay){
   let day = new Array();
-  day[0] = "MONDAY";
-  day[1] = "TUESDAY";
-  day[2] = "WEDNESDAY";
-  day[3] = "THURSDAY";
-  day[4] = "FRIDAY";
-  day[5] = "SATURDAY";
-  day[6] = "SUNDAY";
+  day[0] = "SUNDAY";
+  day[1] = "MONDAY";
+  day[2] = "TUESDAY";
+  day[3] = "WEDNESDAY";
+  day[4] = "THURSDAY";
+  day[5] = "FRIDAY";
+  day[6] = "SATURDAY";
   return day[targetDay]
 }
 

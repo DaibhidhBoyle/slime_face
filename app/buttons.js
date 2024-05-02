@@ -22,6 +22,7 @@ export function buttonsBoot(){
   buttonsAndCallBacksForEventListeners.push(sleepButton(mainSlime, sleepSlime));
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
+  buttonsAndCallBacksForEventListeners.push(...deleteButton(mainSlime));
 
   helper.eventListenersHandler(buttonsAndCallBacksForEventListeners, helper.eventListenerSetup);
 
@@ -218,3 +219,34 @@ function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTime
   animate.widgetAnimation(prizeFoodAnimation, 2000);
 
 };
+
+function deleteButton(mainSlime) {
+
+  let deleteAlarmButtons = document.getElementsByClassName("deleteAlarmClickable");
+
+  let deleteButtonClick = () =>
+  {
+    setAlarm.tumblerColon.style.visibility = helper.toggleVisibilty(setAlarm.tumblerColon);
+    setAlarm.tumblerHour.style.visibility = helper.toggleVisibilty(setAlarm.tumblerHour);
+    setAlarm.tumblerMin.style.visibility = helper.toggleVisibilty(setAlarm.tumblerMin);
+
+    mainSlime.style.visibility = helper.toggleVisibilty(mainSlime);
+
+    alarm.populateDeleteAlarmTumbler(setAlarm.deleteTumblerElement);
+
+    setAlarm.deleteTumblerElement['tumbler'].style.visibility = helper.toggleVisibilty(setAlarm.deleteTumblerElement['tumbler']);
+
+
+
+  }
+
+
+  let deleteButtonData = [];
+
+  deleteAlarmButtons.forEach((deleteAlarmButton) => {
+    deleteButtonData.push({ button: deleteAlarmButton, callback: deleteButtonClick });
+  });
+
+  return deleteButtonData;
+
+}

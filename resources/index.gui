@@ -261,19 +261,22 @@
   </use>
 
 </use>
+<text id="tumblerColon" visibility = "hidden">:</text>
+<animate id="sleepElement1" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </svg>
 
-<text id="tumblerColon" visibility = "hidden">:</text>
+
 
 <g id="alarmDaySettings">
   <image href="images/setAlarmDay/unselectedSun.png" id="alarmSun" visibility =  "hidden" pointer-events="visible"/>
+  <image href="images/setAlarmDay/mushroomRed0.png" class="alarmMushroom" id="sunMushroom" visibility =  "hidden" pointer-events="visible"/>
   <image href="images/setAlarmDay/mushroomRed1.png" class="alarmMushroom" id="monMushroom" visibility =  "hidden" pointer-events="visible"/>
   <image href="images/setAlarmDay/mushroomRed2.png" class="alarmMushroom" id="tueMushroom" visibility =  "hidden" pointer-events="visible"/>
   <image href="images/setAlarmDay/mushroomRed3.png" class="alarmMushroom" id="wedMushroom" visibility =  "hidden" pointer-events="visible"/>
   <image href="images/setAlarmDay/mushroomRed4.png" class="alarmMushroom" id="thurMushroom" visibility =  "hidden" pointer-events="visible"/>
   <image href="images/setAlarmDay/mushroomRed5.png" class="alarmMushroom" id="friMushroom" visibility =  "hidden" pointer-events="visible"/>
   <image href="images/setAlarmDay/mushroomRed6.png" class="alarmMushroom" id="satMushroom" visibility =  "hidden" pointer-events="visible"/>
-  <image href="images/setAlarmDay/mushroomRed7.png" class="alarmMushroom" id="sunMushroom" visibility =  "hidden" pointer-events="visible"/>
+  <animate id="sleepElement1" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </g>
 
 
@@ -286,17 +289,23 @@
   <text class="textInfoElements" id="stepsLabel" visibility = "hidden"/>
   <image href="images/sundry/heart_1.png" id="heart" visibility = "hidden" />
   <text class="textInfoElements" id="heartrateLabel" visibility = "hidden"/>
-  <animate id="sleepElement1" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+  <animate id="sleepElement2" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </g>
 
 
 
 <g id="cornerButtons">
-  <rect id="fishButton" class="fishClickable" pointer-events="visible"/>
-  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" />
-  <rect id="foodButton" class="foodClickable" pointer-events="visible"/>
-  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" />
-  <animate id="sleepElement2" class="animateSleepElement" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+  <g id= "timerButtons">
+  <rect id="fishButton" class="fishClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "visible"/>
+  <rect id="foodButton" class="foodClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" visibility = "visible"/>
+  </g>
+  <g id= "deleteButtons">
+  <rect id="deleteAlarmButton" class="deleteAlarmClickable" pointer-events="visible" visibility = "hidden"/>
+  <image href="images/sundry/delete.png" id="deleteAlarmIcon" class="deleteAlarmClickable" pointer-events="hidden" visibility = "hidden"/>
+  </g>
+  <animate id="sleepElement3" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </g>
 
 
@@ -355,6 +364,87 @@
   <image href="images/fishing/crimson_1.png" id="crimson" class="fishWinImage" visibility = "hidden"/>
   <image href="images/fishing/blobfish_1.png" id="blobfish" class="fishWinImage" visibility = "hidden"/>
 </g>
+
+<svg id= "alarmDeleteReel" >
+<animate id="sleepElement4" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+<use id="tumbler-delete" href="#tumblerview" visibility = "hidden" pointer-events="visible" >
+  <use id="delete-item0" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item1" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item2" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item3" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item4" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item5" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item6" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item7" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item8" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item9" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item10" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item11" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item12" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item13" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+  <use id="delete-item14" href="#tumbler-item">
+    <set href="value/text" attributeName="text-length" to="24" />
+    <set href="value/text" attributeName="text-anchor" to="middle" />
+  </use>
+
+</use>
+</svg>
 
 <g id="snoozeGroup">
 

@@ -76,9 +76,10 @@ function timeSettings(now, timeHandles){
 }
 
 function daySettings(now){
+  
   let dayAsNumber = now.getDay();
 
-  let day = helper.writtenDay(dayAsNumber - 1);
+  let day = helper.writtenDay(dayAsNumber);
 
   return day
 }
