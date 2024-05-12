@@ -368,10 +368,12 @@
     <text class="textInfoElements" id="timeColon" visibility = "visible" pointer-events="visible">:</text>
     <text class="textInfoElements" id="dateLabel" visibility = "visible"/>
   </g>
+  <g>
   <image href="images/sundry/footPrint_1.png" id="footPrint" visibility = "hidden" />
   <text class="textInfoElements" id="stepsLabel" visibility = "hidden"/>
   <image href="images/sundry/heart_1.png" id="heart" visibility = "hidden" />
   <text class="textInfoElements" id="heartrateLabel" visibility = "hidden"/>
+  </g>
   <animate id="sleepElement2" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </g>
 
