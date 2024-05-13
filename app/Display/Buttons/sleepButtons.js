@@ -1,4 +1,5 @@
-import * as sleep from '../Slime/sleep.js'
+import * as sleep from '../../Slime/sleep.js'
+import * as components from '../../Helper/components.js'
 
 export function sleepButton(mainSlime, sleepSlime){
 
@@ -14,10 +15,10 @@ export function sleepButton(mainSlime, sleepSlime){
 
 function handleSleepButtonClick(mainSlime, sleepSlime){
 
-  sleep.wakeMode(mainSlime, sleepSlime, sleep.sleepBubble, sleep.animateSleepElements);
+  sleep.wakeMode(mainSlime, sleepSlime, components.sleepBubble, components.animateSleepElements);
   setTimeout(() => {
     if (sleep.bodyPresence && !sleep.bodyPresence.present) {
-      sleep.sleepMode(mainSlime, sleepSlime, sleep.sleepBubble, sleep.animateSleepElements);
+      sleep.sleepMode(mainSlime, sleepSlime, components.sleepBubble, components.animateSleepElements);
     }
   }, 60 * 1000);
 

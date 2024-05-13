@@ -1,7 +1,7 @@
-import * as components from '../Helper/components.js'
-import * as helper from '../Helper/helper.js'
-import * as mood from '../Slime/mood.js'
-import * as animate from './animations.js'
+import * as components from '../../Helper/components.js'
+import * as helper from '../../Helper/helper.js'
+import * as mood from '../../Slime/mood.js'
+import * as animate from '../animations.js'
 
 
 export function foodButton(mainSlime, clickData) {

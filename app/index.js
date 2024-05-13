@@ -1,7 +1,7 @@
 import * as info from './Display/info.js'
 import * as alarm from './Alarm/alarm.js'
 import * as setAlarm from './Alarm/setAlarm.js'
-import * as buttons from './Display/buttons.js'
+import * as buttons from './Display/Buttons/buttons.js'
 import * as mood from './Slime/mood.js'
 import * as sleep from './Slime/sleep.js'
 

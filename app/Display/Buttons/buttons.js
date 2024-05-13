@@ -1,5 +1,5 @@
-import * as helper from '../Helper/helper.js'
-import * as components from '../Helper/components.js'
+import * as helper from '../../Helper/helper.js'
+import * as components from '../../Helper/components.js'
 
 import * as slimeButtons from './slimeButtons.js'
 import * as sleepButtons from './sleepButtons.js'

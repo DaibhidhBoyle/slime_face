@@ -1,7 +1,7 @@
-import * as deleteAlarm from '../Alarm/deleteAlarm.js'
-import * as components from '../Helper/components.js'
-import * as helper from '../Helper/helper.js'
-import * as setUpAlarmTumbler from '../Alarm/setUpAlarmTumbler.js'
+import * as deleteAlarm from '../../Alarm/deleteAlarm.js'
+import * as components from '../../Helper/components.js'
+import * as helper from '../../Helper/helper.js'
+import * as setUpAlarmTumbler from '../../Alarm/setUpAlarmTumbler.js'
 
 
 export function deleteButton(mainSlime, deleteAlarmButtons, baseDisplayElements) {
