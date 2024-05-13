@@ -7,6 +7,13 @@ export function setSlimeButtonState(numberSetting){
   slimeButtonState = numberSetting;
 }
 
+export let deleteButtonState = 1
+
+export function setdeleteButtonState(numberSetting){
+  deleteButtonState = numberSetting;
+}
+
+
 export let alarms = [];
 
 export let tumblerHour = document.getElementById("tumbler-hour");

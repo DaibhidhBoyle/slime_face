@@ -10,8 +10,6 @@ export function populateDeleteAlarmTumbler(tumblerElement){
     if (components.alarms[i] !== undefined){
 
       let dayIntitals = StringifyDaysInitials(components.alarms[i].days)
-      console.log(dayIntitals);
-      console.log();
       let alarmText = components.alarms[i].time.concat("   ", dayIntitals)
       itemTextContainer.style.fontSize = 50
 

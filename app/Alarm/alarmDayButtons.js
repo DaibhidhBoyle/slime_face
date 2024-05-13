@@ -51,7 +51,7 @@ export function setAlarmDays(time) {
   let mushroomClick = (i) => {
     return () => {
 
-      console.log("mushroom clicked");
+
 
       let isMushroomUnselected = alarmMushrooms[i].image === `images/setAlarmDay/mushroomRed${i}.png`;
 
@@ -114,7 +114,7 @@ export function sendToAlarm(){
 
   if (dayWrittenOut.length !== 0){
 
-    console.log("HERE BITCH!" + alarmSelectedTime);
+
 
     let newAlarmToBeSet = { "time": alarmSelectedTime, "days": dayWrittenOut };
     snooze.setNewAlarm(newAlarmToBeSet)

@@ -7,14 +7,6 @@ import * as components from '../Helper/components.js'
 
 export let alarmElements = [];
 
-
-
-//centralise
-
-
-
-//centralise
-
 let clockElements = []
 let cornerButtons = []
 

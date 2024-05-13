@@ -12,7 +12,6 @@ export function moodBoot(slime) {
 export function makeHappy(time){
 
   if(moodSlime.image === "images/slimes/sleepSlime_1.png"){
-    console.log("not activated as asleep");
   }
   else {
 
