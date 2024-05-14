@@ -1,8 +1,36 @@
+//---IMPORTS---
+//document
 import document from "document"
-import * as helper from '../../Helper/helper.js'
+//----
+//helper imports
 import * as components from '../../Helper/components.js'
-import * as mood from '../../Slime/mood.js'
+import * as helper from '../../Helper/helper.js'
+//----
+//system imports
+//----
+//local file imports
+//--Buttons
+//--Infomatics
+//--Display
+//----
+//external file imports
 import * as animate from '../animations.js'
+//-
+import * as mood from '../../Slime/mood.js'
+//----
+//----
+
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
 
 export function fishButton(mainSlime, clickData) {
 

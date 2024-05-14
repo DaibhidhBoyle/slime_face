@@ -1,10 +1,36 @@
-import * as snooze from './snooze.js'
+//---IMPORTS---
+//document
+//----
+//helper imports
+//----
 import * as helper from '../Helper/helper.js'
 import * as components from '../Helper/components.js'
+//----
+//system imports
+//----
+//local file imports
+import * as snooze from './snooze.js'
+//----
+//external file imports
+//----
 
+//---EXPORTS---
+//variables
 export let alarmSelectedTime;
 export let alarmSelectedDays = []
 export let alarmElements = [];
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
+
+
+
 
 
 export function setAlarmDays(time) {
@@ -91,7 +117,7 @@ export function resetScreen(){
 
   components.hourClock.style.visibility = helper.toggleVisibilty(components.hourClock);
   components.minClock.style.visibility = helper.toggleVisibilty(components.minClock);
-  components.dateHandle.style.visibility = helper.toggleVisibilty(components.dateHandle);
+  components.dateClock.style.visibility = helper.toggleVisibilty(components.dateClock);
   components.clockColon.style.visibility = helper.toggleVisibilty(components.clockColon);
 
   // alarmElements.forEach((element) => {

@@ -1,14 +1,46 @@
+//---IMPORTS---
+//document
+//----
 import document from "document";
-import * as setUpTumbler from './setUpAlarmTumbler.js'
-import * as alarmDayButtons from './alarmDayButtons.js'
-import * as deleteAlarm from './deleteAlarm.js'
+//----
+// helper imports
+//----
 import * as helper from '../Helper/helper.js'
 import * as components from '../Helper/components.js'
+//----
+//system imports
+//----
+//local file imports
+import * as alarmDayButtons from './alarmDayButtons.js'
+import * as deleteAlarm from './deleteAlarm.js'
+import * as setUpTumbler from './setUpAlarmTumbler.js'
+//----
+//external file imports
+//----
 
+//---EXPORTS---
+//variables
 export let alarmElements = [];
+//----
+//display elements
+//----
+//----
 
+//---BODY---
+//variables
 let clockElements = []
 let cornerButtons = []
+//----
+//main body
+
+
+
+
+
+
+
+
+
 
 export function alarmTimeBoot(mainSlime) {
 
@@ -61,7 +93,7 @@ function setAlarmMode(tumblerElements, deleteTumblerElement, mainSlime){
 
 
 
-  clockElements.push(components.date)
+  clockElements.push(components.dateClock)
 
 
 }

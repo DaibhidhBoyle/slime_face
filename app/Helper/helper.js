@@ -1,4 +1,28 @@
+//---IMPORTS---
+//document
 import document from "document";
+//----
+//helper imports
+//----
+//system imports
+//----
+//local file imports
+//----
+//external file imports
+//----
+//----
+
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
 
 //utils
 

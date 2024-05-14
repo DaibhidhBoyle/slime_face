@@ -1,8 +1,35 @@
+//---IMPORTS---
+//document
+//----
+//helper imports
 import * as components from '../../Helper/components.js'
 import * as helper from '../../Helper/helper.js'
-import * as mood from '../../Slime/mood.js'
+//----
+//system imports
+//----
+//local file imports
+//--Buttons
+//--Infomatics
+//--Display
+//----
+//external file imports
 import * as animate from '../animations.js'
+//-
+import * as mood from '../../Slime/mood.js'
+//----
+//----
 
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
 
 export function foodButton(mainSlime, clickData) {
 

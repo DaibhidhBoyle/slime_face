@@ -1,4 +1,27 @@
+//---IMPORTS---
+//document
+//----
+//helper imports
 import * as components from '../Helper/components.js'
+//----
+//system imports
+//----
+//local file imports
+//----
+//external file imports
+//----
+
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
 
 export function populateDeleteAlarmTumbler(tumblerElement){
 

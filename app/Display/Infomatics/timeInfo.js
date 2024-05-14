@@ -1,12 +1,43 @@
+//---IMPORTS---
+//document
 import document from "document";
+//----
+//helper imports
+import * as components from '../../Helper/components.js'
+import * as helper from '../../Helper/helper.js'
+//----
+//system imports
 import clock from "clock";
 import { preferences } from "user-settings";
 import { HeartRateSensor } from "heart-rate";
+//----
+//local file imports
+//--Infomatics
+import * as systemInfo from './systemInfo.js'
+//--Buttons
+//--Display
+//----
+//external file imports
 import * as alarm from '../../Alarm/alarm.js'
 import * as snooze from '../../Alarm/snooze.js'
-import * as systemInfo from './systemInfo.js'
-import * as helper from '../../Helper/helper.js'
-import * as components from '../../Helper/components.js'
+//----
+//----
+
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
+
+
+
+
 
 
 
@@ -44,7 +75,7 @@ function establishClockHandles(){
 
   return {
     time: {hour: components.hourClock, min: components.minClock},
-    date: components.dateHandle
+    date: components.dateClock
   }
 }
 

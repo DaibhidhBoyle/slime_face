@@ -1,10 +1,36 @@
+//---IMPORTS---
+//document
+//----
 import document from "document";
+//----
+//helper imports
+//----
 import * as components from '../Helper/components.js'
 import * as helper from '../Helper/helper.js'
+//----
+//system imports
+//----
+//local file imports
+//----
+//external file imports
+//----
 
+//---EXPORTS---
+//variables
 export let deleteTumblerElement
-
 export let tumblerElements;
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
+
+
+
 
 
 export function setupTumblerBoot(){

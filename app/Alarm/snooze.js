@@ -1,14 +1,39 @@
+//---IMPORTS---
+//document
+//----
 import document from "document";
-import { vibration } from "haptics";
-import * as mood from '../Slime/mood.js'
-import * as helper from '../Helper/helper.js'
+//----
+//helper imports
 import * as components from '../Helper/components.js'
+import * as helper from '../Helper/helper.js'
+//----
+//system imports
+//----
+import { vibration } from "haptics";
+//----
+//local file imports
+//----
+//external file imports
+//----
+import * as mood from '../Slime/mood.js'
+//----
 
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
 let alarmState = []
 let currentAlarmTime = "";
 let previousTime = "";
-
+//-
 let alarmVibrationTimeout;
+//----
+//main body
 
 export function alarmSnoozeBoot(mainSlime) {
     let plusButtonClick = () => {

@@ -1,6 +1,29 @@
+//---IMPORTS---
+//document
+//----
+//helper imports
 import * as components from '../Helper/components.js'
 import * as helper from '../Helper/helper.js';
+//----
+//system imports
+//----
+//local file imports
+//----
+//external file imports
+//----
+//----
 
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
 
 export function startButtonAnimation(frames, animationTimes, clickData, secondaryAnimationTime = null, secondaryAnimationCallback = null, ) {
   let timeFrames = [...animationTimes]

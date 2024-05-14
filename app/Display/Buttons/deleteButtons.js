@@ -1,8 +1,34 @@
-import * as deleteAlarm from '../../Alarm/deleteAlarm.js'
+//---IMPORTS---
+//document
+//----
+//helper imports
 import * as components from '../../Helper/components.js'
 import * as helper from '../../Helper/helper.js'
+//----
+//system imports
+//----
+//local file imports
+//--Buttons
+//--Infomatics
+//--Display
+//----
+//external file imports
+import * as deleteAlarm from '../../Alarm/deleteAlarm.js'
 import * as setUpAlarmTumbler from '../../Alarm/setUpAlarmTumbler.js'
+//----
+//----
 
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
 
 export function deleteButton(mainSlime, deleteAlarmButtons, baseDisplayElements) {
 

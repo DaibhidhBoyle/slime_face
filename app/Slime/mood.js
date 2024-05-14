@@ -1,9 +1,34 @@
+//---IMPORTS---
+//document
 import document from "document";
+//----
+//helper imports
+//----
+//system imports
 import { vibration } from "haptics";
+//----
+//local file imports
+//----
+//external file imports
+//----
+//----
 
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
 let moodSlime;
 let timeTillSad;
 let slimeCheckInterval;
+//----
+//main body
+
+
 
 export function moodBoot(slime) {
   moodSlime = slime

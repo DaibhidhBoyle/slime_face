@@ -1,11 +1,37 @@
+//---IMPORTS---
+//document
+//----
+//helper imports
 import * as helper from '../../Helper/helper.js'
 import * as components from '../../Helper/components.js'
-
+//----
+//system imports
+//----
+//local file imports
+//--Buttons
 import * as slimeButtons from './slimeButtons.js'
 import * as sleepButtons from './sleepButtons.js'
 import * as fishButtons from './fishButtons.js'
 import * as foodButtons from './foodButtons.js'
 import * as deleteButtons from './deleteButtons.js'
+//--Infomatics
+//--Display
+//----
+//external file imports
+//----
+//----
+
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
 
 
 

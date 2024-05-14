@@ -1,8 +1,34 @@
-import * as helper from '../../Helper/helper.js'
+//---IMPORTS---
+//document
+//----
+//helper imports
 import * as components from '../../Helper/components.js'
-
-import { battery } from "power";
+import * as helper from '../../Helper/helper.js'
+//----
+//system imports
 import userActivity from "user-activity";
+import { battery } from "power";
+//----
+//local file imports
+//--Infomatics
+//--Buttons
+//--Display
+//----
+//external file imports
+//----
+//----
+
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
 
 export function systemSetup(now){
 

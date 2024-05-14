@@ -1,13 +1,37 @@
+//---IMPORTS---
+//document
 import document from "document";
-import * as animate from '../Display/animations.js'
+//----
+//helper imports
 import * as components from '../Helper/components.js'
 import * as helper from '../Helper/helper.js';
+//----
+//system imports
 import { BodyPresenceSensor } from "body-presence";
+//----
+//local file imports
+//----
+//external file imports
+import * as animate from '../Display/animations.js'
+//----
+//----
 
+//---EXPORTS---
+//variables
 export let bodyPresence;
 export let sleepBubble;
 export let animateSleepElements;
 export let buttonsAndCallbacksWithoutSleep
+//----
+//display elements
+//----
+//----
+
+//---BODY---
+//variables
+//----
+//main body
+
 
 export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
@@ -17,7 +41,7 @@ export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
   if (BodyPresenceSensor) {
     bodyPresence = new BodyPresenceSensor();
-    bodyPresence.onreading = () => checkBodyPresence(slime, sleepSlime, components.sleepBubble, components.animateSleepElements);
+    bodyPresence.onreading = () => checkBodyPresence(slime, sleepSlime, components.sleepBubble, components.animateDisplayElements);
     bodyPresence.start();
   } else {
     console.log("No body sensor.");

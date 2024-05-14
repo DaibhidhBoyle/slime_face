@@ -1,14 +1,38 @@
+//---IMPORTS---
+//document
+//----
+//helper imports
+import * as components from '../../Helper/components.js'
 import * as helper from '../../Helper/helper.js'
+//----
+//system imports
+//----
+//local file imports
+//--Buttons
+//--Infomatics
 import * as info from '../Infomatics/info.js'
+//--Display
+import * as animate from '../animations.js'
+//----
+//external file imports
 import * as setUpAlarmTumbler from '../../Alarm/setUpAlarmTumbler.js'
 import * as alarmTimeButtons from '../../Alarm/alarmTimeButtons.js'
 import * as alarmDayButtons from '../../Alarm/alarmDayButtons.js'
-import * as animate from '../animations.js'
-import * as components from '../../Helper/components.js'
+//----
+//----
 
+//---EXPORTS---
+//variables
+//----
+//display elements
+//----
+//----
 
-
+//---BODY---
+//variables
 let alarmElementListeners;
+//----
+//main body
 
 export function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
