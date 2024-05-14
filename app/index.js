@@ -9,7 +9,6 @@
 //----
 //external file imports
 import * as alarm from './Alarm/alarm.js'
-import * as setAlarm from './Alarm/setAlarm.js'
 //-
 import * as buttons from './Display/Buttons/buttons.js'
 //-
