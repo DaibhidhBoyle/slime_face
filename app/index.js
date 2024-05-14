@@ -1,4 +1,4 @@
-import * as info from './Display/info.js'
+import * as info from './Display/Infomatics/info.js'
 import * as alarm from './Alarm/alarm.js'
 import * as setAlarm from './Alarm/setAlarm.js'
 import * as buttons from './Display/Buttons/buttons.js'

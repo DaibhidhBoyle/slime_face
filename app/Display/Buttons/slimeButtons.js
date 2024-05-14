@@ -1,5 +1,5 @@
 import * as helper from '../../Helper/helper.js'
-import * as info from '../info.js'
+import * as info from '../Infomatics/info.js'
 import * as setUpAlarmTumbler from '../../Alarm/setUpAlarmTumbler.js'
 import * as alarmTimeButtons from '../../Alarm/alarmTimeButtons.js'
 import * as alarmDayButtons from '../../Alarm/alarmDayButtons.js'
