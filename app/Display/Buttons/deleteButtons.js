@@ -75,6 +75,8 @@ function handleDeleteTumblerClick (mainSlime, baseDisplayElements){
 
     deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements);
 
+    setUpAlarmTumbler.setUpTumblerStyle(setUpAlarmTumbler.deleteTumblerElement, "No Alarm Set")
+
     components.setdeleteButtonState(1)
   }
 
