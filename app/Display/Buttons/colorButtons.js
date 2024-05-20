@@ -2,6 +2,7 @@
 //document
 //----
 //helper imports
+import * as components from '../../Helper/components.js'
 //----
 //system imports
 //----
@@ -13,6 +14,7 @@
 
 //---EXPORTS---
 //variables
+export let currentColor;
 //----
 //display elements
 //----
@@ -22,12 +24,6 @@
 //variables
 //----
 //main body
-
-
-
-import * as components from '../../Helper/components.js'
-
-export let currentColor;
 
 let colors = ["Green", "Pink", "White", "Yellow", "Orange", "Red", "Blue", "Purple"]
 
