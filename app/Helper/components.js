@@ -28,6 +28,8 @@ export let eat = document.getElementById("eating")
 //button getElements
 export let fishButtons = document.getElementsByClassName("fishClickable");
 export let foodButtons = document.getElementsByClassName("foodClickable");
+export let leftColorButtons = document.getElementsByClassName("leftColorClickable");
+export let rightColorButtons = document.getElementsByClassName("rightColorClickable");
 export let deleteAlarmButtons = document.getElementsByClassName("deleteAlarmClickable");
 //-
 export let plusButton = document.getElementById("plusButton");
@@ -37,7 +39,7 @@ export let jumpFramesUnaltered = document.getElementsByClassName("jumpAnimation"
 export let animateDisplayElements = document.getElementsByClassName("fadeDisplayElements")
 export let sleepBubble = document.getElementById("zzz");
 export let fishFramesUnaltered = document.getElementsByClassName("fishAnimation");
-export let foodAnimation = document.getElementsByClassName("foodAnimation"); //WHY IS THIS NOT UNALATERED
+export let foodAnimation = document.getElementsByClassName("foodAnimation");
 export let exclaimation = document.getElementById("exclaimation");
 //informatics
 //system elements

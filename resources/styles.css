@@ -211,6 +211,46 @@
   y: 255;
 }
 
+#leftColorButton {
+  position: fixed;
+  width: 120;
+  height: 120;
+  x: -60;
+  y: 260;
+  rx: 100;
+  ry: 100;
+  fill: #13b59b;
+}
+
+#leftColorIcon {
+  position: absolute;
+  width: 18%;
+  height: 18%;
+  x: 2;
+  y: 245;
+}
+
+#rightColorButton {
+  position: fixed;
+  width: 120;
+  height: 120;
+  x: 240;
+  y: 260;
+  rx: 100;
+  ry: 100;
+  fill: #13b59b;
+}
+
+#rightColorIcon {
+  position: fixed;
+  width: 18%;
+  height: 18%;
+  x: 244;
+  y: 245;
+}
+
+
+
 #deleteAlarmButton {
   position: fixed;
   width: 120;

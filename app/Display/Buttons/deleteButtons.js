@@ -30,7 +30,7 @@ import * as setUpAlarmTumbler from '../../Alarm/setUpAlarmTumbler.js'
 //----
 //main body
 
-export function deleteButton(mainSlime, deleteAlarmButtons, baseDisplayElements) {
+export function deleteButton(mainSlime, baseDisplayElements) {
 
 
 
@@ -45,7 +45,7 @@ export function deleteButton(mainSlime, deleteAlarmButtons, baseDisplayElements)
 
   let deleteButtonData = [];
 
-  deleteAlarmButtons.forEach((deleteAlarmButton) => {
+  components.deleteAlarmButtons.forEach((deleteAlarmButton) => {
     deleteButtonData.push({ button: deleteAlarmButton, callback: deleteButtonClick });
   });
 

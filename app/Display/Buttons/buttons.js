@@ -13,6 +13,7 @@ import * as slimeButtons from './slimeButtons.js'
 import * as sleepButtons from './sleepButtons.js'
 import * as fishButtons from './fishButtons.js'
 import * as foodButtons from './foodButtons.js'
+import * as colorButtons from './colorButtons.js'
 import * as deleteButtons from './deleteButtons.js'
 //--Infomatics
 //--Display
@@ -48,7 +49,9 @@ export function buttonsBoot(){
   buttonsAndCallBacksForEventListeners.push(sleepButtons.sleepButton(components.mainSlime, components.sleepSlime));
   buttonsAndCallBacksForEventListeners.push(...fishButtons.fishButton(components.mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButtons.foodButton(components.mainSlime, buttonsAndCallBacksForEventListeners));
-  buttonsAndCallBacksForEventListeners.push(...deleteButtons.deleteButton(components.mainSlime, components.deleteAlarmButtons, baseDisplayElements));
+  buttonsAndCallBacksForEventListeners.push(...colorButtons.colorButton(components.mainSlime, "left"));
+  buttonsAndCallBacksForEventListeners.push(...colorButtons.colorButton(components.mainSlime, "right"));
+  buttonsAndCallBacksForEventListeners.push(...deleteButtons.deleteButton(components.mainSlime, baseDisplayElements));
 
   helper.eventListenersHandler(buttonsAndCallBacksForEventListeners, helper.eventListenerSetup);
 

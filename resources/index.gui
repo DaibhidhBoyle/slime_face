@@ -381,10 +381,16 @@
 
 <g id="cornerButtons">
   <g id= "timerButtons">
-  <rect id="fishButton" class="fishClickable" pointer-events="visible" visibility = "visible"/>
-  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "visible"/>
-  <rect id="foodButton" class="foodClickable" pointer-events="visible" visibility = "visible"/>
-  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" visibility = "visible"/>
+  <rect id="fishButton" class="fishClickable" pointer-events="visible" visibility = "hidden"/>
+  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "hidden"/>
+  <rect id="foodButton" class="foodClickable" pointer-events="visible" visibility = "hidden"/>
+  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" visibility = "hidden"/>
+  </g>
+  <g id= "colorSelectionButtons">
+  <rect id="leftColorButton" class="leftColorClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/sundry/arrowLeft.png" id="leftColorIcon" class="leftColorClickable" pointer-events="visible" visibility = "visible"/>
+  <rect id="rightColorButton" class="rightColorClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/sundry/arrowRight.png" id="rightColorIcon" class="rightColorClickable" pointer-events="visible" visibility = "visible"/>
   </g>
   <g id= "deleteButtons">
   <rect id="deleteAlarmButton" class="deleteAlarmClickable" pointer-events="visible" visibility = "hidden"/>
@@ -397,31 +403,31 @@
 
 
 <g id="jumpGroup">
-  <image href="images/slimes/jumpSlime_2.png" id="jump2" class="jumpAnimation" visibility = "hidden"/>
-  <image href="images/slimes/jumpSlime_3.png" id="jump3" class="jumpAnimation" visibility = "hidden"/>
-  <image href="images/slimes/jumpSlime_4.png" id="jump4" class="jumpAnimation" visibility = "hidden"/>
-  <image href="images/slimes/jumpSlime_5.png" id="jump5" class="jumpAnimation" visibility = "hidden"/>
-  <image href="images/slimes/jumpSlime_4.png" id="jump6" class="jumpAnimation" visibility = "hidden"/>
-  <image href="images/slimes/jumpSlime_6.png" id="jump7" class="jumpAnimation" visibility = "hidden"/>
-  <image href="images/slimes/jumpSlime_7.png" id="jump8" class="jumpAnimation" visibility = "hidden"/>
-  <image href="images/slimes/jumpSlime_8.png" id="jump9" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_2.png" id="jump2" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_3.png" id="jump3" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_4.png" id="jump4" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_5.png" id="jump5" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_4.png" id="jump6" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_6.png" id="jump7" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_7.png" id="jump8" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_8.png" id="jump9" class="jumpAnimation" visibility = "hidden"/>
 </g>
 
 <g id="fishGroup">
-  <image href="images/fishing/fishin_1.png" id="fish1" class="fishAnimation" visibility = "hidden"/>
-  <image href="images/fishing/fishin_2.png" id="fish2" class="fishAnimation" visibility = "hidden"/>
-  <image href="images/fishing/fishin_3.png" id="fish3" class="fishAnimation" visibility = "hidden"/>
-  <image href="images/fishing/fishin_4.png" id="fish4" class="fishAnimation" visibility = "hidden"/>
-  <image href="images/fishing/fishin_5.png" id="fish5" class="fishAnimation" visibility = "hidden"/>
-  <image href="images/fishing/fishin_6.png" id="fish6" class="fishAnimation" visibility = "hidden"/>
-  <image href="images/fishing/fishin_7.png" id="fish7" class="fishAnimation" visibility = "hidden"/>
-  <image href="images/fishing/fishin_8.png" id="fish8" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_1.png" id="fish1" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_2.png" id="fish2" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_3.png" id="fish3" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_4.png" id="fish4" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_5.png" id="fish5" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_6.png" id="fish6" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_7.png" id="fish7" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_8.png" id="fish8" class="fishAnimation" visibility = "hidden"/>
 </g>
 
 <g id="slimes">
-  <image href="images/slimes/sadSlime_1.png" id="slime" class="coreSlime" pointer-events="visible" visibility =  "visible"/>
-  <image href="images/slimes/sleepSlime_1.png" id="sleeping" class="coreSlime" pointer-events="visible" visibility =  "hidden"/>
-  <image href="images/slimes/eatSlime_1.png" id="eating" class="coreSlime" visibility =  "hidden"/>
+  <image href="images/slimes/Green/sadSlime_1.png" id="slime" class="coreSlime" pointer-events="visible" visibility =  "visible"/>
+  <image href="images/slimes/Green/sleepSlime_1.png" id="sleeping" class="coreSlime" pointer-events="visible" visibility =  "hidden"/>
+  <image href="images/slimes/Green/eatSlime_1.png" id="eating" class="coreSlime" visibility =  "hidden"/>
 </g>
 
 <use id="exclaimation" href="#fadeExclaimation" opacity="0" />
