@@ -153,17 +153,22 @@ export function whichFish(frames) {
 
 }
 
-export function switchCornerButtons(group1Visibilty, group2Visibilty) {
+export function switchCornerButtons(group1Visibilty, group2Visibilty, group3Visibilty) {
 
   let timerButtonElements = document.getElementById("timerButtons");
+  let colorButtonElements = document.getElementById("colorSelectionButtons");
   let deleteButtonElements = document.getElementById("deleteButtons")
 
   timerButtonElements.children.forEach((timerButtonsElement) => {
     timerButtonsElement.style.visibility = group1Visibilty;
   });
 
+  colorButtonElements.children.forEach((colorButtonsElement) => {
+    colorButtonsElement.style.visibility = group2Visibilty;
+  });
+
   deleteButtonElements.children.forEach((deleteButtonElement) => {
-    deleteButtonElement.style.visibility = group2Visibilty;
+    deleteButtonElement.style.visibility = group3Visibilty;
   });
 
 }

@@ -65,6 +65,10 @@ export let alarmGroup = document.getElementById("snoozeGroup");
 export let alarmState = [...alarmGroup.children];
 export let displayGroup = document.getElementById("displayElements");
 export let baseDisplayElements = document.getElementById("displayElementsBaseView");
+//-
+export let timerButtonElements = document.getElementById("timerButtons");
+export let colorButtonElements = document.getElementById("colorSelectionButtons");
+export let deleteButtonElements = document.getElementById("deleteButtons")
 //----
 //----
 

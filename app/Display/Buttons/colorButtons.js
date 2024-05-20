@@ -25,7 +25,6 @@
 
 
 
-import document from "document";
 import * as components from '../../Helper/components.js'
 
 export let currentColor;
@@ -96,8 +95,8 @@ function handleColorButtonClick(mainSlime, colorSwitchElements, direction) {
 function changeColor(newColor, currentColor, colorSwitchElements){
 
   colorSwitchElements.forEach((element) => {
-    let regex = new RegExp(currentColor, "g");
-    element.image = element.image.replace(regex, newColor);
+    let colorChangeRegex = new RegExp(currentColor, "g");
+    element.image = element.image.replace(colorChangeRegex, newColor);
   });
 
 }

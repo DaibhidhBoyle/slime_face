@@ -113,7 +113,7 @@ export function setAlarmDays(time) {
 
 export function resetScreen(){
 
-  helper.switchCornerButtons("visible", "hidden");
+  helper.switchCornerButtons("visible", "hidden", "hidden");
 
   components.hourClock.style.visibility = helper.toggleVisibilty(components.hourClock);
   components.minClock.style.visibility = helper.toggleVisibilty(components.minClock);

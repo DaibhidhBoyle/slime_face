@@ -79,7 +79,7 @@ function setAlarmMode(tumblerElements, deleteTumblerElement, mainSlime){
       element.style.visibility = "hidden";
     });
 
-    helper.switchCornerButtons("hidden", "visible");
+    helper.switchCornerButtons("hidden", "hidden", "visible");
     //helper
 
     components.setSlimeButtonState(2)
@@ -131,7 +131,7 @@ function slimeButtonClickSwitchToNextScreen(time, arrayOfTumblers){
     button.style.visibility = helper.toggleVisibilty(button);
   })
 
-  helper.switchCornerButtons("hidden", "hidden")
+  helper.switchCornerButtons("hidden", "hidden", "hidden")
 
   return alarmDayButtons.setAlarmDays(time)
 }

@@ -84,7 +84,7 @@ function handleDeleteTumblerClick (mainSlime, baseDisplayElements){
 
 function deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements){
   components.tumblerDelete.style.visibility = helper.toggleVisibilty(components.tumblerDelete);
-  helper.switchCornerButtons("visible", "hidden");
+  helper.switchCornerButtons("visible", "hidden", "hidden");
   mainSlime.style.visibility = helper.toggleVisibilty(mainSlime);
   components.setSlimeButtonState(1)
   baseDisplayElements.forEach((  baseDisplayElement) => {

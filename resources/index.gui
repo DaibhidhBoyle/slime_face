@@ -381,16 +381,16 @@
 
 <g id="cornerButtons">
   <g id= "timerButtons">
-  <rect id="fishButton" class="fishClickable" pointer-events="visible" visibility = "hidden"/>
-  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "hidden"/>
-  <rect id="foodButton" class="foodClickable" pointer-events="visible" visibility = "hidden"/>
-  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" visibility = "hidden"/>
+  <rect id="fishButton" class="fishClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "visible"/>
+  <rect id="foodButton" class="foodClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" visibility = "visible"/>
   </g>
   <g id= "colorSelectionButtons">
-  <rect id="leftColorButton" class="leftColorClickable" pointer-events="visible" visibility = "visible"/>
-  <image href="images/sundry/arrowLeft.png" id="leftColorIcon" class="leftColorClickable" pointer-events="visible" visibility = "visible"/>
-  <rect id="rightColorButton" class="rightColorClickable" pointer-events="visible" visibility = "visible"/>
-  <image href="images/sundry/arrowRight.png" id="rightColorIcon" class="rightColorClickable" pointer-events="visible" visibility = "visible"/>
+  <rect id="leftColorButton" class="leftColorClickable" pointer-events="visible" visibility = "hidden"/>
+  <image href="images/sundry/arrowLeft.png" id="leftColorIcon" class="leftColorClickable" pointer-events="visible" visibility = "hidden"/>
+  <rect id="rightColorButton" class="rightColorClickable" pointer-events="visible" visibility = "hidden"/>
+  <image href="images/sundry/arrowRight.png" id="rightColorIcon" class="rightColorClickable" pointer-events="visible" visibility = "hidden"/>
   </g>
   <g id= "deleteButtons">
   <rect id="deleteAlarmButton" class="deleteAlarmClickable" pointer-events="visible" visibility = "hidden"/>

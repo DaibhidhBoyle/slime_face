@@ -63,6 +63,12 @@ function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, sli
 
   if (components.slimeButtonState === 1){
     info.toggleInfoElements(elements);
+    components.timerButtonElements.children.forEach((timerButtonsElement) => {
+      timerButtonsElement.style.visibility = helper.toggleVisibilty(timerButtonsElement)
+    });
+    components.colorButtonElements.children.forEach((colorButtonsElement) => {
+      colorButtonsElement.style.visibility = helper.toggleVisibilty(colorButtonsElement)
+    });
   } else if (components.slimeButtonState === 2){
     let tumblerElements = setUpAlarmTumbler.bothTumblersIntoInformationDictionaries(components.tumblerHour, components.tumblerMin);
     alarmElementListeners = alarmTimeButtons.slimeButtonClickFunctionality(tumblerElements);
