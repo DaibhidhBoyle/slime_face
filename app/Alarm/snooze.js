@@ -61,7 +61,7 @@ export function alarmByTick(currentTime, currentDay) {
   for (let i = 0; i < components.alarms.length; i++) {
     let alarm = components.alarms[i];
     if (alarm.time === currentTime && alarm.days.indexOf(currentDay) !== -1 && currentTime !== previousTime) {
-      switchAlarmState();
+      switchAlarmState(); //check this
       previousTime = currentTime;
       startVibrationAlert();
       break; // Stop searching once we've found a matching alarm
@@ -72,7 +72,7 @@ export function alarmByTick(currentTime, currentDay) {
 
 
 function switchAlarmState() {
-  alarmState.forEach(alarmElement => {
+  components.alarmState.forEach(alarmElement => {
     alarmElement.style.visibility = helper.toggleVisibilty(alarmElement);
   });
 }

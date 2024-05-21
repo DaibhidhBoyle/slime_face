@@ -120,10 +120,6 @@ export function resetScreen(){
   components.dateClock.style.visibility = helper.toggleVisibilty(components.dateClock);
   components.clockColon.style.visibility = helper.toggleVisibilty(components.clockColon);
 
-  // alarmElements.forEach((element) => {
-  //   element.style.visibility = helper.toggleVisibilty(element);
-  // });
-
 }
 
 export function sendToAlarm(){
@@ -139,8 +135,6 @@ export function sendToAlarm(){
   });
 
   if (dayWrittenOut.length !== 0){
-
-
 
     let newAlarmToBeSet = { "time": alarmSelectedTime, "days": dayWrittenOut };
     snooze.setNewAlarm(newAlarmToBeSet)

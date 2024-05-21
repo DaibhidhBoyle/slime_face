@@ -1,8 +1,8 @@
 /* System Info Displays*/
 
 .alarmMushroom{
-  height: 18%;
-  width: 18%;
+  height: 25%;
+  width: 25%;
 }
 
 #alarmSun{
@@ -13,37 +13,37 @@
 }
 
 #sunMushroom{
-  x: 15;
+  x: 10;
   y: 70;
 }
 
 #monMushroom{
-  x: 85;
+  x: 80;
   y: 70;
 }
 
 #tueMushroom{
-  x: 160;
+  x: 155;
   y: 70;
 }
 
 #wedMushroom{
-  x: 235;
+  x: 230;
   y: 70;
 }
 
 #thurMushroom{
-  x: 47;
+  x: 42;
   y: 120;
 }
 
 #friMushroom{
-  x: 127;
+  x: 122;
   y: 120;
 }
 
 #satMushroom{
-  x: 197;
+  x: 192;
   y: 120;
 }
 

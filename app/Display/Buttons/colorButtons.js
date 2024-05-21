@@ -69,7 +69,6 @@ function handleColorButtonClick(mainSlime, colorSwitchElements, direction) {
 
       currentColor = newColor;
 
-      console.log(currentColor);
     } else if (direction === "right") {
       let newColor = colors[(position + 1) % colors.length];
 
@@ -83,7 +82,6 @@ function handleColorButtonClick(mainSlime, colorSwitchElements, direction) {
 
       currentColor = newColor;
 
-      console.log(currentColor);
     }
   }
 }
