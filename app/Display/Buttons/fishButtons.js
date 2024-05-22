@@ -32,32 +32,8 @@ import { makeHappy } from '../../Slime/mood.js';
 //main body
 
 export function fishButton(mainSlime, clickData) {
-  let fishFrames = fishFramesUnaltered;
-
-  fishFrames = [
-    mainSlime,
-    ...fishFrames,
-    fishFrames[6],
-    fishFrames[7],
-    fishFrames[6],
-    fishFrames[7],
-    mainSlime,
-  ];
-
-  fishFrames = animationObjectify(fishFrames);
-
-  let fishWinFrames = {
-    star: { image: document.getElementById("star"), text: "star" },
-    boot: { image: document.getElementById("boot"), text: "boot" },
-    anchovy: { image: document.getElementById("anchovy"), text: "anchovy" },
-    bream: { image: document.getElementById("bream"), text: "bream" },
-    crimson: { image: document.getElementById("crimson"), text: "crimson" },
-    blobfish: { image: document.getElementById("blobfish"), text: "blob" },
-  };
-
-  fishFrames[8].extraFrame = { extraFrame: exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes" };
-  fishFrames[10].extraFrame = { extraFrame: exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes" };
-  fishFrames[12].extraFrame = { extraFrame: exclaimation, animationType: "snap", maxOpacity: 0.95, text: "yes" };
+  let fishWinFrames = createFishWinFrames();
+  let fishFrames = setupFishFrames(mainSlime);
 
   let fishFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1300, 500, 1200, 500, 1200, 1000, 0];
 
@@ -73,13 +49,32 @@ export function fishButton(mainSlime, clickData) {
     );
   };
 
-  let fishButtonData = [];
-
-  fishButtons.forEach((fishButton) => {
-    fishButtonData.push({ button: fishButton, callback: fishClick });
-  });
+  let fishButtonData = fishButtons.map(button => ({ button, callback: fishClick }));
 
   return fishButtonData;
+}
+
+function createFishWinFrames() {
+  return {
+    star: { image: document.getElementById("star"), text: "star" },
+    boot: { image: document.getElementById("boot"), text: "boot" },
+    anchovy: { image: document.getElementById("anchovy"), text: "anchovy" },
+    bream: { image: document.getElementById("bream"), text: "bream" },
+    crimson: { image: document.getElementById("crimson"), text: "crimson" },
+    blobfish: { image: document.getElementById("blobfish"), text: "blob" },
+  };
+}
+
+function setupFishFrames(mainSlime) {
+  let fishFrames = fishFramesUnaltered;
+  fishFrames = [mainSlime, ...fishFrames, fishFrames[6], fishFrames[7], fishFrames[6], fishFrames[7], mainSlime];
+  fishFrames = animationObjectify(fishFrames);
+
+  fishFrames[8].extraFrame = { extraFrame: exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes" };
+  fishFrames[10].extraFrame = { extraFrame: exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes" };
+  fishFrames[12].extraFrame = { extraFrame: exclaimation, animationType: "snap", maxOpacity: 0.95, text: "yes" };
+
+  return fishFrames;
 }
 
 function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames) {

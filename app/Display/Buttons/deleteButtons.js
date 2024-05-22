@@ -35,22 +35,14 @@ export function deleteButton(mainSlime, baseDisplayElements) {
     handleDeleteTumblerClick(mainSlime, baseDisplayElements);
   };
 
-  let deleteButtonData = [];
-
-  deleteAlarmButtons.forEach((deleteAlarmButton) => {
-    deleteButtonData.push({ button: deleteAlarmButton, callback: deleteButtonClick });
-  });
+  let deleteButtonData = deleteAlarmButtons.map(button => ({ button, callback: deleteButtonClick }));
 
   return deleteButtonData;
 };
 
 function handleDeleteTumblerClick(mainSlime, baseDisplayElements) {
   if (deleteButtonState === 1) {
-    toggleVisibilty(tumblerColon);
-    toggleVisibilty(tumblerHour);
-    toggleVisibilty(tumblerMin);
-
-    toggleVisibilty(mainSlime);
+    [tumblerColon, tumblerHour, tumblerMin, mainSlime].forEach(element => toggleVisibilty(element));
 
     populateDeleteAlarmTumbler(deleteTumblerElement);
 
@@ -72,11 +64,10 @@ function handleDeleteTumblerClick(mainSlime, baseDisplayElements) {
 }
 
 function deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements) {
-  toggleVisibilty(tumblerDelete);
+
+  [tumblerDelete, mainSlime, ...baseDisplayElements].forEach(element => toggleVisibilty(element));
+
   switchCornerButtons("visible", "hidden", "hidden");
-  toggleVisibilty(mainSlime);
   setSlimeButtonState(1);
-  baseDisplayElements.forEach((baseDisplayElement) => {
-    toggleVisibilty(baseDisplayElement);
-  });
+
 }

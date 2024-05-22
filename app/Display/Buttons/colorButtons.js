@@ -50,25 +50,34 @@ function handleColorButtonClick(mainSlime, colorSwitchElements, direction) {
   let position = colors.indexOf(currentColor);
 
   if (position !== -1) {
-    let newColor;
-    if (direction === "left") {
-      newColor = colors[(position - 1 + colors.length) % colors.length];
-    } else if (direction === "right") {
-      newColor = colors[(position + 1) % colors.length];
-    }
+    let newPosition = calculateNewPosition(position, direction);
+
+    let newColor = colors[newPosition];
 
     colorSwitchElements.forEach((element) => {
-      element.image = element.image.replace(currentColor, newColor);
+      replaceColor(element, currentColor, newColor);
     });
 
-    changeColor(newColor, currentColor, colorSwitchElements);
+    changeColor(currentColor, newColor, colorSwitchElements);
     currentColor = newColor;
   }
 }
 
-function changeColor(newColor, currentColor, colorSwitchElements) {
+function calculateNewPosition(position, direction) {
+  if (direction === "left") {
+    return (position - 1 + colors.length) % colors.length;
+  } else if (direction === "right") {
+    return (position + 1) % colors.length;
+  }
+}
+
+function replaceColor(element, oldColor, newColor) {
+  let colorChangeRegex = new RegExp(oldColor, "g");
+  element.image = element.image.replace(colorChangeRegex, newColor);
+}
+
+function changeColor(oldColor, newColor, colorSwitchElements) {
   colorSwitchElements.forEach((element) => {
-    let colorChangeRegex = new RegExp(currentColor, "g");
-    element.image = element.image.replace(colorChangeRegex, newColor);
+    replaceColor(element, oldColor, newColor);
   });
 }

@@ -34,29 +34,35 @@ let alarmElementListeners;
 //main body
 
 export function slimeButton(mainSlime, toggableHTMLElements, clickData) {
-  let jumpFrames = jumpFramesUnaltered;
-  jumpFrames = [mainSlime, ...jumpFrames.slice(0, 4), ...jumpFrames.slice(3, 0).reverse(), ...jumpFrames.slice(4), mainSlime];
-  jumpFrames = animationObjectify(jumpFrames);
-  let jumpFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1700, 1000, 0];
+  let jumpFrames = setupJumpFrames(mainSlime);
+  let jumpFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1700, 1000, 0]
+
   let slimeClick = () => {
     handleSlimeButtonClick(mainSlime, toggableHTMLElements, clickData, jumpFrames, jumpFrameTimes);
   };
+
   return { button: mainSlime, callback: slimeClick };
+}
+
+function setupJumpFrames(mainSlime) {
+  let jumpFrames = jumpFramesUnaltered;
+  jumpFrames = [mainSlime, ...jumpFrames.slice(0, 4), ...jumpFrames.slice(3, 0).reverse(), ...jumpFrames.slice(4), mainSlime];
+  jumpFrames = animationObjectify(jumpFrames);
+  return jumpFrames;
 }
 
 function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
   if (slimeButtonState === 1) {
     toggleInfoElements(elements);
-    timerButtonElements.children.forEach((timerButtonsElement) => {
-      toggleVisibilty(timerButtonsElement);
-    });
-    colorButtonElements.children.forEach((colorButtonsElement) => {
-      toggleVisibilty(colorButtonsElement);
-    });
-  } else if (slimeButtonState === 2) {
+    [...timerButtonElements.children, ...colorButtonElements.children].forEach((element) => {toggleVisibilty(element)});
+  }
+
+  if (slimeButtonState === 2) {
     let tumblerElements = getTumblersInfo(tumblerHour, tumblerMin);
     alarmElementListeners = slimeButtonClickFunctionality(tumblerElements);
-  } else if (slimeButtonState === 3) {
+  }
+
+  if (slimeButtonState === 3) {
     sendToAlarm();
     resetScreen();
     resetAlarmElements(alarmElementListeners);

@@ -29,11 +29,7 @@ import { wakeMode, sleepMode, bodyPresence } from '../../Slime/sleep.js';
 //main body
 
 export function sleepButton(mainSlime, sleepSlime) {
-  let sleepClick = () => {
-    handleSleepButtonClick(mainSlime, sleepSlime);
-  };
-
-  return { button: sleepSlime, callback: sleepClick };
+  return { button: sleepSlime, callback: () => handleSleepButtonClick(mainSlime, sleepSlime) };
 }
 
 function handleSleepButtonClick(mainSlime, sleepSlime) {
