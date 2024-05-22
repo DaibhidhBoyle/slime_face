@@ -2,8 +2,8 @@
 //document
 //----
 //helper imports
-import * as components from '../../Helper/components.js'
-import * as helper from '../../Helper/helper.js'
+import { eat, foodAnimation, foodButtons } from '../../Helper/components.js';
+import { animationObjectify } from '../../Helper/helper.js';
 //----
 //system imports
 //----
@@ -13,9 +13,8 @@ import * as helper from '../../Helper/helper.js'
 //--Display
 //----
 //external file imports
-import * as animate from '../animations.js'
-//-
-import * as mood from '../../Slime/mood.js'
+import { startButtonAnimation, widgetAnimation } from '../animations.js';
+import { makeHappy } from '../../Slime/mood.js';
 //----
 //----
 
@@ -32,9 +31,6 @@ import * as mood from '../../Slime/mood.js'
 //main body
 
 export function foodButton(mainSlime, clickData) {
-
-  let eat = components.eat
-
   let eatFrames = [
     mainSlime,
     eat,
@@ -45,39 +41,35 @@ export function foodButton(mainSlime, clickData) {
     mainSlime
   ];
 
-  eatFrames = helper.animationObjectify(eatFrames)
+  eatFrames = animationObjectify(eatFrames);
 
   let eatFrameTimes = [0, 675, 400, 266, 400, 266, 0];
-
-
 
   let foodClick = () => {
     handleFoodButtonClick(
       clickData,
-      components.foodAnimation,
+      foodAnimation,
       eatFrames,
       eatFrameTimes
     );
   };
 
-
   let foodButtonData = [];
 
-  components. foodButtons.forEach((foodButton) => {
-    foodButtonData.push({ button: foodButton, callback: foodClick});
+  foodButtons.forEach((foodButton) => {
+    foodButtonData.push({ button: foodButton, callback: foodClick });
   });
 
   return foodButtonData;
 }
 
-function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTimes){
+function handleFoodButtonClick(clickData, foodAnimation, eatFrames, eatFrameTimes) {
   let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
 
-  //30 mintues sent to be happy
-  mood.makeHappy(15* 60 * 1000);
+  //30 minutes sent to be happy
+  makeHappy(15 * 60 * 1000);
 
-  animate.startButtonAnimation(eatFrames, eatFrameTimes, clickData);
+  startButtonAnimation(eatFrames, eatFrameTimes, clickData);
 
-  animate.widgetAnimation(prizeFoodAnimation, 2000);
-
-};
+  widgetAnimation(prizeFoodAnimation, 2000);
+}

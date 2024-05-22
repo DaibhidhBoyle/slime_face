@@ -363,16 +363,16 @@
 
 <g id="displayElements">
   <g id="displayElementsBaseView">
-    <text class="textInfoElements" id="hourLabel" visibility = "visible" pointer-events="visible"/>
-    <text class="textInfoElements" id="minuteLabel" visibility = "visible" pointer-events="visible"/>
-    <text class="textInfoElements" id="timeColon" visibility = "visible" pointer-events="visible">:</text>
-    <text class="textInfoElements" id="dateLabel" visibility = "visible"/>
+    <text class="textInfoElements displayElement" id="hourLabel" visibility = "visible" pointer-events="visible"/>
+    <text class="textInfoElements displayElement" id="minuteLabel" visibility = "visible" pointer-events="visible"/>
+    <text class="textInfoElements displayElement" id="timeColon" visibility = "visible" pointer-events="visible">:</text>
+    <text class="textInfoElements displayElement" id="dateLabel" visibility = "visible"/>
   </g>
   <g>
-  <image href="images/sundry/footPrint_1.png" id="footPrint" visibility = "hidden" />
-  <text class="textInfoElements" id="stepsLabel" visibility = "hidden"/>
-  <image href="images/sundry/heart_1.png" id="heart" visibility = "hidden" />
-  <text class="textInfoElements" id="heartrateLabel" visibility = "hidden"/>
+  <image class="displayElement" href="images/sundry/footPrint_1.png" id="footPrint" visibility = "hidden" />
+  <text class="textInfoElements displayElement" id="stepsLabel" visibility = "hidden"/>
+  <image class="displayElement" href="images/sundry/heart_1.png" id="heart" visibility = "hidden" />
+  <text class="textInfoElements displayElement" id="heartrateLabel" visibility = "hidden"/>
   </g>
   <animate id="sleepElement2" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </g>

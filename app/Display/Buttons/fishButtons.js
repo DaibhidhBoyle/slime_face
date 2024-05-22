@@ -3,8 +3,8 @@
 import document from "document"
 //----
 //helper imports
-import * as components from '../../Helper/components.js'
-import * as helper from '../../Helper/helper.js'
+import { fishFramesUnaltered, exclaimation, fishButtons } from '../../Helper/components.js';
+import { animationObjectify } from '../../Helper/helper.js';
 //----
 //system imports
 //----
@@ -14,9 +14,8 @@ import * as helper from '../../Helper/helper.js'
 //--Display
 //----
 //external file imports
-import * as animate from '../animations.js'
-//-
-import * as mood from '../../Slime/mood.js'
+import { startButtonAnimation, showPrizeFish } from '../animations.js';
+import { makeHappy } from '../../Slime/mood.js';
 //----
 //----
 
@@ -33,8 +32,7 @@ import * as mood from '../../Slime/mood.js'
 //main body
 
 export function fishButton(mainSlime, clickData) {
-
-  let fishFrames = components.fishFramesUnaltered
+  let fishFrames = fishFramesUnaltered;
 
   fishFrames = [
     mainSlime,
@@ -46,7 +44,7 @@ export function fishButton(mainSlime, clickData) {
     mainSlime,
   ];
 
-  fishFrames = helper.animationObjectify(fishFrames)
+  fishFrames = animationObjectify(fishFrames);
 
   let fishWinFrames = {
     star: { image: document.getElementById("star"), text: "star" },
@@ -57,14 +55,13 @@ export function fishButton(mainSlime, clickData) {
     blobfish: { image: document.getElementById("blobfish"), text: "blob" },
   };
 
-
-  fishFrames[8].extraFrame = {extraFrame: components.exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes"}
-  fishFrames[10].extraFrame = {extraFrame: components.exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes"}
-  fishFrames[12].extraFrame = {extraFrame: components.exclaimation, animationType: "snap", maxOpacity: 0.95, text: "yes"}
+  fishFrames[8].extraFrame = { extraFrame: exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes" };
+  fishFrames[10].extraFrame = { extraFrame: exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes" };
+  fishFrames[12].extraFrame = { extraFrame: exclaimation, animationType: "snap", maxOpacity: 0.95, text: "yes" };
 
   let fishFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1300, 500, 1200, 500, 1200, 1000, 0];
 
-  let secondaryAnimationTime = 2500
+  let secondaryAnimationTime = 2500;
 
   let fishClick = () => {
     handleFishButtonClick(
@@ -73,23 +70,22 @@ export function fishButton(mainSlime, clickData) {
       clickData,
       secondaryAnimationTime,
       fishWinFrames
-    )
+    );
   };
 
   let fishButtonData = [];
 
-  components.fishButtons.forEach((fishButton) => {
+  fishButtons.forEach((fishButton) => {
     fishButtonData.push({ button: fishButton, callback: fishClick });
   });
 
   return fishButtonData;
-
 }
 
-function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames){
+function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames) {
   // 1 hour passed to makeHappy
-  mood.makeHappy(60 * 60 * 1000)
-  animate.startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
-    animate.showPrizeFish(fishWinFrames, secondaryAnimationTime);
+  makeHappy(60 * 60 * 1000);
+  startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
+    showPrizeFish(fishWinFrames, secondaryAnimationTime);
   });
 }

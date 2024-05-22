@@ -1,5 +1,6 @@
 //---IMPORTS---
 //document
+import document from "document";
 //----
 //helper imports
 //----
@@ -8,14 +9,11 @@
 //local file imports
 //----
 //external file imports
-import * as alarm from './Alarm/alarm.js'
-//-
-import * as buttons from './Display/Buttons/buttons.js'
-//-
-import * as info from './Display/Infomatics/info.js'
-//-
-import * as mood from './Slime/mood.js'
-import * as sleep from './Slime/sleep.js'
+import { alarmBoot } from './Alarm/alarm.js';
+import { buttonsBoot } from './Display/Buttons/buttons.js';
+import { infomaticsBoot } from './Display/Infomatics/info.js';
+import { moodBoot } from './Slime/mood.js';
+import { sleepBoot } from './Slime/sleep.js';
 //----
 //----
 
@@ -36,10 +34,10 @@ boot();
 
 function boot(){
 
-  info.infomaticsBoot();
-  let allButtons = buttons.buttonsBoot();
-  alarm.alarmBoot(allButtons.main);
-  mood.moodBoot(allButtons.main);
-  sleep.sleepBoot(allButtons.main, allButtons.sleep, allButtons.allButtonsAndCallbacks);
+  infomaticsBoot();
+  let allButtons = buttonsBoot();
+  alarmBoot(allButtons.main);
+  moodBoot(allButtons.main);
+  sleepBoot(allButtons.main, allButtons.sleep, allButtons.allButtonsAndCallbacks);
 
 }

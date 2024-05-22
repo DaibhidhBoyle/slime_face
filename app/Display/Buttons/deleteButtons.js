@@ -2,8 +2,8 @@
 //document
 //----
 //helper imports
-import * as components from '../../Helper/components.js'
-import * as helper from '../../Helper/helper.js'
+import { deleteAlarmButtons, tumblerColon, tumblerHour, tumblerMin, setdeleteButtonState, alarms, tumblerDelete, setSlimeButtonState, deleteButtonState } from '../../Helper/components.js';
+import { toggleVisibilty, switchCornerButtons, eventListenerSetup } from '../../Helper/helper.js';
 //----
 //system imports
 //----
@@ -13,8 +13,8 @@ import * as helper from '../../Helper/helper.js'
 //--Display
 //----
 //external file imports
-import * as deleteAlarm from '../../Alarm/deleteAlarm.js'
-import * as setUpAlarmTumbler from '../../Alarm/setUpAlarmTumbler.js'
+import { populateDeleteAlarmTumbler } from '../../Alarm/deleteAlarm.js';
+import { deleteTumblerElement, setUpTumblerStyle } from '../../Alarm/setUpAlarmTumbler.js';
 //----
 //----
 
@@ -31,63 +31,52 @@ import * as setUpAlarmTumbler from '../../Alarm/setUpAlarmTumbler.js'
 //main body
 
 export function deleteButton(mainSlime, baseDisplayElements) {
-
-
-
-
-  let deleteButtonClick = () =>
-  {
-    handleDeleteTumblerClick(
-      mainSlime,
-      baseDisplayElements
-    );
+  let deleteButtonClick = () => {
+    handleDeleteTumblerClick(mainSlime, baseDisplayElements);
   };
 
   let deleteButtonData = [];
 
-  components.deleteAlarmButtons.forEach((deleteAlarmButton) => {
+  deleteAlarmButtons.forEach((deleteAlarmButton) => {
     deleteButtonData.push({ button: deleteAlarmButton, callback: deleteButtonClick });
   });
 
   return deleteButtonData;
 };
 
-function handleDeleteTumblerClick (mainSlime, baseDisplayElements){
-  if (components.deleteButtonState === 1){
-    components.tumblerColon.style.visibility = helper.toggleVisibilty(components.tumblerColon);
-    components.tumblerHour.style.visibility = helper.toggleVisibilty(components.tumblerHour);
-    components.tumblerMin.style.visibility = helper.toggleVisibilty(components.tumblerMin);
+function handleDeleteTumblerClick(mainSlime, baseDisplayElements) {
+  if (deleteButtonState === 1) {
+    tumblerColon.style.visibility = toggleVisibilty(tumblerColon);
+    tumblerHour.style.visibility = toggleVisibilty(tumblerHour);
+    tumblerMin.style.visibility = toggleVisibilty(tumblerMin);
 
-    mainSlime.style.visibility = helper.toggleVisibilty(mainSlime);
+    mainSlime.style.visibility = toggleVisibilty(mainSlime);
 
-    deleteAlarm.populateDeleteAlarmTumbler(setUpAlarmTumbler.deleteTumblerElement);
+    populateDeleteAlarmTumbler(deleteTumblerElement);
 
-    setUpAlarmTumbler.deleteTumblerElement['tumbler'].style.visibility = helper.toggleVisibilty(setUpAlarmTumbler.deleteTumblerElement['tumbler']);
+    deleteTumblerElement['tumbler'].style.visibility = toggleVisibilty(deleteTumblerElement['tumbler']);
 
-    components.setdeleteButtonState(2)
+    setdeleteButtonState(2);
 
-  } else if (components.deleteButtonState === 2)
-  {
+  } else if (deleteButtonState === 2) {
+    let deleteTumblerSelectedIndex = parseInt(deleteTumblerElement.tumbler.value);
 
-    let deleteTumblerSelectedIndex = parseInt(setUpAlarmTumbler.deleteTumblerElement.tumbler.value);
-
-    components.alarms.splice(deleteTumblerSelectedIndex, 1)
+    alarms.splice(deleteTumblerSelectedIndex, 1);
 
     deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements);
 
-    setUpAlarmTumbler.setUpTumblerStyle(setUpAlarmTumbler.deleteTumblerElement, "No Alarm Set")
+    setUpTumblerStyle(deleteTumblerElement, "No Alarm Set");
 
-    components.setdeleteButtonState(1)
+    setdeleteButtonState(1);
   }
-
 }
 
-function deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements){
-  components.tumblerDelete.style.visibility = helper.toggleVisibilty(components.tumblerDelete);
-  helper.switchCornerButtons("visible", "hidden", "hidden");
-  mainSlime.style.visibility = helper.toggleVisibilty(mainSlime);
-  components.setSlimeButtonState(1)
-  baseDisplayElements.forEach((  baseDisplayElement) => {
-    baseDisplayElement.style.visibility = helper.toggleVisibilty(baseDisplayElement);
+function deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements) {
+  tumblerDelete.style.visibility = toggleVisibilty(tumblerDelete);
+  switchCornerButtons("visible", "hidden", "hidden");
+  mainSlime.style.visibility = toggleVisibilty(mainSlime);
+  setSlimeButtonState(1);
+  baseDisplayElements.forEach((baseDisplayElement) => {
+    baseDisplayElement.style.visibility = toggleVisibilty(baseDisplayElement);
   });
 }

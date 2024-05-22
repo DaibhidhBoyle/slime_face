@@ -3,7 +3,6 @@
 import document from "document"
 //----
 //helper imports
-import * as helper from '../Helper/helper.js'
 //----
 //system imports
 //----
@@ -60,15 +59,14 @@ export let tumblerColon = document.getElementById("tumblerColon");
 export let tumblerDelete = document.getElementById("tumbler-delete");
 //groups
 export let alarmDayGroup = document.getElementById("alarmDaySettings");
-export let infoGroup = document.getElementById("displayElements");
 export let alarmGroup = document.getElementById("snoozeGroup");
 export let alarmState = [...alarmGroup.children];
-export let displayGroup = document.getElementById("displayElements");
-export let baseDisplayElements = document.getElementById("displayElementsBaseView");
+export let displayGroup = document.getElementsByClassName("displayElement");
+export let baseDisplayElements = document.getElementById("displayElementsBaseView"); // .children
 //-
-export let timerButtonElements = document.getElementById("timerButtons");
-export let colorButtonElements = document.getElementById("colorSelectionButtons");
-export let deleteButtonElements = document.getElementById("deleteButtons")
+export let timerButtonElements = document.getElementById("timerButtons"); // .chidlren
+export let colorButtonElements = document.getElementById("colorSelectionButtons"); // .chidlren
+export let deleteButtonElements = document.getElementById("deleteButtons") // .chidlren
 //----
 //----
 

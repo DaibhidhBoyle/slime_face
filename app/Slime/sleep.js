@@ -3,8 +3,8 @@
 import document from "document";
 //----
 //helper imports
-import * as components from '../Helper/components.js'
-import * as helper from '../Helper/helper.js';
+import { eventListenersHandler, eventListenerRemoved, eventListenerSetup } from '../Helper/helper.js';
+import { sleepBubble as sleepBubbleElement, animateDisplayElements as animateSleepElements, tumblerDelete } from '../Helper/components.js';
 //----
 //system imports
 import { BodyPresenceSensor } from "body-presence";
@@ -12,7 +12,7 @@ import { BodyPresenceSensor } from "body-presence";
 //local file imports
 //----
 //external file imports
-import * as animate from '../Display/animations.js'
+import { fadeElement, widgetAnimation } from '../Display/animations.js';
 //----
 //----
 
@@ -20,8 +20,7 @@ import * as animate from '../Display/animations.js'
 //variables
 export let bodyPresence;
 export let sleepBubble;
-export let animateSleepElements;
-export let buttonsAndCallbacksWithoutSleep
+export let buttonsAndCallbacksWithoutSleep;
 //----
 //display elements
 //----
@@ -41,7 +40,7 @@ export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
   if (BodyPresenceSensor) {
     bodyPresence = new BodyPresenceSensor();
-    bodyPresence.onreading = () => checkBodyPresence(slime, sleepSlime, components.sleepBubble, components.animateDisplayElements);
+    bodyPresence.onreading = () => checkBodyPresence(slime, sleepSlime, sleepBubbleElement, animateSleepElements);
     bodyPresence.start();
   } else {
     console.log("No body sensor.");
@@ -65,9 +64,9 @@ export function sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements) 
 
   sleepSlime.style.visibility = "visible"
   slime.style.visibility = "hidden"
-  animate.fadeElement(animateSleepElements, 1, 0);
-  animate.widgetAnimation(sleepBubble);
-  helper.eventListenersHandler(buttonsAndCallbacksWithoutSleep, helper.eventListenerRemoved);
+  fadeElement(animateSleepElements, 1, 0);
+  widgetAnimation(sleepBubble);
+  eventListenersHandler(buttonsAndCallbacksWithoutSleep, eventListenerRemoved);
 
 }
 
@@ -76,12 +75,12 @@ export function wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
   if (slime.style.visibility !== "visible"){
     sleepBubble.style.visibility = "hidden"
     sleepSlime.style.visibility = "hidden"
-    if (components.tumblerDelete.style.visibility !== "visible"){
+    if (tumblerDelete.style.visibility !== "visible"){
       slime.style.visibility = "visible"
     }
-    animate.fadeElement(animateSleepElements, 0, 1);
+    fadeElement(animateSleepElements, 0, 1);
     sleepBubble.animate("disable");
   }
-  helper.eventListenersHandler(buttonsAndCallbacksWithoutSleep, helper.eventListenerSetup);
+  eventListenersHandler(buttonsAndCallbacksWithoutSleep, eventListenerSetup);
 
 }

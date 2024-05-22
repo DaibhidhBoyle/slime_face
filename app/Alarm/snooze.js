@@ -1,21 +1,18 @@
 //---IMPORTS---
 //document
-//----
 import document from "document";
 //----
 //helper imports
-import * as components from '../Helper/components.js'
-import * as helper from '../Helper/helper.js'
+import { plusButton, minusButton, alarms, alarmState } from '../Helper/components.js';
+import { eventListenerSetup, toggleVisibilty } from '../Helper/helper.js';
 //----
 //system imports
-//----
 import { vibration } from "haptics";
 //----
 //local file imports
 //----
 //external file imports
-//----
-import * as mood from '../Slime/mood.js'
+import { makeHappy, makeSad } from '../Slime/mood.js';
 //----
 
 //---EXPORTS---
@@ -27,7 +24,6 @@ import * as mood from '../Slime/mood.js'
 
 //---BODY---
 //variables
-let alarmState = []
 let currentAlarmTime = "";
 let previousTime = "";
 //-
@@ -37,31 +33,30 @@ let alarmVibrationTimeout;
 
 export function alarmSnoozeBoot(mainSlime) {
     let plusButtonClick = () => {
-      mood.makeHappy(5 * 60 * 1000);
+      makeHappy(5 * 60 * 1000);
       switchAlarmState();
       stopVibrationAlert();
     };
 
     let minusButtonClick = () => {
-      mood.makeSad();
+      makeSad();
       switchAlarmState();
       stopVibrationAlert();
     };
 
-    helper.eventListenerSetup(components.plusButton, plusButtonClick);
-    helper.eventListenerSetup(components.minusButton, minusButtonClick);
+    eventListenerSetup(plusButton, plusButtonClick);
+    eventListenerSetup(minusButton, minusButtonClick);
 }
 
 export function setNewAlarm(newAlarm) {
-  components.alarms.push(newAlarm);
+  alarms.push(newAlarm);
 }
 
 export function alarmByTick(currentTime, currentDay) {
-
-  for (let i = 0; i < components.alarms.length; i++) {
-    let alarm = components.alarms[i];
+  for (let i = 0; i < alarms.length; i++) {
+    let alarm = alarms[i];
     if (alarm.time === currentTime && alarm.days.indexOf(currentDay) !== -1 && currentTime !== previousTime) {
-      switchAlarmState(); //check this
+      switchAlarmState();
       previousTime = currentTime;
       startVibrationAlert();
       break; // Stop searching once we've found a matching alarm
@@ -69,11 +64,9 @@ export function alarmByTick(currentTime, currentDay) {
   }
 }
 
-
-
 function switchAlarmState() {
-  components.alarmState.forEach(alarmElement => {
-    alarmElement.style.visibility = helper.toggleVisibilty(alarmElement);
+  alarmState.forEach(alarmElement => {
+    alarmElement.style.visibility = toggleVisibilty(alarmElement);
   });
 }
 

@@ -6,9 +6,9 @@
 //system imports
 //----
 // local files imports
-import * as alarmTimeButtons from './alarmTimeButtons.js'
-import * as setUpAlarmTumbler from './setUpAlarmTumbler.js'
-import * as snooze from './snooze.js'
+import { alarmTimeBoot } from './alarmTimeButtons.js';
+import { setupTumblerBoot } from './setUpAlarmTumbler.js';
+import { alarmSnoozeBoot } from './snooze.js';
 //----
 //external file imports
 //----
@@ -26,7 +26,7 @@ import * as snooze from './snooze.js'
 //main body
 
 export function alarmBoot(mainSlime) {
-  setUpAlarmTumbler.setupTumblerBoot()
-  snooze.alarmSnoozeBoot();
-  alarmTimeButtons.alarmTimeBoot();
+  setupTumblerBoot();
+  alarmSnoozeBoot();
+  alarmTimeBoot();
 }

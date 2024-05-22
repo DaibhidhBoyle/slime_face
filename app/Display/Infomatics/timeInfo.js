@@ -3,8 +3,8 @@
 import document from "document";
 //----
 //helper imports
-import * as components from '../../Helper/components.js'
-import * as helper from '../../Helper/helper.js'
+import { zeroPad, timePrefrence, writtenDay, dateSuffixCreator, writtenMonth } from '../../Helper/helper.js';
+import { hourClock, minClock, dateClock, heartrateHandle } from '../../Helper/components.js';
 //----
 //system imports
 import clock from "clock";
@@ -13,13 +13,13 @@ import { HeartRateSensor } from "heart-rate";
 //----
 //local file imports
 //--Infomatics
-import * as systemInfo from './systemInfo.js'
+import { systemSetup } from './systemInfo.js';
 //--Buttons
 //--Display
 //----
 //external file imports
-import * as alarm from '../../Alarm/alarm.js'
-import * as snooze from '../../Alarm/snooze.js'
+import { alarmBoot } from '../../Alarm/alarm.js';
+import { alarmByTick } from '../../Alarm/snooze.js';
 //----
 //----
 
@@ -34,12 +34,6 @@ import * as snooze from '../../Alarm/snooze.js'
 //variables
 //----
 //main body
-
-
-
-
-
-
 
 export function timeSetup(){
   let clockHandles = establishClockHandles();
@@ -58,7 +52,7 @@ export function timeSetup(){
 
 
   hrm.onreading = function() {
-    components.heartrateHandle.text = `${hrm.heartRate}`;
+    heartrateHandle.text = `${hrm.heartRate}`;
   }
 
   hrm.start();
@@ -69,13 +63,9 @@ export function timeSetup(){
 
 function establishClockHandles(){
 
-  // let hourHandle = document.getElementById("hourLabel");
-  // let minHandle = document.getElementById("minuteLabel");
-
-
   return {
-    time: {hour: components.hourClock, min: components.minClock},
-    date: components.dateClock
+    time: {hour: hourClock, min: minClock},
+    date: dateClock
   }
 }
 
@@ -85,10 +75,10 @@ function toUpdateOnTick(now, timeHandles, dateHandle){
   dayAsString = dayAsString.toUpperCase()
 
   dateSettings(now, dateHandle)
-  systemInfo.systemSetup(now)
+  systemSetup(now)
 
 
-  snooze.alarmByTick(timeAsString, dayAsString);
+  alarmByTick(timeAsString, dayAsString);
 
 }
 
@@ -97,8 +87,8 @@ function timeSettings(now, timeHandles){
   let hours = now.getHours().toString();
   let mins = now.getMinutes().toString();
 
-  let hoursFormatted = helper.timePrefrence(preferences.clockDisplay, hours)
-  let minsFormatted = helper.zeroPad(mins, 2);
+  let hoursFormatted = timePrefrence(preferences.clockDisplay, hours)
+  let minsFormatted = zeroPad(mins, 2);
 
   timeHandles.hour.text = `${hoursFormatted}`
   timeHandles.min.text = `${minsFormatted}`
@@ -112,7 +102,7 @@ function daySettings(now){
 
   let dayAsNumber = now.getDay();
 
-  let day = helper.writtenDay(dayAsNumber);
+  let day = writtenDay(dayAsNumber);
 
   return day
 }
@@ -121,8 +111,8 @@ function dateSettings(now, dateHandle){
   let date = now.getDate();
   let month = now.getMonth();
 
-  let suffix = helper.dateSuffixCreator(date);
-  let writtenMonth = helper.writtenMonth(month);
+  let suffix = dateSuffixCreator(date);
+  let writtenOutMonth = writtenMonth(month);
 
-  dateHandle.text = `${date}${suffix} ${writtenMonth}`;
+  dateHandle.text = `${date}${suffix} ${writtenOutMonth}`;
 }

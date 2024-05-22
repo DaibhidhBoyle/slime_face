@@ -2,7 +2,7 @@
 //document
 //----
 //helper imports
-import * as components from '../../Helper/components.js'
+import { sleepBubble, animateDisplayElements } from '../../Helper/components.js';
 //----
 //system imports
 //----
@@ -12,7 +12,7 @@ import * as components from '../../Helper/components.js'
 //--Display
 //----
 //external file imports
-import * as sleep from '../../Slime/sleep.js'
+import { wakeMode, sleepMode, bodyPresence } from '../../Slime/sleep.js';
 //----
 //----
 
@@ -28,25 +28,19 @@ import * as sleep from '../../Slime/sleep.js'
 //----
 //main body
 
-export function sleepButton(mainSlime, sleepSlime){
-
+export function sleepButton(mainSlime, sleepSlime) {
   let sleepClick = () => {
-    handleSleepButtonClick(
-      mainSlime,
-      sleepSlime
-    );
+    handleSleepButtonClick(mainSlime, sleepSlime);
   };
 
-  return {button: sleepSlime, callback: sleepClick}
+  return { button: sleepSlime, callback: sleepClick };
 }
 
-function handleSleepButtonClick(mainSlime, sleepSlime){
-
-  sleep.wakeMode(mainSlime, sleepSlime, components.sleepBubble, components.animateDisplayElements);
+function handleSleepButtonClick(mainSlime, sleepSlime) {
+  wakeMode(mainSlime, sleepSlime, sleepBubble, animateDisplayElements);
   setTimeout(() => {
-    if (sleep.bodyPresence && !sleep.bodyPresence.present) {
-      sleep.sleepMode(mainSlime, sleepSlime, components.sleepBubble, components.animateDisplayElements);
+    if (bodyPresence && !bodyPresence.present) {
+      sleepMode(mainSlime, sleepSlime, sleepBubble, animateDisplayElements);
     }
   }, 60 * 1000);
-
 }

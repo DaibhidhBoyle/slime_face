@@ -10,7 +10,7 @@ import { vibration } from "haptics";
 //local file imports
 //----
 //external file imports
-import * as color from '../Display/Buttons/colorButtons.js'
+import { currentColor } from '../Display/Buttons/colorButtons.js';
 //----
 //----
 
@@ -37,11 +37,11 @@ export function moodBoot(slime) {
 
 export function makeHappy(time){
 
-  if(moodSlime.image === `images/slimes/${color.currentColor}/sleepSlime_1.png`){
+  if(moodSlime.image === `images/slimes/${currentColor}/sleepSlime_1.png`){
   }
   else {
 
-    moodSlime.image  = `images/slimes/${color.currentColor}/mainSlime_1.png`
+    moodSlime.image  = `images/slimes/${currentColor}/mainSlime_1.png`
 
     if (timeTillSad){
       clearTimeout(timeTillSad);
@@ -59,12 +59,12 @@ export function makeSad(){
 
   slimeCheckInterval = setInterval(slimeCheckIn, 5 * 60 * 1000);
 
-  moodSlime.image  = `images/slimes/${color.currentColor}/sadSlime_1.png`
+  moodSlime.image  = `images/slimes/${currentColor}/sadSlime_1.png`
 }
 
 function slimeCheckIn(){
 
-  if(moodSlime.image  === `images/slimes/${color.currentColor}/sadSlime_1.png`){
+  if(moodSlime.image  === `images/slimes/${currentColor}/sadSlime_1.png`){
     vibration.start("nudge");
   }
 
