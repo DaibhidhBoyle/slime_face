@@ -40,32 +40,34 @@ function setAlarmMode(tumblerElements, deleteTumblerElement, mainSlime){
 
   clockElements = [hourClock, minClock, clockColon];
 
-  let clockButtonclick = () => {
-    tumblerColon.style.visibility = toggleVisibilty(tumblerColon);
-
-    tumblers.forEach((element) => {
-      element.style.visibility = toggleVisibilty(element);
-    });
-
-    displayGroup.forEach((element) => {
-      element.style.pointerEvents = "none";
-      element.style.visibility = "hidden";
-    });
-
-    switchCornerButtons("hidden", "hidden", "visible");
-    setSlimeButtonState(2);
-  };
-
-  clockElements.forEach((clockElement) => {
-    eventListenerSetup(clockElement, clockButtonclick);
+  clockElements.forEach(clockElement => {
+    eventListenerSetup(clockElement, () => handleClockButtonClick(tumblers));
   });
 
   clockElements.push(dateClock);
 }
 
+function handleClockButtonClick(tumblers) {
+  toggleVisibilty(tumblerColon);
+
+  tumblers.forEach((element) => {
+    toggleVisibilty(element);
+  })
+
+  displayGroup.forEach(element => {
+    element.style.pointerEvents = "none";
+    element.style.visibility = "hidden";
+  });
+
+  switchCornerButtons("hidden", "hidden", "visible");
+  setSlimeButtonState(2);
+}
+
 export function slimeButtonClickFunctionality(tumblerElements) {
+
   let arrayOfTumblerValues = [];
   let arrayOfTumblerInfo = Object.keys(tumblerElements).map(key => tumblerElements[key]);
+
 
   arrayOfTumblerInfo.forEach((tumblerElement) => {
     let selectedIndex = parseInt(tumblerElement.tumbler.value);
@@ -80,17 +82,18 @@ export function slimeButtonClickFunctionality(tumblerElements) {
   setSlimeButtonState(3);
 
   return slimeButtonClickSwitchToNextScreen(alarmSelectedTime, arrayOfTumblers);
+
 }
 
 function slimeButtonClickSwitchToNextScreen(time, arrayOfTumblers){
   arrayOfTumblers.forEach((element) => {
-    element.style.visibility = toggleVisibilty(element);
+    toggleVisibilty(element);
   });
 
-  tumblerColon.style.visibility = toggleVisibilty(tumblerColon);
+  toggleVisibilty(tumblerColon);
 
   alarmElements.forEach((button) => {
-    button.style.visibility = toggleVisibilty(button);
+    toggleVisibilty(button);
   });
 
   switchCornerButtons("hidden", "hidden", "hidden");

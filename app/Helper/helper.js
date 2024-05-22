@@ -108,10 +108,10 @@ export function animationObjectify(framesArray){
   return arrayOfObjects
 }
 
-
+//toggleVisibility
 export function toggleVisibilty(handle){
   let isVisible = handle.style.visibility === "visible";
-  return isVisible ? "hidden" : "visible";
+  handle.style.visibility = isVisible ? "hidden" : "visible";
 }
 
 export function toggleOpacity(handle){

@@ -38,11 +38,11 @@ export function startButtonAnimation(frames, animationTimes, clickData, secondar
 async function visibilityAnimation(frames, times, callback = null) {
   for (let i = 1; i < frames.length; i++) {
     frames[i].extraFrame && extraFrameAnimation(frames[i].extraFrame);
-    frames[i].frame.style.visibility = toggleVisibilty(frames[i].frame);
+    toggleVisibilty(frames[i].frame);
     if (frames[i - 1].extraFrame && frames[i - 1].extraFrame.animationType === "snap"){
       extraFrameAnimation(frames[i-1].extraFrame);
     }
-    frames[i - 1].frame.style.visibility = toggleVisibilty(frames[i - 1].frame);
+    toggleVisibilty(frames[i - 1].frame);
     await waitForNextFrame(times[i]);
   }
   if (typeof callback === 'function') {
@@ -72,9 +72,9 @@ export function showPrizeFish(frames, duration) {
 }
 
 function temporaryToggleVisabilty(frame, duration){
-  frame.style.visibility = toggleVisibilty(frame);
+  toggleVisibilty(frame);
   setTimeout(function () {
-    frame.style.visibility = toggleVisibilty(frame);
+    toggleVisibilty(frame);
   }, duration);
 }
 

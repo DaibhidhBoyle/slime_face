@@ -15,7 +15,7 @@ import { toggleInfoElements } from '../Infomatics/info'
 import { startButtonAnimation } from '../animations.js';
 //----
 //external file imports
-import { bothTumblersIntoInformationDictionaries } from '../../Alarm/setUpAlarmTumbler.js';
+import { getTumblersInfo } from '../../Alarm/setUpAlarmTumbler.js';
 import { slimeButtonClickFunctionality } from '../../Alarm/alarmTimeButtons.js';
 import { sendToAlarm, resetScreen, resetAlarmElements } from '../../Alarm/alarmDayButtons.js';
 //----
@@ -48,13 +48,13 @@ function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, sli
   if (slimeButtonState === 1) {
     toggleInfoElements(elements);
     timerButtonElements.children.forEach((timerButtonsElement) => {
-      timerButtonsElement.style.visibility = toggleVisibilty(timerButtonsElement);
+      toggleVisibilty(timerButtonsElement);
     });
     colorButtonElements.children.forEach((colorButtonsElement) => {
-      colorButtonsElement.style.visibility = toggleVisibilty(colorButtonsElement);
+      toggleVisibilty(colorButtonsElement);
     });
   } else if (slimeButtonState === 2) {
-    let tumblerElements = bothTumblersIntoInformationDictionaries(tumblerHour, tumblerMin);
+    let tumblerElements = getTumblersInfo(tumblerHour, tumblerMin);
     alarmElementListeners = slimeButtonClickFunctionality(tumblerElements);
   } else if (slimeButtonState === 3) {
     sendToAlarm();

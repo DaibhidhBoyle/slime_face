@@ -27,17 +27,14 @@ export function populateDeleteAlarmTumbler(tumblerElement) {
   for (let i = 0; i <= tumblerElement["numberOfItems"]; i++) {
     let item = tumblerElement["tumbler"].getElementById(tumblerElement["itemIdPrefix"] + i);
     let itemTextContainer = item.getElementById("text");
-    let alarmText;
 
     if (alarms[i] !== undefined) {
       let dayIntitals = StringifyDaysInitials(alarms[i].days);
-      alarmText = alarms[i].time.concat("   ", dayIntitals);
+      itemTextContainer.text = alarms[i].time.concat("   ", dayIntitals);
       itemTextContainer.style.fontSize = 50;
     } else {
-      alarmText = "No Alarm Set";
+      itemTextContainer.text = "No Alarm Set";
     }
-
-    itemTextContainer.text = alarmText;
   }
 }
 

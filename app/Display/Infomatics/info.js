@@ -34,6 +34,6 @@ export function infomaticsBoot(now){
 
 export function toggleInfoElements(elements){
   elements.forEach(element => {
-    element.style.visibility = toggleVisibilty(element);
+    toggleVisibilty(element);
   });
 }

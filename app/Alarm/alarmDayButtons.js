@@ -36,75 +36,69 @@ export function setAlarmDays(time) {
   let sun = alarmElements.filter(element => element.id === "alarmSun");
   sun = sun[0];
 
-  sun.style.visibility = toggleVisibilty(sun);
+  toggleVisibilty(sun);
 
   let alarmMushrooms = alarmElements.filter(element => element !== sun);
+  setAllMushrooms(alarmMushrooms, "Red")
 
   alarmSelectedDays = [];
-  alarmMushrooms.forEach((mushroom, i) => {
-    mushroom.image = mushroom.image.replace(/Green/g, "Red");
-  });
-
-  let sunClick = () => {
-    let isSunUnselected = sun.image === "images/setAlarmDay/unselectedSun.png";
-
-    if (isSunUnselected) {
-      alarmMushrooms.forEach((mushroom, i) => {
-        mushroom.image = mushroom.image.replace(/Red/g, "Green");
-      });
-
-      alarmSelectedDays = [0, 1, 2, 3, 4, 5, 6];
-    } else if (!isSunUnselected) {
-      alarmSelectedDays = [];
-      alarmMushrooms.forEach((mushroom, i) => {
-        mushroom.image = mushroom.image.replace(/Green/g, "Red");
-      });
-    }
-
-    sun.image = isSunUnselected ? "images/setAlarmDay/sun.png" : "images/setAlarmDay/unselectedSun.png";
-  };
-
-  eventListenerSetup(sun, sunClick);
-
-  let mushroomClick = (i) => {
-    return () => {
-      let isMushroomUnselected = alarmMushrooms[i].image === `images/setAlarmDay/mushroomRed${i}.png`;
-
-      if (isMushroomUnselected) {
-        alarmSelectedDays.push(i);
-      }
-
-      if (!isMushroomUnselected) {
-        if (alarmSelectedDays.indexOf(i) !== -1) {
-          alarmSelectedDays.splice(alarmSelectedDays.indexOf(i), 1);
-        }
-      }
-
-      if (alarmSelectedDays.length === 7) {
-        sun.image = "images/setAlarmDay/sun.png";
-      } else {
-        sun.image = "images/setAlarmDay/unselectedSun.png";
-      }
-
-      alarmMushrooms[i].image = isMushroomUnselected ? `images/setAlarmDay/mushroomGreen${i}.png` : `images/setAlarmDay/mushroomRed${i}.png`;
-    };
-  };
+  eventListenerSetup(sun, () => toggleSun(sun, alarmMushrooms));
 
   alarmMushrooms.forEach((mushroom, i) => {
-    mushroom.style.visibility = toggleVisibilty(mushroom);
-    eventListenerSetup(mushroom, mushroomClick(i));
+    toggleVisibilty(mushroom);
+    eventListenerSetup(mushroom, () => toggleMushroom(i, sun, alarmMushrooms));
   });
 
-  return { sun: sunClick, mushroom: mushroomClick };
+  return { sun: () => toggleSun(sun, alarmMushrooms), mushroom: (i) => toggleMushroom(i, sun, alarmMushrooms) };
 }
+
+function toggleSun(sun, alarmMushrooms) {
+  let isSunUnselected = sun.image === "images/setAlarmDay/unselectedSun.png";
+  let newColor = isSunUnselected ? "Green" : "Red";
+
+  setAllMushrooms(alarmMushrooms, newColor);
+  alarmSelectedDays = isSunUnselected ? [0, 1, 2, 3, 4, 5, 6] : [];
+
+  sun.image = isSunUnselected ? "images/setAlarmDay/sun.png" : "images/setAlarmDay/unselectedSun.png";
+}
+
+function setAllMushrooms(mushrooms, color) {
+  mushrooms.forEach(mushroom => {
+    mushroom.image = mushroom.image.replace(/Green|Red/g, color);
+  });
+}
+
+function toggleMushroom(i, sun, alarmMushrooms) {
+  let mushroom = alarmMushrooms[i];
+  let isMushroomUnselected = mushroom.image === `images/setAlarmDay/mushroomRed${i}.png`;
+
+  if (isMushroomUnselected) {
+    alarmSelectedDays.push(i);
+  }
+
+  if (!isMushroomUnselected) {
+    let index = alarmSelectedDays.indexOf(i);
+    if (index !== -1) {
+      alarmSelectedDays.splice(index, 1);
+    }
+  }
+
+  mushroom.image = isMushroomUnselected ? `images/setAlarmDay/mushroomGreen${i}.png` : `images/setAlarmDay/mushroomRed${i}.png`;
+  sun.image = alarmSelectedDays.length === 7 ? "images/setAlarmDay/sun.png" : "images/setAlarmDay/unselectedSun.png";
+}
+
+
+
+
+
+
+
+
 
 export function resetScreen() {
   switchCornerButtons("visible", "hidden", "hidden");
 
-  hourClock.style.visibility = toggleVisibilty(hourClock);
-  minClock.style.visibility = toggleVisibilty(minClock);
-  dateClock.style.visibility = toggleVisibilty(dateClock);
-  clockColon.style.visibility = toggleVisibilty(clockColon);
+   [hourClock, minClock, dateClock, clockColon].forEach(toggleVisibilty);
 }
 
 export function sendToAlarm() {
@@ -119,9 +113,8 @@ export function sendToAlarm() {
     dayWrittenOut.push(day);
   });
 
-  if (dayWrittenOut.length !== 0) {
-    let newAlarmToBeSet = { "time": alarmSelectedTime, "days": dayWrittenOut };
-    setNewAlarm(newAlarmToBeSet);
+  if (dayWrittenOut.length > 0) {
+    setNewAlarm({ "time": alarmSelectedTime, "days": dayWrittenOut });
   }
 }
 
@@ -131,10 +124,12 @@ export function resetAlarmElements(alarmElementListeners) {
   tumblerHour.value = 0;
   tumblerMin.value = 0;
 
-  alarmElements.forEach((element) => {
-    if (element.image === "images/setAlarmDay/sun.png" || element.image === "images/setAlarmDay/unselectedSun.png") {
+  alarmElements.forEach(element => {
+    if (element.id === "alarmSun") {
       element.image = "images/setAlarmDay/unselectedSun.png";
-    } else {
+    }
+
+    if (element.id !== "alarmSun") {
       element.image = element.image.replace(/Green/g, "Red");
     }
   });

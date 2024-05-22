@@ -30,7 +30,7 @@ export let tumblerElements;
 //main body
 
 export function setupTumblerBoot() {
-  tumblerElements = bothTumblersIntoInformationDictionaries(tumblerHour, tumblerMin);
+  tumblerElements = getTumblersInfo(tumblerHour, tumblerMin);
 
   setUpTumblerStyle(tumblerElements["hour"]);
   setUpTumblerStyle(tumblerElements["min"]);
@@ -39,23 +39,33 @@ export function setupTumblerBoot() {
 }
 
 export function setUpTumblerStyle(tumblerElement, baseTextValue) {
-  for (let i = 0; i <= tumblerElement["numberOfItems"]; i++) {
-    let item = tumblerElement["tumbler"].getElementById(tumblerElement["itemIdPrefix"] + i);
-    let itemTextContainer = item.getElementById("text");
-
-    if (baseTextValue === undefined) {
-      itemTextContainer.text = zeroPad(`${i}`, 2);
-      itemTextContainer.style.fontSize = 150;
-    } else {
-      itemTextContainer.text = baseTextValue;
-      itemTextContainer.style.fontSize = 60;
-    }
-
-    itemTextContainer.style.fontFamily = "Tungsten-Medium";
-    itemTextContainer.style.fill = "#f887bd";
+  for (let i = 0; i <= tumblerElement.numberOfItems; i++) {
+    setupTumblerItem(tumblerElement, i, baseTextValue);
   }
 }
 
-export function bothTumblersIntoInformationDictionaries(tumblerHour, tumblerMin) {
-  return { "hour": { "tumbler": tumblerHour, "itemIdPrefix": "hour-item", "numberOfItems": 23 }, "min": { "tumbler": tumblerMin, "itemIdPrefix": "min-item", "numberOfItems": 59 } };
+function setupTumblerItem(tumblerElement, index, baseTextValue) {
+  let item = tumblerElement.tumbler.getElementById(`${tumblerElement.itemIdPrefix}${index}`);
+  let itemTextContainer = item.getElementById("text");
+
+  itemTextContainer.text = baseTextValue ? baseTextValue : zeroPad(`${index}`, 2);
+  itemTextContainer.style.fontSize = baseTextValue ? 60 : 150;
+
+  styleTumblerItemText(itemTextContainer);
+}
+
+function styleTumblerItemText(textContainer) {
+  textContainer.style.fontFamily = "Tungsten-Medium";
+  textContainer.style.fill = "#f887bd";
+}
+
+export function getTumblersInfo(tumblerHour, tumblerMin) {
+  return {
+    hour: createTumblerElement(tumblerHour, "hour-item", 23),
+    min: createTumblerElement(tumblerMin, "min-item", 59)
+  };
+}
+
+function createTumblerElement(tumbler, itemIdPrefix, numberOfItems) {
+  return { tumbler, itemIdPrefix, numberOfItems };
 }

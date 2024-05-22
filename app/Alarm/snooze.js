@@ -32,20 +32,15 @@ let alarmVibrationTimeout;
 //main body
 
 export function alarmSnoozeBoot(mainSlime) {
-    let plusButtonClick = () => {
-      makeHappy(5 * 60 * 1000);
-      switchAlarmState();
-      stopVibrationAlert();
-    };
 
-    let minusButtonClick = () => {
-      makeSad();
-      switchAlarmState();
-      stopVibrationAlert();
-    };
+  eventListenerSetup(plusButton, () => handleSnoozeButtonClick(makeHappy));
+  eventListenerSetup(minusButton, () => handleSnoozeButtonClick(makeSad));
+}
 
-    eventListenerSetup(plusButton, plusButtonClick);
-    eventListenerSetup(minusButton, minusButtonClick);
+function handleSnoozeButtonClick(callback) {
+    callback();
+    switchAlarmState();
+    stopVibrationAlert();
 }
 
 export function setNewAlarm(newAlarm) {
@@ -66,7 +61,7 @@ export function alarmByTick(currentTime, currentDay) {
 
 function switchAlarmState() {
   alarmState.forEach(alarmElement => {
-    alarmElement.style.visibility = toggleVisibilty(alarmElement);
+    toggleVisibilty(alarmElement);
   });
 }
 
