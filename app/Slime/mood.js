@@ -26,6 +26,8 @@ import { currentColor } from '../Display/Buttons/colorButtons.js';
 let moodSlime;
 let timeTillSad;
 let slimeCheckInterval;
+//-
+let slimeImagePath = `images/slimes/${currentColor}/`;
 //----
 //main body
 
@@ -37,35 +39,31 @@ export function moodBoot(slime) {
 
 export function makeHappy(time){
 
-  if(moodSlime.image === `images/slimes/${currentColor}/sleepSlime_1.png`){
-  }
-  else {
-
-    moodSlime.image  = `images/slimes/${currentColor}/mainSlime_1.png`
-
-    if (timeTillSad){
-      clearTimeout(timeTillSad);
-    }
-
-    timeTillSad = setTimeout(() => makeSad(), time);
-  }
+  if (moodSlime.image !== `${slimeImagePath}sleepSlime_1.png`) {
+   moodSlime.image = `${slimeImagePath}mainSlime_1.png`;
+   resetTimeout(time, makeSad);
+ }
 }
 
 export function makeSad(){
 
   vibration.start("nudge-max");
-
   clearInterval(slimeCheckInterval);
-
+  moodSlime.image = `${slimeImagePath}sadSlime_1.png`;
   slimeCheckInterval = setInterval(slimeCheckIn, 5 * 60 * 1000);
+}
 
-  moodSlime.image  = `images/slimes/${currentColor}/sadSlime_1.png`
+function resetTimeout(time, callback) {
+  if (timeTillSad) {
+    clearTimeout(timeTillSad);
+  }
+  timeTillSad = setTimeout(callback, time);
 }
 
 function slimeCheckIn(){
 
-  if(moodSlime.image  === `images/slimes/${currentColor}/sadSlime_1.png`){
-    vibration.start("nudge");
-  }
+  if (moodSlime.image === `${slimeImagePath}sadSlime_1.png`) {
+   vibration.start("nudge");
+ }
 
 }

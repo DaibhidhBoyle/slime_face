@@ -43,15 +43,8 @@ export function zeroPad(num, targetLength) {
 
 
 export function writtenDay(targetDay){
-  let day = new Array();
-  day[0] = "SUNDAY";
-  day[1] = "MONDAY";
-  day[2] = "TUESDAY";
-  day[3] = "WEDNESDAY";
-  day[4] = "THURSDAY";
-  day[5] = "FRIDAY";
-  day[6] = "SATURDAY";
-  return day[targetDay]
+  let days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+  return days[targetDay];
 }
 
 
@@ -82,36 +75,19 @@ export function dateSuffixCreator(date) {
 }
 
 export function writtenMonth(targetMonth){
-  let month = new Array();
-  month[0] = "January";
-  month[1] = "February";
-  month[2] = "March";
-  month[3] = "April";
-  month[4] = "May";
-  month[5] = "June";
-  month[6] = "July";
-  month[7] = "August";
-  month[8] = "September";
-  month[9] = "October";
-  month[10] = "November";
-  month[11] = "December";
-  return month[targetMonth]
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  return months[targetMonth];
 }
 
 //helpers
 
 export function animationObjectify(framesArray){
-  let arrayOfObjects = []
-  framesArray.forEach( animationFrame => {
-    arrayOfObjects.push({frame: animationFrame})
-  });
-  return arrayOfObjects
+  return framesArray.map(frame => ({ frame }));
 }
 
 //toggleVisibility
 export function toggleVisibility(element){
-  let isVisible = element.style.visibility === "visible";
-  element.style.visibility = isVisible ? "hidden" : "visible";
+  element.style.visibility = element.style.visibility === "visible" ? "hidden" : "visible";
 }
 
 export function toggleManyVisibility(elements){
@@ -122,15 +98,7 @@ export function toggleManyVisibility(elements){
 
 export function toggleOpacity(handle){
   let currentOpacity = parseFloat(handle.style.opacity);
-  let newSetting = 0
-
-  if (isNaN(currentOpacity)) {
-    newSetting = 1;
-  } else {
-    newSetting = currentOpacity === 0 ? 1 : 0;
-  }
-
-  return newSetting
+  return isNaN(currentOpacity) ? 1 : (currentOpacity === 0 ? 1 : 0);
 
 }
 
@@ -182,8 +150,8 @@ export function switchCornerButtons(group1Visibilty, group2Visibilty, group3Visi
 //event lsiteners
 
 export function eventListenersHandler(listenersClickables, setUpOrRemoveFunction){
-  listenersClickables.forEach(listenersClickable => {
-    setUpOrRemoveFunction(listenersClickable.button, listenersClickable.callback)
+  listenersClickables.forEach(({ button, callback }) => {
+    setUpOrRemoveFunction(button, callback);
   });
 }
 

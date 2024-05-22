@@ -34,8 +34,6 @@ export let buttonsAndCallbacksWithoutSleep;
 
 export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
-
-  // animateSleepCorners = document.getElementById("fadeCornerButtons");
   buttonsAndCallbacksWithoutSleep = allButtonsAndCallbacks.filter(buttonsAndCallback => buttonsAndCallback.button !== sleepSlime)
 
   if (BodyPresenceSensor) {

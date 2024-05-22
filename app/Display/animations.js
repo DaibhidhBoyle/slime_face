@@ -35,16 +35,37 @@ export function startButtonAnimation(frames, animationTimes, clickData, secondar
   disableButtonForAnimation(clickData, timeFrames);
 }
 
+// async function visibilityAnimation(frames, times, callback = null) {
+//   for (let i = 1; i < frames.length; i++) {
+//     frames[i].extraFrame && extraFrameAnimation(frames[i].extraFrame);
+//     toggleVisibility(frames[i].frame);
+//     if (frames[i - 1].extraFrame && frames[i - 1].extraFrame.animationType === "snap"){
+//       extraFrameAnimation(frames[i-1].extraFrame);
+//     }
+//     toggleVisibility(frames[i - 1].frame);
+//     await waitForNextFrame(times[i]);
+//   }
+//   if (typeof callback === 'function') {
+//     callback();
+//   }
+// }
+
+
 async function visibilityAnimation(frames, times, callback = null) {
   for (let i = 1; i < frames.length; i++) {
-    frames[i].extraFrame && extraFrameAnimation(frames[i].extraFrame);
+    if (frames[i].extraFrame) {
+      extraFrameAnimation(frames[i].extraFrame);
+    }
     toggleVisibility(frames[i].frame);
-    if (frames[i - 1].extraFrame && frames[i - 1].extraFrame.animationType === "snap"){
-      extraFrameAnimation(frames[i-1].extraFrame);
+
+    if (frames[i - 1].extraFrame && frames[i - 1].extraFrame.animationType === "snap") {
+      extraFrameAnimation(frames[i - 1].extraFrame);
     }
     toggleVisibility(frames[i - 1].frame);
+
     await waitForNextFrame(times[i]);
   }
+
   if (typeof callback === 'function') {
     callback();
   }
