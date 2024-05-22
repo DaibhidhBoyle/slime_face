@@ -3,14 +3,13 @@
 //----
 //helper imports
 import { jumpFramesUnaltered, timerButtonElements, colorButtonElements, tumblerHour, tumblerMin, slimeButtonState } from '../../Helper/components.js';
-import { animationObjectify, toggleVisibilty } from '../../Helper/helper.js';
+import { animationObjectify, toggleManyVisibility } from '../../Helper/helper.js';
 //----
 //system imports
 //----
 //local file imports
 //--Buttons
 //--Infomatics
-import { toggleInfoElements } from '../Infomatics/info'
 //--Display
 import { startButtonAnimation } from '../animations.js';
 //----
@@ -53,16 +52,12 @@ function setupJumpFrames(mainSlime) {
 
 function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
   if (slimeButtonState === 1) {
-    toggleInfoElements(elements);
-    [...timerButtonElements.children, ...colorButtonElements.children].forEach((element) => {toggleVisibilty(element)});
-  }
-
-  if (slimeButtonState === 2) {
+    toggleManyVisibility(elements);
+    toggleManyVisibility([...timerButtonElements.children, ...colorButtonElements.children])
+  } else if (slimeButtonState === 2) {
     let tumblerElements = getTumblersInfo(tumblerHour, tumblerMin);
     alarmElementListeners = slimeButtonClickFunctionality(tumblerElements);
-  }
-
-  if (slimeButtonState === 3) {
+  } else if (slimeButtonState === 3) {
     sendToAlarm();
     resetScreen();
     resetAlarmElements(alarmElementListeners);

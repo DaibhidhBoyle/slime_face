@@ -35,18 +35,12 @@ import { alarmByTick } from '../../Alarm/snooze.js';
 //----
 //main body
 
-export function timeSetup(){
+export function infomaticsBoot(){
   let clockHandles = establishClockHandles();
 
-  clock.granularity = "seconds";
+  setUpClock(clockHandles);
 
-  clock.ontick = (evt) => {
-    const now = evt.date;
-
-    toUpdateOnTick(now, clockHandles.time, clockHandles.date)
-
-  }
-
+  setUpHeartMonitor()
 
   let hrm = new HeartRateSensor();
 
@@ -59,8 +53,6 @@ export function timeSetup(){
 
 }
 
-
-
 function establishClockHandles(){
 
   return {
@@ -69,21 +61,27 @@ function establishClockHandles(){
   }
 }
 
-function toUpdateOnTick(now, timeHandles, dateHandle){
-  let timeAsString = timeSettings(now, timeHandles)
-  let dayAsString =  daySettings(now)
-  dayAsString = dayAsString.toUpperCase()
-
-  dateSettings(now, dateHandle)
-  systemSetup(now)
-
-
-  alarmByTick(timeAsString, dayAsString);
-
+function setUpClock(clockHandles) {
+  clock.granularity = "seconds";
+  clock.ontick = (evt) => {
+    let now = evt.date;
+    updateClock(now, clockHandles);
+  }
 }
 
-function timeSettings(now, timeHandles){
+function updateClock(now, clockHandles) {
+  let timeHandles = clockHandles.time;
+  let dateHandle = clockHandles.date;
 
+  let timeAsString = getTimeAsString(now, timeHandles);
+  let dayAsString = getDayAsString(now);
+
+  updateDate(now, dateHandle);
+  systemSetup(now);
+  alarmByTick(timeAsString, dayAsString);
+}
+
+function getTimeAsString(now, timeHandles) {
   let hours = now.getHours().toString();
   let mins = now.getMinutes().toString();
 
@@ -93,21 +91,16 @@ function timeSettings(now, timeHandles){
   timeHandles.hour.text = `${hoursFormatted}`
   timeHandles.min.text = `${minsFormatted}`
 
-  let timeAsString = `${hoursFormatted}:${minsFormatted}`
-
-  return timeAsString
+  return `${hoursFormatted}:${minsFormatted}`;
 }
 
-function daySettings(now){
-
+function getDayAsString(now) {
   let dayAsNumber = now.getDay();
-
   let day = writtenDay(dayAsNumber);
-
-  return day
+  return day.toUpperCase();
 }
 
-function dateSettings(now, dateHandle){
+function updateDate(now, dateHandle) {
   let date = now.getDate();
   let month = now.getMonth();
 
@@ -115,4 +108,12 @@ function dateSettings(now, dateHandle){
   let writtenOutMonth = writtenMonth(month);
 
   dateHandle.text = `${date}${suffix} ${writtenOutMonth}`;
+}
+
+function setUpHeartMonitor() {
+  let hrm = new HeartRateSensor();
+  hrm.onreading = function() {
+    heartrateHandle.text = `${hrm.heartRate}`;
+  }
+  hrm.start();
 }

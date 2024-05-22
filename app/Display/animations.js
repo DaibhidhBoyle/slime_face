@@ -3,7 +3,7 @@
 import document from "document";
 //----
 //helper imports
-import { toggleVisibilty, toggleOpacity, whichFish } from '../Helper/helper.js';
+import { toggleVisibility, toggleOpacity, whichFish } from '../Helper/helper.js';
 //----
 //system imports
 //----
@@ -38,11 +38,11 @@ export function startButtonAnimation(frames, animationTimes, clickData, secondar
 async function visibilityAnimation(frames, times, callback = null) {
   for (let i = 1; i < frames.length; i++) {
     frames[i].extraFrame && extraFrameAnimation(frames[i].extraFrame);
-    toggleVisibilty(frames[i].frame);
+    toggleVisibility(frames[i].frame);
     if (frames[i - 1].extraFrame && frames[i - 1].extraFrame.animationType === "snap"){
       extraFrameAnimation(frames[i-1].extraFrame);
     }
-    toggleVisibilty(frames[i - 1].frame);
+    toggleVisibility(frames[i - 1].frame);
     await waitForNextFrame(times[i]);
   }
   if (typeof callback === 'function') {
@@ -72,9 +72,9 @@ export function showPrizeFish(frames, duration) {
 }
 
 function temporaryToggleVisabilty(frame, duration){
-  toggleVisibilty(frame);
+  toggleVisibility(frame);
   setTimeout(function () {
-    toggleVisibilty(frame);
+    toggleVisibility(frame);
   }, duration);
 }
 

@@ -4,7 +4,7 @@ import document from "document";
 //----
 //helper imports
 import { plusButton, minusButton, alarms, alarmState } from '../Helper/components.js';
-import { eventListenerSetup, toggleVisibilty } from '../Helper/helper.js';
+import { eventListenerSetup, toggleManyVisibility } from '../Helper/helper.js';
 //----
 //system imports
 import { vibration } from "haptics";
@@ -33,14 +33,22 @@ let alarmVibrationTimeout;
 
 export function alarmSnoozeBoot(mainSlime) {
 
-  eventListenerSetup(plusButton, () => handleSnoozeButtonClick(makeHappy));
-  eventListenerSetup(minusButton, () => handleSnoozeButtonClick(makeSad));
+  eventListenerSetup(plusButton, () => handleSnoozeButtonClick(handleMakeHappy));
+  eventListenerSetup(minusButton, () => handleSnoozeButtonClick(handleMakeSad));
 }
 
 function handleSnoozeButtonClick(callback) {
-    callback();
-    switchAlarmState();
-    stopVibrationAlert();
+  callback();
+  toggleManyVisibility(alarmState);
+  stopVibrationAlert();
+}
+
+function handleMakeHappy(){
+  makeHappy(5 * 60 * 1000);
+}
+
+function handleMakeSad(){
+  makeSad();
 }
 
 export function setNewAlarm(newAlarm) {
@@ -51,18 +59,12 @@ export function alarmByTick(currentTime, currentDay) {
   for (let i = 0; i < alarms.length; i++) {
     let alarm = alarms[i];
     if (alarm.time === currentTime && alarm.days.indexOf(currentDay) !== -1 && currentTime !== previousTime) {
-      switchAlarmState();
+      toggleManyVisibility(alarmState)
       previousTime = currentTime;
       startVibrationAlert();
       break; // Stop searching once we've found a matching alarm
     }
   }
-}
-
-function switchAlarmState() {
-  alarmState.forEach(alarmElement => {
-    toggleVisibilty(alarmElement);
-  });
 }
 
 function startVibrationAlert() {

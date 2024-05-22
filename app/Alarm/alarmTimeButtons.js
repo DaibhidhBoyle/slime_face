@@ -3,7 +3,7 @@
 import document from "document";
 //----
 // helper imports
-import { toggleVisibilty, eventListenerSetup, switchCornerButtons } from '../Helper/helper.js';
+import { toggleVisibility, toggleManyVisibility, eventListenerSetup, switchCornerButtons } from '../Helper/helper.js';
 import { hourClock, minClock, clockColon, tumblerColon, displayGroup, dateClock, setSlimeButtonState } from '../Helper/components.js';
 //----
 //system imports
@@ -48,10 +48,10 @@ function setAlarmMode(tumblerElements, deleteTumblerElement, mainSlime){
 }
 
 function handleClockButtonClick(tumblers) {
-  toggleVisibilty(tumblerColon);
+  toggleVisibility(tumblerColon);
 
   tumblers.forEach((element) => {
-    toggleVisibilty(element);
+    toggleVisibility(element);
   })
 
   displayGroup.forEach(element => {
@@ -86,15 +86,10 @@ export function slimeButtonClickFunctionality(tumblerElements) {
 }
 
 function slimeButtonClickSwitchToNextScreen(time, arrayOfTumblers){
-  arrayOfTumblers.forEach((element) => {
-    toggleVisibilty(element);
-  });
 
-  toggleVisibilty(tumblerColon);
+  toggleManyVisibility([...arrayOfTumblers, tumblerColon]);
 
-  alarmElements.forEach((button) => {
-    toggleVisibilty(button);
-  });
+  toggleManyVisibility(alarmElements)
 
   switchCornerButtons("hidden", "hidden", "hidden");
 

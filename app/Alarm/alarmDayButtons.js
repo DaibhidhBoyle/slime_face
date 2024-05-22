@@ -2,7 +2,7 @@
 //document
 //----
 //helper imports
-import { toggleVisibilty, eventListenerSetup, switchCornerButtons, writtenDay } from '../Helper/helper.js';
+import { toggleVisibility, toggleManyVisibility, eventListenerSetup, switchCornerButtons, writtenDay } from '../Helper/helper.js';
 import { alarmDayGroup, hourClock, minClock, dateClock, clockColon, tumblerHour, tumblerMin, setSlimeButtonState } from '../Helper/components.js';
 //----
 //system imports
@@ -36,7 +36,7 @@ export function setAlarmDays(time) {
   let sun = alarmElements.filter(element => element.id === "alarmSun");
   sun = sun[0];
 
-  toggleVisibilty(sun);
+  toggleVisibility(sun);
 
   let alarmMushrooms = alarmElements.filter(element => element !== sun);
   setAllMushrooms(alarmMushrooms, "Red")
@@ -45,7 +45,7 @@ export function setAlarmDays(time) {
   eventListenerSetup(sun, () => toggleSun(sun, alarmMushrooms));
 
   alarmMushrooms.forEach((mushroom, i) => {
-    toggleVisibilty(mushroom);
+    toggleVisibility(mushroom);
     eventListenerSetup(mushroom, () => toggleMushroom(i, sun, alarmMushrooms));
   });
 
@@ -98,7 +98,7 @@ function toggleMushroom(i, sun, alarmMushrooms) {
 export function resetScreen() {
   switchCornerButtons("visible", "hidden", "hidden");
 
-   [hourClock, minClock, dateClock, clockColon].forEach(toggleVisibilty);
+   toggleManyVisibility([hourClock, minClock, dateClock, clockColon])
 }
 
 export function sendToAlarm() {

@@ -109,9 +109,15 @@ export function animationObjectify(framesArray){
 }
 
 //toggleVisibility
-export function toggleVisibilty(handle){
-  let isVisible = handle.style.visibility === "visible";
-  handle.style.visibility = isVisible ? "hidden" : "visible";
+export function toggleVisibility(element){
+  let isVisible = element.style.visibility === "visible";
+  element.style.visibility = isVisible ? "hidden" : "visible";
+}
+
+export function toggleManyVisibility(elements){
+  elements.forEach((element) => {
+    toggleVisibility(element)
+  });
 }
 
 export function toggleOpacity(handle){

@@ -3,7 +3,7 @@
 //----
 //helper imports
 import { deleteAlarmButtons, tumblerColon, tumblerHour, tumblerMin, setdeleteButtonState, alarms, tumblerDelete, setSlimeButtonState, deleteButtonState } from '../../Helper/components.js';
-import { toggleVisibilty, switchCornerButtons, eventListenerSetup } from '../../Helper/helper.js';
+import { toggleVisibility, toggleManyVisibility, switchCornerButtons, eventListenerSetup } from '../../Helper/helper.js';
 //----
 //system imports
 //----
@@ -42,11 +42,11 @@ export function deleteButton(mainSlime, baseDisplayElements) {
 
 function handleDeleteTumblerClick(mainSlime, baseDisplayElements) {
   if (deleteButtonState === 1) {
-    [tumblerColon, tumblerHour, tumblerMin, mainSlime].forEach(element => toggleVisibilty(element));
+    toggleManyVisibility([tumblerColon, tumblerHour, tumblerMin, mainSlime])
 
     populateDeleteAlarmTumbler(deleteTumblerElement);
 
-    toggleVisibilty(deleteTumblerElement['tumbler']);
+    toggleVisibility(deleteTumblerElement['tumbler']);
 
     setdeleteButtonState(2);
 
@@ -65,7 +65,7 @@ function handleDeleteTumblerClick(mainSlime, baseDisplayElements) {
 
 function deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements) {
 
-  [tumblerDelete, mainSlime, ...baseDisplayElements].forEach(element => toggleVisibilty(element));
+  [tumblerDelete, mainSlime, ...baseDisplayElements].forEach(element => toggleVisibility(element));
 
   switchCornerButtons("visible", "hidden", "hidden");
   setSlimeButtonState(1);

@@ -32,10 +32,10 @@ import { battery } from "power";
 
 export function systemSetup(now){
 
-  let batteryValue = battery.chargeLevel;
-  batteryHandle.text = `${batteryValue} %`;
+  let { chargeLevel } = battery;
+  batteryHandle.text = `${chargeLevel} %`;
 
-  let steps = (today.adjusted["steps"] || 0);
-  stepsHandle.text = zeroPad(`${steps}`, 5);
+  let steps = today.adjusted?.steps || 0;
+  stepsHandle.text = zeroPad(steps, 5);
 
 }
