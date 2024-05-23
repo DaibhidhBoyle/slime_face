@@ -11,7 +11,7 @@ import document from "document";
 //external file imports
 import { alarmBoot } from './Alarm/alarm.js';
 import { buttonsBoot } from './Display/Buttons/buttons.js';
-import { infomaticsBoot } from './Display/Infomatics/timeInfo.js';
+import { infomaticsBoot } from './Display/Infomatics/infoBoot.js';
 import { moodBoot } from './Slime/mood.js';
 import { sleepBoot } from './Slime/sleep.js';
 //----

@@ -28,17 +28,18 @@ import document from "document";
 
 export function timePrefrence (preference, hours){
   if (preference === "12h") {
-    return hours % 12 || 12;
+    return zeroPad(hours % 12 || 12, 2);
   } else {
     return zeroPad(hours, 2);
   }
 }
 
 export function zeroPad(num, targetLength) {
-  while (num.length < targetLength) {
-    num = "0" + num
+  let numStr = num.toString();
+  while (numStr.length < targetLength) {
+    numStr = "0" + numStr;
   }
-  return num;
+  return numStr;
 }
 
 

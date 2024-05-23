@@ -31,15 +31,19 @@ let alarmVibrationTimeout;
 //----
 //main body
 
-export function alarmSnoozeBoot(mainSlime) {
 
+export function alarmSnoozeBoot(mainSlime) {
+  //establish buttons for when alarm goes off
   eventListenerSetup(plusButton, () => handleSnoozeButtonClick(handleMakeHappy));
   eventListenerSetup(minusButton, () => handleSnoozeButtonClick(handleMakeSad));
 }
 
 function handleSnoozeButtonClick(callback) {
+  //action to be taken on alarm click (snooze or not)
   callback();
+  //show snooze screen
   toggleManyVisibility(alarmState);
+  //stop vibration
   stopVibrationAlert();
 }
 
@@ -52,10 +56,12 @@ function handleMakeSad(){
 }
 
 export function setNewAlarm(newAlarm) {
+  //add new alarm from to array that will be triggered at appropriate time
   alarms.push(newAlarm);
 }
 
 export function alarmByTick(currentTime, currentDay) {
+  //set off alarm if correct time on the first tick it occurs on
   for (let i = 0; i < alarms.length; i++) {
     let alarm = alarms[i];
     if (alarm.time === currentTime && alarm.days.indexOf(currentDay) !== -1 && currentTime !== previousTime) {
@@ -67,6 +73,7 @@ export function alarmByTick(currentTime, currentDay) {
   }
 }
 
+//handle vibrations connected to alarm
 function startVibrationAlert() {
   function performVibration() {
     vibration.start("alert");

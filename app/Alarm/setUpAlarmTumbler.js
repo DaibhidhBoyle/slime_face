@@ -30,6 +30,8 @@ export let tumblerElements;
 //main body
 
 export function setupTumblerBoot() {
+
+  //establish tumbler hashes for easy information access
   tumblerElements = getTumblersInfo(tumblerHour, tumblerMin);
 
   setUpTumblerStyle(tumblerElements["hour"]);
@@ -45,20 +47,24 @@ export function setUpTumblerStyle(tumblerElement, baseTextValue) {
 }
 
 function setupTumblerItem(tumblerElement, index, baseTextValue) {
+  //grab ekements
   let item = tumblerElement.tumbler.getElementById(`${tumblerElement.itemIdPrefix}${index}`);
   let itemTextContainer = item.getElementById("text");
 
+  //pad out tumbler elements to right length
   itemTextContainer.text = baseTextValue ? baseTextValue : zeroPad(`${index}`, 2);
-  itemTextContainer.style.fontSize = baseTextValue ? 60 : 150;
 
-  styleTumblerItemText(itemTextContainer);
+  styleTumblerItemText(itemTextContainer, baseTextValue);
 }
 
-function styleTumblerItemText(textContainer) {
+function styleTumblerItemText(textContainer, baseTextValue) {
+  //make tumbler elements look pretty
+  textContainer.style.fontSize = baseTextValue ? 60 : 150;
   textContainer.style.fontFamily = "Tungsten-Medium";
   textContainer.style.fill = "#f887bd";
 }
 
+//grab clock tumbler specfics and create hashes
 export function getTumblersInfo(tumblerHour, tumblerMin) {
   return {
     hour: createTumblerElement(tumblerHour, "hour-item", 23),

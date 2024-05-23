@@ -7,6 +7,7 @@
 //----
 // local files imports
 import { alarmTimeBoot } from './alarmTimeButtons.js';
+import { deleteAlarmBoot } from './deleteAlarm.js';
 import { setupTumblerBoot } from './setUpAlarmTumbler.js';
 import { alarmSnoozeBoot } from './snooze.js';
 //----
@@ -28,5 +29,6 @@ import { alarmSnoozeBoot } from './snooze.js';
 export function alarmBoot(mainSlime) {
   setupTumblerBoot();
   alarmSnoozeBoot();
+  deleteAlarmBoot();
   alarmTimeBoot();
 }

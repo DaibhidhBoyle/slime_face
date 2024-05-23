@@ -27,7 +27,6 @@ let moodSlime;
 let timeTillSad;
 let slimeCheckInterval;
 //-
-let slimeImagePath = `images/slimes/${currentColor}/`;
 //----
 //main body
 
@@ -39,8 +38,8 @@ export function moodBoot(slime) {
 
 export function makeHappy(time){
 
-  if (moodSlime.image !== `${slimeImagePath}sleepSlime_1.png`) {
-   moodSlime.image = `${slimeImagePath}mainSlime_1.png`;
+  if (moodSlime.image !== `${getSlimeImagePath()}sleepSlime_1.png`) {
+   moodSlime.image = `${getSlimeImagePath()}mainSlime_1.png`;
    resetTimeout(time, makeSad);
  }
 }
@@ -49,7 +48,7 @@ export function makeSad(){
 
   vibration.start("nudge-max");
   clearInterval(slimeCheckInterval);
-  moodSlime.image = `${slimeImagePath}sadSlime_1.png`;
+  moodSlime.image = `${getSlimeImagePath()}sadSlime_1.png`;
   slimeCheckInterval = setInterval(slimeCheckIn, 5 * 60 * 1000);
 }
 
@@ -62,8 +61,12 @@ function resetTimeout(time, callback) {
 
 function slimeCheckIn(){
 
-  if (moodSlime.image === `${slimeImagePath}sadSlime_1.png`) {
+  if (moodSlime.image === `${getSlimeImagePath()}sadSlime_1.png`) {
    vibration.start("nudge");
  }
 
+}
+
+function getSlimeImagePath() {
+  return `images/slimes/${currentColor}/`;
 }

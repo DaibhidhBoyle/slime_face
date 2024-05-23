@@ -32,13 +32,20 @@ import { makeHappy } from '../../Slime/mood.js';
 //main body
 
 export function fishButton(mainSlime, clickData) {
-  let fishWinFrames = createFishWinFrames();
-  let fishFrames = setupFishFrames(mainSlime);
 
+  // initialise frames
+  // primary animation
+  let fishFrames = setupFishFrames(mainSlime);
+  //secondary animation
+  let fishWinFrames = createFishWinFrames();
+
+
+  //set up time between frames aniamtions
   let fishFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1300, 500, 1200, 500, 1200, 1000, 0];
 
   let secondaryAnimationTime = 2500;
 
+  //process when button pushed
   let fishClick = () => {
     handleFishButtonClick(
       fishFrames,
@@ -49,12 +56,12 @@ export function fishButton(mainSlime, clickData) {
     );
   };
 
-  let fishButtonData = fishButtons.map(button => ({ button, callback: fishClick }));
-
-  return fishButtonData;
+  //return to be processed into event listener by button.js
+  return fishButtons.map(button => ({ button, callback: fishClick }));
 }
 
 function createFishWinFrames() {
+  //initialise all possible fish win frames with star background
   return {
     star: { image: document.getElementById("star"), text: "star" },
     boot: { image: document.getElementById("boot"), text: "boot" },
@@ -66,6 +73,7 @@ function createFishWinFrames() {
 }
 
 function setupFishFrames(mainSlime) {
+  //prep fish animation frame order
   let fishFrames = fishFramesUnaltered;
   fishFrames = [mainSlime, ...fishFrames, fishFrames[6], fishFrames[7], fishFrames[6], fishFrames[7], mainSlime];
   fishFrames = animationObjectify(fishFrames);
@@ -80,6 +88,7 @@ function setupFishFrames(mainSlime) {
 function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames) {
   // 1 hour passed to makeHappy
   makeHappy(60 * 60 * 1000);
+  //send to animate.js
   startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
     showPrizeFish(fishWinFrames, secondaryAnimationTime);
   });

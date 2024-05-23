@@ -34,13 +34,17 @@ import { deleteButton } from './deleteButtons.js';
 //----
 //main body
 
+//establish buttons on base screen and corner buttons
 export function buttonsBoot() {
   let buttonsAndCallBacksForEventListeners = [];
+  //infomatics affected by button pushes
   let toggableHTMLElements = displayGroup;
   let baseDisplayElementsList = [...baseDisplayElements.children];
 
+  // slime buttons
   buttonsAndCallBacksForEventListeners.push(slimeButton(mainSlime, toggableHTMLElements, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(sleepButton(mainSlime, sleepSlime));
+  //corner buttons
   buttonsAndCallBacksForEventListeners.push(...fishButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...foodButton(mainSlime, buttonsAndCallBacksForEventListeners));
   buttonsAndCallBacksForEventListeners.push(...colorButton(mainSlime, "left"));
