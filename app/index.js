@@ -34,10 +34,19 @@ boot();
 
 function boot(){
 
+  //initalise other files
+
   infomaticsBoot();
+  //info boot.js -> timeInfo.js -> syste,Info.js
   let allButtons = buttonsBoot();
+  // buttons.js -> colorButton.js and deleteButton.js and fishButton.js and foodButton.js and sleepButton.js and slimeButton.js
   alarmBoot(allButtons.main);
+  //alarm.js -> (alarmTimeButtons.js -> alarmDayButtons.js) and deleteAlarm.js and setUpAlarmTumbler.js and snooze.js
   moodBoot(allButtons.main);
+  //mood.js
   sleepBoot(allButtons.main, allButtons.sleep, allButtons.allButtonsAndCallbacks);
+  //sleep.js
+
+  //animate.js, components.js, helper.js have no boot and functions are called when needed 
 
 }

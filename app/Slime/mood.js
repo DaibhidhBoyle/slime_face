@@ -38,18 +38,22 @@ export function moodBoot(slime) {
 
 export function makeHappy(time){
 
+  //change main slime to "happy" version for a period of time
   if (moodSlime.image !== `${getSlimeImagePath()}sleepSlime_1.png`) {
    moodSlime.image = `${getSlimeImagePath()}mainSlime_1.png`;
+   //switch back to sad after period of time
    resetTimeout(time, makeSad);
  }
 }
 
 export function makeSad(){
 
+  //set of vibration and change main slime to "sad" or "deflated" version
   vibration.start("nudge-max");
   clearInterval(slimeCheckInterval);
   moodSlime.image = `${getSlimeImagePath()}sadSlime_1.png`;
-  slimeCheckInterval = setInterval(slimeCheckIn, 5 * 60 * 1000);
+  // set vibration after period of time
+  slimeCheckInterval = setInterval(slimeCheckIn, 10 * 60 * 1000);
 }
 
 function resetTimeout(time, callback) {
@@ -61,6 +65,7 @@ function resetTimeout(time, callback) {
 
 function slimeCheckIn(){
 
+    // send vibration after period of time to demand attention
   if (moodSlime.image === `${getSlimeImagePath()}sadSlime_1.png`) {
    vibration.start("nudge");
  }
@@ -68,5 +73,6 @@ function slimeCheckIn(){
 }
 
 function getSlimeImagePath() {
+  //update slimes to show correctr color reguardless of mood
   return `images/slimes/${currentColor}/`;
 }

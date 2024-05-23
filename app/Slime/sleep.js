@@ -33,11 +33,16 @@ export let buttonsAndCallbacksWithoutSleep;
 
 
 export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
+  //set display to "asleep" (with a snoozing slime) if not on wrist
+
+  // grab all non sleep event listeners to be deactivated when "asleep" and renabled when "awake"
 
   buttonsAndCallbacksWithoutSleep = allButtonsAndCallbacks.filter(buttonsAndCallback => buttonsAndCallback.button !== sleepSlime)
 
+  //initalise body presence sensor to see if fitbit is on wrist
   if (BodyPresenceSensor) {
     bodyPresence = new BodyPresenceSensor();
+    //check if fitbit is on wrist per tick
     bodyPresence.onreading = () => checkBodyPresence(slime, sleepSlime, sleepBubbleElement, animateSleepElements);
     bodyPresence.start();
   } else {
@@ -49,6 +54,7 @@ export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 
 function checkBodyPresence(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
+  //take action dependant on wether fitbit is on wrist or not
   if (bodyPresence && bodyPresence.present) {
     wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements);
   } else {
@@ -60,10 +66,13 @@ function checkBodyPresence(slime, sleepSlime, sleepBubble, animateSleepElements)
 
 export function sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
+  //toggle main slime to sleep slime and make a pulsing sleep bubble
   sleepSlime.style.visibility = "visible"
   slime.style.visibility = "hidden"
-  fadeElement(animateSleepElements, 1, 0);
   widgetAnimation(sleepBubble);
+  // hide all informatics by fading out
+  fadeElement(animateSleepElements, 1, 0);
+  // stop all elements from activating on click apart from sleep slime
   eventListenersHandler(buttonsAndCallbacksWithoutSleep, eventListenerRemoved);
 
 }
@@ -71,14 +80,18 @@ export function sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements) 
 export function wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
   if (slime.style.visibility !== "visible"){
+    //hide sleep elements
     sleepBubble.style.visibility = "hidden"
     sleepSlime.style.visibility = "hidden"
+    // if sleep was activated on delete alarm tumbler screen then do not reactivate slime
     if (tumblerDelete.style.visibility !== "visible"){
       slime.style.visibility = "visible"
     }
+    //fade back in all infomatics
     fadeElement(animateSleepElements, 0, 1);
     sleepBubble.animate("disable");
   }
+  //reactivate all elements abilty to be clicked
   eventListenersHandler(buttonsAndCallbacksWithoutSleep, eventListenerSetup);
 
 }
