@@ -44,6 +44,16 @@ export function timeBoot(){
   //display time from system
   setUpClock(clockHandles);
 
+  //grab heart rate from system
+  let hrm = new HeartRateSensor();
+
+  //update and display heart rate
+  hrm.onreading = function() {
+    heartrateHandle.text = `${hrm.heartRate}`;
+  }
+
+  hrm.start();
+
 }
 
 function establishClockHandles(){

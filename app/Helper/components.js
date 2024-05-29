@@ -62,11 +62,11 @@ export let alarmDayGroup = document.getElementById("alarmDaySettings");
 export let alarmGroup = document.getElementById("snoozeGroup");
 export let alarmState = [...alarmGroup.children];
 export let displayGroup = document.getElementsByClassName("displayElement");
-export let baseDisplayElements = document.getElementById("displayElementsBaseView"); // to avoid animate elements grab .chidlren on import
+export let baseDisplayElements = document.getElementById("displayElementsBaseView"); // to avoid animate elements grab .children on import
 //-
-export let timerButtonElements = document.getElementById("timerButtons"); // to avoid animate elements grab .chidlren on import
+export let timerButtonElements = document.getElementById("timerButtons"); // to avoid animate elements grab .children on import
 export let colorButtonElements = document.getElementById("colorSelectionButtons"); // to avoid animate elements grab .chidlren on import
-export let deleteButtonElements = document.getElementById("deleteButtons") // to avoid animate elements grab .chidlren on import
+export let deleteButtonElements = document.getElementById("deleteButtons") // to avoid animate elements grab .children on import
 //----
 //----
 

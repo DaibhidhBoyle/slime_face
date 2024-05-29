@@ -11,7 +11,7 @@ import document from "document";
 //external file imports
 import { alarmBoot } from './Alarm/alarm.js';
 import { buttonsBoot } from './Display/Buttons/buttons.js';
-import { infomaticsBoot } from './Display/Infomatics/infoBoot.js';
+import { timeBoot } from './Display/Infomatics/timeInfo.js';
 import { moodBoot } from './Slime/mood.js';
 import { sleepBoot } from './Slime/sleep.js';
 //----
@@ -36,8 +36,8 @@ function boot(){
 
   //initalise other files
 
-  infomaticsBoot();
-  //info boot.js -> timeInfo.js -> syste,Info.js
+  timeBoot();
+  //timeInfo.js -> syste,Info.js
   let allButtons = buttonsBoot();
   // buttons.js -> colorButton.js and deleteButton.js and fishButton.js and foodButton.js and sleepButton.js and slimeButton.js
   alarmBoot(allButtons.main);
@@ -47,6 +47,6 @@ function boot(){
   sleepBoot(allButtons.main, allButtons.sleep, allButtons.allButtonsAndCallbacks);
   //sleep.js
 
-  //animate.js, components.js, helper.js have no boot and functions are called when needed 
+  //animate.js, components.js, helper.js have no boot and functions are called when needed
 
 }
