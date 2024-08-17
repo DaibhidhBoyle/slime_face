@@ -142,21 +142,21 @@ export function switchCornerButtons(group1Visibilty, group2Visibilty, group3Visi
 
   // grab all potential corner buttons
   //food and fish buttons
-  let timerButtonElements = document.getElementById("timerButtons");
+  let timerButtonElements = document.getElementsByClassName("timerButtons");
   //color select buttons
-  let colorButtonElements = document.getElementById("colorSelectionButtons");
+  let colorButtonElements = document.getElementsByClassName("colorSelectionButtons");
   // button to delete alarms
-  let deleteButtonElements = document.getElementById("deleteButtons")
+  let deleteButtonElements = document.getElementsByClassName("deleteButtons")
 
-  timerButtonElements.children.forEach((timerButtonsElement) => {
+  timerButtonElements.forEach((timerButtonsElement) => {
     timerButtonsElement.style.visibility = group1Visibilty;
   });
 
-  colorButtonElements.children.forEach((colorButtonsElement) => {
+  colorButtonElements.forEach((colorButtonsElement) => {
     colorButtonsElement.style.visibility = group2Visibilty;
   });
 
-  deleteButtonElements.children.forEach((deleteButtonElement) => {
+  deleteButtonElements.forEach((deleteButtonElement) => {
     deleteButtonElement.style.visibility = group3Visibilty;
   });
 

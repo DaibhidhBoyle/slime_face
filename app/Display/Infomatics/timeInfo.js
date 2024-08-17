@@ -41,11 +41,13 @@ export function timeBoot(){
   //grab clock elements
   let clockHandles = establishClockHandles();
 
-  //display time from system
-  setUpClock(clockHandles);
-
   //grab heart rate from system
   let hrm = new HeartRateSensor();
+
+  //display time from system
+  setUpClock(clockHandles, hrm);
+
+
 
   //update and display heart rate
   hrm.onreading = function() {
@@ -65,7 +67,7 @@ function establishClockHandles(){
   }
 }
 
-function setUpClock(clockHandles) {
+function setUpClock(clockHandles, hrm) {
   // clock will update every second (this also means ontick events happen every second)
   clock.granularity = "seconds";
   // ontick events updating clock and system infomatics

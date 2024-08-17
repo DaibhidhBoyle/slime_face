@@ -364,10 +364,10 @@
 
 <g id="displayElements">
   <g id="displayElementsBaseView">
-    <text class="textInfoElements displayElement" id="hourLabel" visibility = "visible" pointer-events="visible"/>
-    <text class="textInfoElements displayElement" id="minuteLabel" visibility = "visible" pointer-events="visible"/>
-    <text class="textInfoElements displayElement" id="timeColon" visibility = "visible" pointer-events="visible">:</text>
-    <text class="textInfoElements displayElement" id="dateLabel" visibility = "visible"/>
+    <text class="textInfoElements displayElement displayElementsBaseView" id="hourLabel" visibility = "visible" pointer-events="visible"/>
+    <text class="textInfoElements displayElement displayElementsBaseView" id="minuteLabel" visibility = "visible" pointer-events="visible"/>
+    <text class="textInfoElements displayElement displayElementsBaseView" id="timeColon" visibility = "visible" pointer-events="visible">:</text>
+    <text class="textInfoElements displayElement displayElementsBaseView" id="dateLabel" visibility = "visible"/>
   </g>
   <g>
   <image class="displayElement" href="images/sundry/footPrint_1.png" id="footPrint" visibility = "hidden" />
@@ -382,20 +382,20 @@
 
 <g id="cornerButtons">
   <g id= "timerButtons">
-  <rect id="fishButton" class="fishClickable" pointer-events="visible" visibility = "visible"/>
-  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "visible"/>
-  <rect id="foodButton" class="foodClickable" pointer-events="visible" visibility = "visible"/>
-  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" visibility = "visible"/>
+  <rect id="fishButton" class="fishClickable timerButtons" pointer-events="visible" visibility = "visible"/>
+  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable timerButtons" pointer-events="visible" visibility = "visible"/>
+  <rect id="foodButton" class="foodClickable timerButtons" pointer-events="visible" visibility = "visible"/>
+  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable timerButtons" pointer-events="visible" visibility = "visible"/>
   </g>
   <g id= "colorSelectionButtons">
-  <rect id="leftColorButton" class="leftColorClickable" pointer-events="visible" visibility = "hidden"/>
-  <image href="images/sundry/arrowLeft.png" id="leftColorIcon" class="leftColorClickable" pointer-events="visible" visibility = "hidden"/>
-  <rect id="rightColorButton" class="rightColorClickable" pointer-events="visible" visibility = "hidden"/>
-  <image href="images/sundry/arrowRight.png" id="rightColorIcon" class="rightColorClickable" pointer-events="visible" visibility = "hidden"/>
+  <rect id="leftColorButton" class="leftColorClickable colorSelectionButtons" class="colorSelectionButtons" pointer-events="visible" visibility = "hidden"/>
+  <image href="images/sundry/arrowLeft.png" id="leftColorIcon" class="leftColorClickable colorSelectionButtons" class="colorSelectionButtons" pointer-events="visible" visibility = "hidden"/>
+  <rect id="rightColorButton" class="rightColorClickable colorSelectionButtons" pointer-events="visible" visibility = "hidden"/>
+  <image href="images/sundry/arrowRight.png" id="rightColorIcon" class="rightColorClickable colorSelectionButtons" pointer-events="visible" visibility = "hidden"/>
   </g>
   <g id= "deleteButtons">
-  <rect id="deleteAlarmButton" class="deleteAlarmClickable" pointer-events="visible" visibility = "hidden"/>
-  <image href="images/sundry/delete.png" id="deleteAlarmIcon" class="deleteAlarmClickable" pointer-events="hidden" visibility = "hidden"/>
+  <rect id="deleteAlarmButton" class="deleteAlarmClickable deleteButtons" pointer-events="visible" visibility = "hidden"/>
+  <image href="images/sundry/delete.png" id="deleteAlarmIcon" class="deleteAlarmClickable deleteButtons" pointer-events="hidden" visibility = "hidden"/>
   </g>
   <animate id="sleepElement3" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
 </g>

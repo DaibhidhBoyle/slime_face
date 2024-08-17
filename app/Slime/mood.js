@@ -3,7 +3,7 @@
 import document from "document";
 //----
 //helper imports
-import { sleepSlime } from '../../Helper/components.js';
+import { sleepSlime } from '../Helper/components.js';
 //----
 //system imports
 import { vibration } from "haptics";
@@ -75,7 +75,7 @@ function slimeCheckIn(){
       vibration.start("nudge");
     }
   }
-  
+
 }
 
 function getSlimeImagePath() {

@@ -39,7 +39,7 @@ export function buttonsBoot() {
   let buttonsAndCallBacksForEventListeners = [];
   //infomatics affected by button pushes
   let toggableHTMLElements = displayGroup;
-  let baseDisplayElementsList = [...baseDisplayElements.children];
+  let baseDisplayElementsList = baseDisplayElements;
 
   // slime buttons
   buttonsAndCallBacksForEventListeners.push(slimeButton(mainSlime, toggableHTMLElements, buttonsAndCallBacksForEventListeners));

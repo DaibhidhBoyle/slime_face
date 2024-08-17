@@ -62,7 +62,7 @@ function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, sli
   if (slimeButtonState === 1) {
     //toggle between base view and color select screen
     toggleManyVisibility(elements);
-    toggleManyVisibility([...timerButtonElements.children, ...colorButtonElements.children])
+    toggleManyVisibility([...timerButtonElements, ...colorButtonElements])
   } else if (slimeButtonState === 2) {
     //after a clock button click, take time on alarm tumbler and pass to alarmDayButtons to be put into alarms, then switch to alarm day select screen
     let tumblerElements = getTumblersInfo(tumblerHour, tumblerMin);
