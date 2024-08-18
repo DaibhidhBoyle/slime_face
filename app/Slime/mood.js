@@ -40,7 +40,7 @@ export function moodBoot(slime) {
 }
 
 export function makeHappy(time, isFromFood){
-  let restTime = 1 * 60 * 1000
+  let restTime = 5 * 60 * 1000
   //change main slime to "happy" version for a period of time
   moodSlime.image = `${getSlimeImagePath()}mainSlime_1.png`;
   if(sleepBubble.style.visibility === "visible"){
