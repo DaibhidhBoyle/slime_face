@@ -3,7 +3,7 @@
 //----
 //helper imports
 import { toggleVisibility, toggleManyVisibility, eventListenerSetup, switchCornerButtons, writtenDay } from '../Helper/helper.js';
-import { alarmDayGroup, hourClock, minClock, dateClock, clockColon, tumblerHour, tumblerMin, setSlimeButtonState } from '../Helper/components.js';
+import { alarmDayGroup, hourClock, minClock, dateClock, clockColon, tumblerHour, tumblerMin, setSlimeButtonState, setWakeFlag } from '../Helper/components.js';
 //----
 //system imports
 //----
@@ -100,6 +100,7 @@ function toggleMushroom(i, sun, alarmMushrooms) {
 }
 
 export function resetScreen() {
+
   //switch to food and fish buttons
   switchCornerButtons("visible", "hidden", "hidden");
 

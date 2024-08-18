@@ -4,7 +4,7 @@ import document from "document";
 //----
 //helper imports
 import { eventListenersHandler, eventListenerRemoved, eventListenerSetup } from '../Helper/helper.js';
-import { sleepBubble as sleepBubbleElement, animateDisplayElements as animateSleepElements, tumblerDelete } from '../Helper/components.js';
+import { wakeFlag, sleepBubble as sleepBubbleElement, animateDisplayElements as animateSleepElements, tumblerDelete} from '../Helper/components.js';
 //----
 //system imports
 import { BodyPresenceSensor } from "body-presence";
@@ -13,6 +13,7 @@ import { BodyPresenceSensor } from "body-presence";
 //----
 //external file imports
 import { fadeElement, widgetAnimation } from '../Display/animations.js';
+import { getSlimeImagePath, currentColor } from '../Display/Buttons/colorButtons.js';
 //----
 //----
 
@@ -28,6 +29,7 @@ export let buttonsAndCallbacksWithoutSleep;
 
 //---BODY---
 //variables
+let previousBodyPresence = null;
 //----
 //main body
 
@@ -55,23 +57,30 @@ export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 function checkBodyPresence(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
   //take action dependant on wether fitbit is on wrist or not
-  if (bodyPresence && bodyPresence.present) {
+  if (bodyPresence && bodyPresence.present && !previousBodyPresence) {
+    // Body presence changed to present
     wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements);
-  } else {
+  } else if (!bodyPresence.present && previousBodyPresence) {
+    // Body presence changed to not present
     sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements);
   }
+
+  // Update previous state
+  previousBodyPresence = bodyPresence.present;
 
 }
 
 
 export function sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
-  //toggle main slime to sleep slime and make a pulsing sleep bubble
-  sleepSlime.style.visibility = "visible"
-  slime.style.visibility = "hidden"
-  widgetAnimation(sleepBubble);
+  if (sleepBubble.style.visibility !== "visible"){
+    //toggle main slime to sleep slime and make a pulsing sleep bubble
+    widgetAnimation(sleepBubble);
+  }
   // hide all informatics by fading out
   fadeElement(animateSleepElements, 1, 0);
+  sleepSlime.style.visibility = "visible"
+  slime.style.visibility = "hidden"
   // stop all elements from activating on click apart from sleep slime
   eventListenersHandler(buttonsAndCallbacksWithoutSleep, eventListenerRemoved);
 
@@ -79,18 +88,22 @@ export function sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements) 
 
 export function wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
-  if (slime.style.visibility !== "visible"){
-    //hide sleep elements
-    sleepBubble.style.visibility = "hidden"
-    sleepSlime.style.visibility = "hidden"
-    // if sleep was activated on delete alarm tumbler screen then do not reactivate slime
-    if (tumblerDelete.style.visibility !== "visible"){
-      slime.style.visibility = "visible"
-    }
-    //fade back in all infomatics
-    fadeElement(animateSleepElements, 0, 1);
+  //hide sleep elements
+
+  if (slime.image !== `${getSlimeImagePath()}sleepSlime_1.png` || !wakeFlag) {
+    sleepBubble.style.visibility = "hidden";
     sleepBubble.animate("disable");
   }
+
+  if (wakeFlag) {
+    slime.style.visibility = "visible";
+  }
+
+  sleepSlime.style.visibility = "hidden"
+
+  //fade back in all infomatics
+  fadeElement(animateSleepElements, 0, 1);
+
   //reactivate all elements abilty to be clicked
   eventListenersHandler(buttonsAndCallbacksWithoutSleep, eventListenerSetup);
 

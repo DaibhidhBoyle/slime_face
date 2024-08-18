@@ -16,6 +16,7 @@ import document from "document"
 //variables
 export let slimeButtonState = 1 //setter function below
 export let deleteButtonState = 1 //setter function below
+export let wakeFlag = true //setter function below
 //-
 export let alarms = [];
 //----
@@ -83,4 +84,8 @@ export function setSlimeButtonState(numberSetting){
 
 export function setdeleteButtonState(numberSetting){
   deleteButtonState = numberSetting;
+}
+
+export function setWakeFlag(slimeVisiblityBooleanSetting){
+  wakeFlag = slimeVisiblityBooleanSetting;
 }

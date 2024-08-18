@@ -4,7 +4,7 @@ import document from "document";
 //----
 // helper imports
 import { toggleVisibility, toggleManyVisibility, eventListenerSetup, switchCornerButtons } from '../Helper/helper.js';
-import { hourClock, minClock, clockColon, tumblerColon, displayGroup, dateClock, setSlimeButtonState } from '../Helper/components.js';
+import { hourClock, minClock, clockColon, tumblerColon, displayGroup, dateClock, setSlimeButtonState, sleepBubble, setWakeFlag } from '../Helper/components.js';
 //----
 //system imports
 //----

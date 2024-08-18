@@ -2,13 +2,14 @@
 //document
 //----
 //helper imports
-import { deleteAlarmButtons, tumblerColon, tumblerHour, tumblerMin, setdeleteButtonState, alarms, tumblerDelete, setSlimeButtonState, deleteButtonState } from '../../Helper/components.js';
+import { deleteAlarmButtons, tumblerColon, tumblerHour, tumblerMin, setdeleteButtonState, alarms, tumblerDelete, setSlimeButtonState, deleteButtonState, sleepBubble , setWakeFlag} from '../../Helper/components.js';
 import { toggleVisibility, toggleManyVisibility, switchCornerButtons, eventListenerSetup } from '../../Helper/helper.js';
 //----
 //system imports
 //----
 //local file imports
 //--Buttons
+import { getSlimeImagePath } from './colorButtons.js';
 //--Infomatics
 //--Display
 //----
@@ -46,6 +47,13 @@ function handleDeleteTumblerClick(mainSlime, baseDisplayElements) {
   //depending on deleteButtonsState excute action on click
   if (deleteButtonState === 1) {
 
+    setWakeFlag(false);
+
+    if (sleepBubble.style.visibility === "visible"){
+      sleepBubble.style.visibility = "hidden"
+      sleepBubble.animate("disable");
+    }
+
     //hide clock tumblers and slime
     //make delete tumbler visible
     toggleManyVisibility([tumblerColon, tumblerHour, tumblerMin, mainSlime])
@@ -58,6 +66,8 @@ function handleDeleteTumblerClick(mainSlime, baseDisplayElements) {
     setdeleteButtonState(2);
 
   } else if (deleteButtonState === 2) {
+
+    setWakeFlag(true);
 
     //grab current delete tumbler entry and remove it from alarms array
     let deleteTumblerSelectedIndex = parseInt(deleteTumblerElement.tumbler.value);
@@ -85,5 +95,10 @@ function deleteSelectSwitchToBaseScreen(mainSlime, baseDisplayElements) {
 
   //make is so slime button will toggle between base and color select screen
   setSlimeButtonState(1);
+
+  if(mainSlime.image === `${getSlimeImagePath()}sleepSlime_1.png`){
+    sleepBubble.style.visibility = "visible"
+    sleepBubble.animate("enable");
+  }
 
 }
